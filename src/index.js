@@ -3,21 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App/App';
 import * as serviceWorker from './serviceWorker';
-<<<<<<< HEAD
 import { RideProvider } from './context/RideContext';
-import {BrowserRouter} from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
     <BrowserRouter>
-    <RideProvider>
-        <App />
-    </RideProvider>
+        <RideProvider>
+            <App />
+        </RideProvider>
     </BrowserRouter>
     , document.getElementById('root'));
-=======
-import {BrowserRouter} from 'react-router-dom';
-ReactDOM.render(<BrowserRouter><App /></BrowserRouter>, document.getElementById('root'));
->>>>>>> zane
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
