@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchRides } from '../../actions/rideActions';
+import Ride from '../Ride/Ride';
 
 class Rides extends Component {
     componentWillMount() {
@@ -11,7 +12,8 @@ class Rides extends Component {
 
         return (
             <div>
-                <h2>Rides</h2>
+
+                <Ride />
             </div>
         )
     }
