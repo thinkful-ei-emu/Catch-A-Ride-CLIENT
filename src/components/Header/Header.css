@@ -1,0 +1,22 @@
+h1 {
+  font-family: 'Slackey', cursive;
+}
+
+h2 {
+  color: white;
+}
+
+.navbar {
+  /* do we want it to extend all the way across or look more like  */
+  background: #22554e;
+  width: 100%;
+  padding: 10px 0;
+}
+
+a {
+  color: #b8e3ea;
+}
+
+a:hover {
+  color: #f2de6a;
+}
