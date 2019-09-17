@@ -8,7 +8,8 @@ class LoginPage extends React.Component {
     super(props);
 
     this.state = {
-      loggedIn: false
+      loggedIn: false,
+      id_token: null
     };
   }
 
@@ -20,6 +21,10 @@ class LoginPage extends React.Component {
   onSignIn = async (googleUser) => {
     const profile = googleUser.getBasicProfile();
     const id_token = googleUser.getAuthResponse().id_token;
+
+    this.setState({
+      id_token
+    });
 
     console.log(id_token);
 
@@ -56,14 +61,36 @@ class LoginPage extends React.Component {
 
   logout = (response) => {
     this.setState({
-      loggedIn: false
+      loggedIn: false,
+      id_token:  null
     });
 
     console.log('Signed Out.');
   }
 
+  async sendRequest() {
+    try {
+      let res = await fetch(config.API_ENDPOINT + '/auth', {
+        method: 'GET',
+        headers: {
+          'Authorization': `bearer ${this.state.id_token}`
+        }
+      });
+      res = await res.text();
+
+      console.log('res', res);
+    }
+    catch (e) {
+      console.error(e.message);
+    }
+  }
+
   render() {
     return <>
+      <button onClick={() => this.sendRequest()}>
+        Test Request
+      </button>
+
       <GoogleLogin
         clientId={config.CLIENT_ID}
         buttonText={this.state.loggedIn ? 'Signed In' : 'Sign In'}
