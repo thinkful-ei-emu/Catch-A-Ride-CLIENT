@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Ride from '../Ride/Ride';
 import RideApiService from '../../services/ride-api-service';
 import RideContext from '../../context/RideContext';
+import './Rides.css';
 
 class Rides extends Component {
 
@@ -32,10 +33,10 @@ class Rides extends Component {
 
     render() {
         return (
-            <div>
+            <>
                 <div>Rides</div>
                 {this.renderRidesList()}
-            </div>
+            </>
         )
     }
 }
