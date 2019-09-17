@@ -1,0 +1,12 @@
+ul {
+  padding-left: 0px;
+}
+
+@media only screen and (min-width: 700px) {
+  ul {
+    display: flex;
+    flex-flow: row wrap;
+    align-content: space-around;
+    justify-content: center;
+  }
+}
