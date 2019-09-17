@@ -1,13 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import { Provider } from 'react-redux';
 
-function App() {
-  return (
-    <div className="App">
-    
-    </div>
-  );
+
+import Rides from '../Rides/Rides'
+import Header from '../Header/Header';
+
+import store from '../../store';
+
+class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <div className="App">
+          <Header />
+          <Rides />
+        </div>
+      </Provider>
+    )
+  }
 }
 
 export default App;
