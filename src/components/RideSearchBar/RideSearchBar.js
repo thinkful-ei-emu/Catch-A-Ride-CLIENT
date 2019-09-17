@@ -9,7 +9,6 @@ export default class RideSearchBar extends Component {
                 <label>Search by: </label>
                 <FilterOptions />
                 <SearchBox />
-                <button type="submit">Search</button>
             </div>
         )
     }

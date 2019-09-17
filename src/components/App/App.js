@@ -15,8 +15,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <RideSearchBar />
         <Header />
+        <RideSearchBar />
+        <hr />
         <Rides />
       </div>
     )

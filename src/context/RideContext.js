@@ -5,7 +5,7 @@ const RideContext = React.createContext({
     ride: {},
     error: null,
     searchTerm: '',
-    filterOption: 'All',
+    filterOption: '',
     setRides: () => { },
     setRide: () => { },
     setSearchTerm: () => { },
@@ -21,7 +21,7 @@ export class RideProvider extends Component {
             rides: [],
             ride: {},
             searchTerm: '',
-            filterOption: 'All'
+            filterOption: ''
         }
     }
 

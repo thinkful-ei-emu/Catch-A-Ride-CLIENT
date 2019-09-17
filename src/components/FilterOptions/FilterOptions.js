@@ -3,6 +3,11 @@ import Select from 'react-select';
 import RideContext from '../../context/RideContext';
 
 export default class FilterOptions extends Component {
+    static contextType = RideContext;
+
+    handleChange = (selectedOption) => {
+        this.context.setFilterOption(selectedOption.value);
+    }
 
     render() {
         const options = [
@@ -12,13 +17,7 @@ export default class FilterOptions extends Component {
         ];
         return (
             <div>
-                <div>
-                    <form>
-                        <Select options={options} />
-                    </form>
-                </div>
-
-
+                <Select options={options} onChange={this.handleChange} />
             </div>
         )
     }
