@@ -4,12 +4,12 @@ const RideContext = React.createContext({
     rides: [],
     ride: {},
     error: null,
-    searchTerm: '',
-    filterOption: '',
+    destination: '',
+    starting: '',
     setRides: () => { },
     setRide: () => { },
-    setSearchTerm: () => { },
-    setFilterOption: () => { }
+    setDestination: () => { },
+    setStarting: () => { }
 })
 
 export default RideContext;
@@ -20,8 +20,8 @@ export class RideProvider extends Component {
         this.state = {
             rides: [],
             ride: {},
-            searchTerm: '',
-            filterOption: ''
+            destination: '',
+            starting: ''
         }
     }
 
@@ -33,12 +33,12 @@ export class RideProvider extends Component {
         this.setState({ ride })
     }
 
-    setSearchTerm = (searchTerm) => {
-        this.setState({ searchTerm })
+    setDestination = (destination) => {
+        this.setState({ destination })
     }
 
-    setFilterOption = (filterOption) => {
-        this.setState({ filterOption })
+    setStarting = (starting) => {
+        this.setState({ starting })
     }
 
     setError = error => {
@@ -55,12 +55,12 @@ export class RideProvider extends Component {
         const value = {
             rides: this.state.rides,
             ride: this.state.ride,
-            searchTerm: this.state.searchTerm,
-            filterOption: this.state.filterOption,
+            destination: this.state.destination,
+            starting: this.state.starting,
             setRides: this.setRides,
             setRide: this.setRide,
-            setSearchTerm: this.setSearchTerm,
-            setFilterOption: this.setFilterOption
+            setDestination: this.setDestination,
+            setStarting: this.setStarting
         }
         return (
             <RideContext.Provider value={value}>
