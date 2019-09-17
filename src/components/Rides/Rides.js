@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Ride from '../Ride/Ride';
 import RideApiService from '../../services/ride-api-service';
 import RideContext from '../../context/RideContext';
+import RideSearchBar from '../RideSearchBar/RideSearchBar';
 import './Rides.css';
 
 class Rides extends Component {
@@ -35,6 +36,7 @@ class Rides extends Component {
         return (
             <>
                 <div>Rides</div>
+                <RideSearchBar />
                 {this.renderRidesList()}
             </>
         )

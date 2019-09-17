@@ -20,7 +20,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <RideSearchBar />
+        {/* <RideSearchBar /> */}
         <Route exact path='/' component={RegistrationForm}/>
         <Route path='/login'  component={LoginForm}/>
         <Route path='/rides'component={Rides} />
