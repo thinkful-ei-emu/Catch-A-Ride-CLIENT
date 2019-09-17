@@ -1,29 +1,43 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { fetchRides } from '../../actions/rideActions';
+import PropTypes from 'prop-types';
 import Ride from '../Ride/Ride';
+import RideApiService from '../../services/ride-api-service';
+import RideContext from '../../context/RideContext';
 
 class Rides extends Component {
-    componentWillMount() {
-        console.log('reducer')
-        this.props.fetchRides();
+
+    static contextType = RideContext;
+
+    componentDidMount() {
+        RideApiService.getRides()
+            .then(res => {
+                this.context.setRides(res);
+            })
+
+    }
+
+    renderRidesList() {
+        const ridePosts = this.context.rides.map((ride, i) => (
+            <li key={i}><Ride ride={ride} /></li>
+        ))
+        return (
+            <ul>
+                {ridePosts}
+            </ul>
+        )
     }
 
     render() {
-        const ridePosts = this.props.rides.map(ride => (
-            <Ride />
-        ))
         return (
             <div>
                 <div>Rides</div>
-                {ridePosts}
+                {this.renderRidesList()}
             </div>
         )
     }
 }
+Rides.propTypes = {
+    rides: PropTypes.array.isRequired
+}
 
-const mapStateToProps = state => ({
-    rides: state.rides.rides
-})
-
-export default connect(mapStateToProps, { fetchRides })(Rides);
+export default Rides;
