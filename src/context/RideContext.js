@@ -4,8 +4,12 @@ const RideContext = React.createContext({
     rides: [],
     ride: {},
     error: null,
+    searchTerm: '',
+    filterOption: 'All',
     setRides: () => { },
-    setRide: () => { }
+    setRide: () => { },
+    setSearchTerm: () => { },
+    setFilterOption: () => { }
 })
 
 export default RideContext;
@@ -15,7 +19,9 @@ export class RideProvider extends Component {
         super(props);
         this.state = {
             rides: [],
-            ride: {}
+            ride: {},
+            searchTerm: '',
+            filterOption: 'All'
         }
     }
 
@@ -25,6 +31,14 @@ export class RideProvider extends Component {
 
     setRide = (ride) => {
         this.setState({ ride })
+    }
+
+    setSearchTerm = (searchTerm) => {
+        this.setState({ searchTerm })
+    }
+
+    setFilterOption = (filterOption) => {
+        this.setState({ filterOption })
     }
 
     setError = error => {
@@ -41,8 +55,12 @@ export class RideProvider extends Component {
         const value = {
             rides: this.state.rides,
             ride: this.state.ride,
+            searchTerm: this.state.searchTerm,
+            filterOption: this.state.filterOption,
             setRides: this.setRides,
-            setRide: this.setRide
+            setRide: this.setRide,
+            setSearchTerm: this.setSearchTerm,
+            setFilterOption: this.setFilterOption
         }
         return (
             <RideContext.Provider value={value}>
