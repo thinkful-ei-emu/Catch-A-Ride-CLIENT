@@ -5,18 +5,25 @@ import Ride from '../Ride/Ride';
 
 class Rides extends Component {
     componentWillMount() {
+        console.log('reducer')
         this.props.fetchRides();
     }
 
     render() {
-
+        const ridePosts = this.props.rides.map(ride => (
+            <Ride />
+        ))
         return (
             <div>
-
-                <Ride />
+                <div>Rides</div>
+                {ridePosts}
             </div>
         )
     }
 }
 
-export default connect(null, { fetchRides })(Rides);
+const mapStateToProps = state => ({
+    rides: state.rides.rides
+})
+
+export default connect(mapStateToProps, { fetchRides })(Rides);

@@ -20,8 +20,6 @@ class App extends Component {
         <div className="App">
           <Header />
           <Rides />
-          <Rides />
-          <Rides />
         </div>
       </Provider>
     )

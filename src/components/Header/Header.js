@@ -5,7 +5,6 @@ class Header extends Component {
         return (
             <div>
                 <h1>Catch A Ride!</h1>
-
             </div>
         )
     }

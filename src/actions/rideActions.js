@@ -1,12 +1,16 @@
 import { FETCH_RIDES, NEW_RIDE } from './types';
 import config from '../config';
-import Rides from '../components/Rides/Rides';
 
+//`https://jsonplaceholder.typicode.com/posts`
+//`${config.API_ENDPOINT}/rides`
 export const fetchRides = () => dispatch => {
-    fetch(`${config.API_ENDPOINT}/rides`)
+    console.log('Fetching...')
+    fetch(`https://jsonplaceholder.typicode.com/posts`)
         .then(res => res.json())
-        .then(data => dispatch({
-            type: FETCH_RIDES,
-            payload: Rides
-        }));
+        .then(rides =>
+            dispatch({
+                type: FETCH_RIDES,
+                payload: rides
+            })
+        );
 }
