@@ -23,12 +23,12 @@ export default class SearchBox extends Component {
 
     render() {
         return (
-            <form onSubmit={(e) => this.handleSubmit(e)}>
+            <form className='search-form' onSubmit={(e) => this.handleSubmit(e)}>
                 <label htmlFor='dest-input' className='search-dest'>Destination: </label>
                 <input id='dest-input' placeholder="123 Address St. New York, New York" value={this.context.destination} onChange={e => this.context.setDestination(e.target.value)} /><br />
                 <label htmlFor='start-input' className='search-start'>Starting: </label>
                 <input id='start-input' placeholder="123 Address St. New York, New York" value={this.context.starting} onChange={e => this.context.setStarting(e.target.value)} /><br />
-                <button type="submit">Submit</button>
+                <button className='search-submit' type="submit">Submit</button>
             </form>
         )
     }

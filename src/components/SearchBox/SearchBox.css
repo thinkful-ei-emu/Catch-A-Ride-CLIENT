@@ -5,3 +5,7 @@
 .search-start {
   padding-right: 33px;
 }
+
+.search-form {
+  line-height: 2em;
+}
