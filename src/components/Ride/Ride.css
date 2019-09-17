@@ -7,18 +7,8 @@
   text-align: left;
   background: #CBEAEF;
   border: #CBEAEF 1px solid;
+  border-radius: 5px 5px 0 0;
   color: black;
-}
-
-li {
-  margin: 0 auto;
-  list-style-type: none;
-  margin-bottom: 15px;
-  padding-bottom: 10px;
-  border-radius: 5px;
-  background: #22554e;
-  color: white;
-  width: 80%;
 }
 
 .locations {
@@ -31,11 +21,4 @@ li {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-}
-
-@media only screen and (min-width: 700px) {
-  li {
-    width: 25%;
-    margin: 10px 10px;
-  }
 }
