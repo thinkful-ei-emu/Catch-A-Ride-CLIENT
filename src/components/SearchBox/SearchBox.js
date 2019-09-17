@@ -12,7 +12,11 @@ export default class SearchBox extends Component {
         let destination = this.context.destination;
         let starting = this.context.starting;
 
-        RideApiService.getRides()
+        // return RideApiService.getRides(destination, starting)
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         this.context.setRides(data)
+        //     })
     }
 
 
