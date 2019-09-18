@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import SearchBox from '../SearchBox/SearchBox';
-import FilterOptions from '../FilterOptions/FilterOptions';
+import './RideSearchBar.css';
 
 export default class RideSearchBar extends Component {
     render() {
         return (
-            <div>
-                <label>Search by: </label>
-                <FilterOptions />
+            <div className='searchbar'>
+                <h3>Search For A Ride</h3>
                 <SearchBox />
             </div>
         )

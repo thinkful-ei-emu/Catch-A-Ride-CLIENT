@@ -2,9 +2,9 @@ h1 {
   font-family: 'Slackey', cursive;
 }
 
-h2 {
+/* h2 {
   color: white;
-}
+} */
 
 .navbar {
   /* do we want it to extend all the way across or look more like  */
@@ -13,10 +13,10 @@ h2 {
   padding: 10px 0;
 }
 
-a {
+.navlink {
   color: #b8e3ea;
 }
 
-a:hover {
+.navlink:hover {
   color: #f2de6a;
 }

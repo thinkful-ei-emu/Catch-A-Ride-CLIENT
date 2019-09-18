@@ -1,0 +1,30 @@
+.newRideForm {
+  line-height: 2em;
+  display: block;
+  width: 90%;
+  margin: 0 auto;
+  background: #22554e;
+  color: white;
+  padding: 15px 0;
+}
+
+.rideLabel {
+  margin: 0 10px;
+}
+
+.rideSpace {
+  background: white;
+}
+
+.createRide {
+  margin: 0 auto;
+  background: white;
+  border-radius: 3px;
+  text-align: center;
+}
+
+@media only screen and (min-width: 700px) {
+  .newRideForm {
+    width: 50%;
+  }
+}
