@@ -18,7 +18,6 @@ export default class CreateRideForm1 extends React.Component {
     let destination = document.getElementById('destination').value;
     let description = document.getElementById('description').value;
     let capacity = document.getElementById('capacity').value;
-    console.log('stuff');
 
     return JSON.stringify({
       starting,
@@ -35,9 +34,11 @@ export default class CreateRideForm1 extends React.Component {
   SubmitForm = (e) => {
     e.preventDefault();
     let body = this.grabValues();
-    console.log(body);
+    // console.log(body);
     RidesService.postNewRide(body);
+    this.props.history.push('/rides');
   }
+
   render() {
     return (
       <>

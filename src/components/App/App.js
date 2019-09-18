@@ -4,7 +4,7 @@ import './App.css';
 import Rides from '../Rides/Rides';
 import Header from '../Header/Header';
 
-import { Route, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons'

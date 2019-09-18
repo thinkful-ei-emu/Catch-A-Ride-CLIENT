@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import Ride from '../Ride/Ride';
 import RideContext from '../../context/RideContext';
 import RideSearchBar from '../RideSearchBar/RideSearchBar';
-import RideApiService from '../../services/RidesService/rides-driver-service';
 import { Link } from 'react-router-dom'
 import './Rides.css';
 
@@ -13,7 +11,7 @@ class Rides extends Component {
 
   renderRidesList() {
     const ridePosts = this.context.rides.map((ride, i) => (
-      <Link to={`/rides/${ride.id}`}><li key={i}><Ride ride={ride} /></li></Link>
+      <li key={i}><Link to={`/rides/${ride.id}`}><Ride ride={ride} /></Link></li>
     ));
     return (
       <ul>
@@ -32,8 +30,6 @@ class Rides extends Component {
     );
   }
 }
-Rides.propTypes = {
-  rides: PropTypes.array.isRequired
-};
+
 
 export default Rides;
