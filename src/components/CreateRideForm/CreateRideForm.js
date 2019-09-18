@@ -6,7 +6,12 @@ import './CreateRideForm.css';
 // do we want a screen after submitting form that confirms that the ride was created?
 
 
+
+
 export default class CreateRideForm1 extends React.Component {
+  state={
+    created:null
+  }
 
 
 
@@ -36,7 +41,9 @@ export default class CreateRideForm1 extends React.Component {
     e.preventDefault();
     let body = this.grabValues();
     console.log(body);
-    RidesService.postNewRide(body);
+    RidesService.postNewRide(body)
+      .then(()=>this.setState({created:true}));
+    
   }
   render() {
     return (
@@ -76,6 +83,7 @@ export default class CreateRideForm1 extends React.Component {
             </select>
           </div>
           <button className='createRide' type='submit'>Share A Ride!</button>
+          {this.state.created===true?'Ride Created!':''}
         </form>
       </>
     );
