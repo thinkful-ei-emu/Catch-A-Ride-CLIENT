@@ -10,7 +10,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import { faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons'
 import RegistrationForm from '../RegistrationForm/RegistrationForm';
 import LoginForm from '../LoginForm/LoginForm';
-import CreateRideForm from '../RegistrationForm/CreateRideForm/CreateRideForm';
+import CreateRideForm from '../CreateRideForm/CreateRideForm';
 
 library.add(fas, faMapMarkedAlt)
 
