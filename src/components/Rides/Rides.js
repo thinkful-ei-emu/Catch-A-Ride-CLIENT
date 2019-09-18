@@ -20,8 +20,8 @@ class Rides extends Component {
 
     renderRidesList() {
         const { searchTerm, filterOption } = this.context;
-        // const list = this.context.rides.filter(ride => (ride.destination.includes(searchTerm)
-        //     && (filterOption === 'destination'))).map((ride, key) => <li key={key}><Ride ride={ride} /></li>)
+        const list = this.context.rides.filter(ride => (ride.destination.includes(searchTerm)
+            && (filterOption === 'destination'))).map((ride, key) => <li key={key}><Ride ride={ride} /></li>)
         const ridePosts = this.context.rides.map((ride, i) => (
             <li className='single-ride' key={i}><Ride ride={ride} /></li>
         ))
