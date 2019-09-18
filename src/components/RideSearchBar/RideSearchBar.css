@@ -1,0 +1,15 @@
+.searchbar {
+  background: #22554e;
+  border: 1px solid #22554e;
+  border-radius: 5px;
+  width: 80%;
+  margin: 0 auto;
+  padding-bottom: 21px;
+  color: white;
+}
+
+@media only screen and (min-width: 700px) {
+  .searchbar {
+    width: 40%;
+  }
+}

@@ -35,7 +35,7 @@ class Rides extends Component {
     render() {
         return (
             <>
-                <div>Rides</div>
+                <h2>Rides</h2>
                 <RideSearchBar />
                 {this.renderRidesList()}
             </>
