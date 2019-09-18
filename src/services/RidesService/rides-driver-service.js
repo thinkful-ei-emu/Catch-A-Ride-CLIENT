@@ -7,7 +7,6 @@ const RidesApiService = {
       starting,
       destination
     }
-    console.log(body)
     return fetch(`${config.API_ENDPOINT}/rides`, {
       method: 'POST',
       headers: {
@@ -21,8 +20,6 @@ const RidesApiService = {
           : res.json()
       )
   },
-
-
   deleteRide() {
     return fetch(`${config.API_ENDPOINT}/rides/driver`, {
       method: 'DELETE',
