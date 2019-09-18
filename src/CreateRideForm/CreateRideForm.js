@@ -5,31 +5,19 @@ import RidesService from '../services/RidesService/rides-service'
 
 
 
-export default class CreateRideForm extends React.Component {
+export default class CreateRideForm1 extends React.Component {
 
 
-  checkDate(e){
-    e.preventDefault();
 
-  let tdate=document.getElementById('dateinput').value
-   
-  console.log(tdate)
-  }
-  checkTime(e){
-    e.preventDefault();
-
-    let time= document.getElementById('timeinput').value+':00';
-    console.log(time)
-  }
-
-  grabValues(e){
-    e.preventDefault();
+  grabValues=()=>{
+  
     let time=document.getElementById('timeinput').value+':00'
     let date=document.getElementById('dateinput').value
     let starting=document.getElementById('starting').value
     let destination=document.getElementById('destination').value
-    let description=document.getAnimations('description').value
+    let description=document.getElementById('description').value
     let capacity=document.getElementById('capacity').value
+    console.log('stuff')
 
     return {
       starting,
@@ -43,15 +31,16 @@ export default class CreateRideForm extends React.Component {
 
   }
 
-  testrun=()=>{
-    console.log('tests ')
-    console.log(this.grabValues());
+  SubmitForm=(e)=>{
+    e.preventDefault();
+   let body=this.grabValues()
+   RidesService.postNewRide(body);
   }
   render() {
     return (
       <section>
         <h2>Create Ride</h2>
-        <form className="" onSubmit={this.testrun}>
+        <form className="" onSubmit={this.SubmitForm}>
           <label>Starting Location</label>
           <input placeholder="Enter Location You Leave From" id='starting'></input>
           <label>Destination</label>
