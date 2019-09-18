@@ -1,5 +1,5 @@
 import React from "react";
-import RidesService from '../services/RidesService/rides-service'
+import RidesService from '../services/RidesService/rides-driver-service'
 
 
 
@@ -34,7 +34,8 @@ export default class CreateRideForm1 extends React.Component {
   SubmitForm=(e)=>{
     e.preventDefault();
    let body=this.grabValues()
-   RidesService.postNewRide(body);
+   console.log(body);
+  //  RidesService.postNewRide(body);
   }
   render() {
     return (
@@ -48,7 +49,7 @@ export default class CreateRideForm1 extends React.Component {
           <label>Date:</label>
           <input type="date" id='dateinput'></input>
           <label>Time</label>
-          <input type="time" id='timeinput'></input>
+          <input type="time" id='timeinput' defaultValue='12:00'></input>
           <label>Type:</label>
           <label> Description</label>
           <input placeholder="Enter Details About vehicle and Individual needs for ride" id='description'></input>
