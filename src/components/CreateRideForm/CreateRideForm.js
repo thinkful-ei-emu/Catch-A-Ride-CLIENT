@@ -45,23 +45,23 @@ export default class CreateRideForm1 extends React.Component {
         <form className='newRideForm' onSubmit={this.SubmitForm}>
           <div>
             <label className='rideLabel createStart' htmlFor='starting'>Starting Point</label>
-            <input placeholder="Enter Location You Leave From" id='starting'></input>
+            <input placeholder="Enter Location You Leave From" id='starting' required></input>
           </div>
           <div>
             <label className='rideLabel createDest' htmlFor='destination'>Destination</label>
-            <input placeholder="Enter Destination " id='destination'></input>
+            <input placeholder="Enter Destination " id='destination' required></input>
           </div>
           <div>
-            <label className='rideLabel createDate' htmlFor='dateinput'>Date</label>
+            <label className='rideLabel createDate' htmlFor='dateinput' required>Date</label>
             <input type="date" id='dateinput'></input>
           </div>
           <div>
-            <label className='rideLabel createTime' htmlFor='timeinput'>Time</label>
+            <label className='rideLabel createTime' htmlFor='timeinput' required>Time</label>
             <input type="time" id='timeinput' defaultValue='12:00'></input>
           </div>
           <div>
             <label className='rideLabel createDesc' htmlFor='description'> Description</label>
-            <input placeholder="Enter Details About vehicle and Individual needs for ride" id='description'></input>
+            <input placeholder="Enter Details About vehicle and Individual needs for ride" id='description' required></input>
           </div>
           <div>
             <label className='rideLabel createSeat' htmlFor='capacity'># of Seats</label>
