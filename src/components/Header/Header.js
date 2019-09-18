@@ -10,12 +10,13 @@ class Header extends Component {
                 <nav className='navbar'>
                     {/* hardcoded right now, want to be dynamic based on page */}
                     {/* <h2>Rides</h2> */}
-                    {/* need to change these link paths to go somewhere at some point */}
-                    <Link to='/'>All Rides</Link>
+                    <Link className='navlink' to='/rides'>All Rides</Link>
+                    {/* {' '} */}
+                    {/* <Link to='/'>My Rides</Link> */}
                     {' '}
-                    <Link to='/'>My Rides</Link>
+                    <Link className='navlink' to='/createride'>Create Ride</Link>
                     {' '}
-                    <Link to='/'>Logout</Link>
+                    <Link className='navlink' to='/'>Logout</Link>
                 </nav>
             </>
         )

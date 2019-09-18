@@ -13,10 +13,10 @@ h1 {
   padding: 10px 0;
 }
 
-a {
+.navlink {
   color: #b8e3ea;
 }
 
-a:hover {
+.navlink:hover {
   color: #f2de6a;
 }
