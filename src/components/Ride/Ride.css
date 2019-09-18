@@ -1,0 +1,24 @@
+.driver-info {
+  font-size: 12px;
+  border: 1px solid black;
+  top: 0px;
+  margin-top: 0;
+  padding: 5px 5px;
+  text-align: left;
+  background: #CBEAEF;
+  border: #CBEAEF 1px solid;
+  border-radius: 5px 5px 0 0;
+  color: black;
+}
+
+.locations {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.maps {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}

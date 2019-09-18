@@ -1,0 +1,28 @@
+.all-rides {
+  padding-left: 0px;
+}
+
+.single-ride {
+  margin: 0 auto;
+  list-style-type: none;
+  margin-bottom: 15px;
+  padding-bottom: 20px;
+  border-radius: 10px 10px 5px 5px;
+  background: #22554e;
+  color: white;
+  width: 80%;
+}
+
+@media only screen and (min-width: 700px) {
+  .single-ride {
+    margin: 10px 10px;
+    width: 25%;
+  }
+
+  .all-rides {
+    display: flex;
+    flex-flow: row wrap;
+    align-content: space-around;
+    justify-content: center;
+  }
+}

@@ -2,8 +2,7 @@ import config from '../config';
 import RideContext from '../context/RideContext';
 
 const RideApiService = {
-    //destination, starting
-    getRides() {
+    getRides(destination, starting) {
         return fetch('https://jsonplaceholder.typicode.com/posts')
             .then(res =>
                 (!res.ok)

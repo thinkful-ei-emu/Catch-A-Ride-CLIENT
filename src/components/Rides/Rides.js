@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Ride from '../Ride/Ride';
 import RideApiService from '../../services/ride-api-service';
 import RideContext from '../../context/RideContext';
+import RideSearchBar from '../RideSearchBar/RideSearchBar';
+import './Rides.css';
 
 class Rides extends Component {
 
@@ -18,10 +20,10 @@ class Rides extends Component {
 
     renderRidesList() {
         const ridePosts = this.context.rides.map((ride, i) => (
-            <li key={i}><Ride ride={ride} /></li>
+            <li className='single-ride' key={i}><Ride ride={ride} /></li>
         ))
         return (
-            <ul>
+            <ul className='all-rides'>
                 {ridePosts}
             </ul>
         )
@@ -29,10 +31,11 @@ class Rides extends Component {
 
     render() {
         return (
-            <div>
-                <div>Rides</div>
+            <>
+                <h2>Rides</h2>
+                <RideSearchBar />
                 {this.renderRidesList()}
-            </div>
+            </>
         )
     }
 }
