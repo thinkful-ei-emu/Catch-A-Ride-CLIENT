@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import RidesService from '../../services/RidesService/rides-driver-service';
 import './CreateRideForm.css';
 
@@ -12,31 +12,31 @@ export default class CreateRideForm1 extends React.Component {
 
   grabValues = () => {
 
-    let time = document.getElementById('timeinput').value + ':00'
-    let date = document.getElementById('dateinput').value
-    let starting = document.getElementById('starting').value
-    let destination = document.getElementById('destination').value
-    let description = document.getElementById('description').value
-    let capacity = document.getElementById('capacity').value
-    console.log('stuff')
+    let time = document.getElementById('timeinput').value + ':00';
+    let date = document.getElementById('dateinput').value;
+    let starting = document.getElementById('starting').value;
+    let destination = document.getElementById('destination').value;
+    let description = document.getElementById('description').value;
+    let capacity = document.getElementById('capacity').value;
+    console.log('stuff');
 
-    return {
+    return JSON.stringify({
       starting,
       destination,
       date,
       time,
       description,
       capacity
-    }
+    });
 
 
   }
 
   SubmitForm = (e) => {
     e.preventDefault();
-    let body = this.grabValues()
+    let body = this.grabValues();
     console.log(body);
-    //  RidesService.postNewRide(body);
+    RidesService.postNewRide(body);
   }
   render() {
     return (
@@ -45,23 +45,23 @@ export default class CreateRideForm1 extends React.Component {
         <form className='newRideForm' onSubmit={this.SubmitForm}>
           <div>
             <label className='rideLabel createStart' htmlFor='starting'>Starting Point</label>
-            <input placeholder="Enter Location You Leave From" id='starting'></input>
+            <input placeholder="Enter Location You Leave From" id='starting' required></input>
           </div>
           <div>
             <label className='rideLabel createDest' htmlFor='destination'>Destination</label>
-            <input placeholder="Enter Destination " id='destination'></input>
+            <input placeholder="Enter Destination " id='destination' required></input>
           </div>
           <div>
-            <label className='rideLabel createDate' htmlFor='dateinput'>Date</label>
+            <label className='rideLabel createDate' htmlFor='dateinput' required>Date</label>
             <input type="date" id='dateinput'></input>
           </div>
           <div>
-            <label className='rideLabel createTime' htmlFor='timeinput'>Time</label>
+            <label className='rideLabel createTime' htmlFor='timeinput' required>Time</label>
             <input type="time" id='timeinput' defaultValue='12:00'></input>
           </div>
           <div>
             <label className='rideLabel createDesc' htmlFor='description'> Description</label>
-            <input placeholder="Enter Details About vehicle and Individual needs for ride" id='description'></input>
+            <input placeholder="Enter Details About vehicle and Individual needs for ride" id='description' required></input>
           </div>
           <div>
             <label className='rideLabel createSeat' htmlFor='capacity'># of Seats</label>
