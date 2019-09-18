@@ -5,12 +5,15 @@ import RideApiService from '../../services/ride-api-service';
 export default class SearchBox extends Component {
     static contextType = RideContext;
 
+    //Handles get for rides filtered my destination and starting
     handleSubmit(e) {
         e.preventDefault()
         console.log('Destination ', this.context.destination)
         console.log('Starting Location: ', this.context.starting)
         let destination = this.context.destination;
         let starting = this.context.starting;
+
+        //Will used below when backend ready
 
         // return RideApiService.getRides(destination, starting)
         //     .then(res => res.json())
