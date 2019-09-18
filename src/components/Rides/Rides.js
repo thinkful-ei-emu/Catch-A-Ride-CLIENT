@@ -1,26 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Ride from '../Ride/Ride';
-import RideApiService from '../../services/ride-api-service';
 import RideContext from '../../context/RideContext';
 import RideSearchBar from '../RideSearchBar/RideSearchBar';
+import RideApiService from '../../services/RidesService/rides-driver-service';
+import { Link } from 'react-router-dom'
 import './Rides.css';
 
 class Rides extends Component {
 
   static contextType = RideContext;
 
-  componentDidMount() {
-    const starting = this.context.s;
-    RideApiService.getRides()
-      .then(res => {
-        this.context.setRides(res);
-      });
-  }
-
   renderRidesList() {
     const ridePosts = this.context.rides.map((ride, i) => (
-      <li key={i}><Ride ride={ride} /></li>
+      <Link to={`/rides/${ride.id}`}><li key={i}><Ride ride={ride} /></li></Link>
     ));
     return (
       <ul>

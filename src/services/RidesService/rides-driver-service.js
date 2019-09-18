@@ -1,24 +1,34 @@
 import config from '../../config';
 
 
-const RidesApiService={
-  getAllRides(){
-    return fetch(`${config.API_ENDPOINT}/rides/driver`,{
-      headers:{
-        Authorization:''
-      }
+const RidesApiService = {
+  getAllRides(starting, destination) {
+    const body = {
+      starting,
+      destination
+    }
+    console.log(body)
+    return fetch(`${config.API_ENDPOINT}/rides`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(body)
     })
-      .then(res=>
-        !res.ok? res.json().then(e=>Promise.reject(e)):res.json());
+      .then(res =>
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+      )
   },
 
-  
-  deleteRide(){
-    return fetch(`${config.API_ENDPOINT}/rides/driver`,{
-      method:'DELETE',
-      headers:{Authorization:''}
+
+  deleteRide() {
+    return fetch(`${config.API_ENDPOINT}/rides/driver`, {
+      method: 'DELETE',
+      headers: { Authorization: '' }
     });
-    
+
   }
 };
 

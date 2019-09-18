@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import RideContext from '../../context/RideContext';
-import RideApiService from '../../services/ride-api-service';
+import RideApiService from '../../services/RidesService/rides-driver-service';
 import './SearchBox.css';
 
 export default class SearchBox extends Component {
@@ -11,14 +11,10 @@ export default class SearchBox extends Component {
         e.preventDefault()
         console.log('Destination ', this.context.destination)
         console.log('Starting Location: ', this.context.starting)
-        let destination = this.context.destination;
-        let starting = this.context.starting;
-
-        // return RideApiService.getRides(destination, starting)
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         this.context.setRides(data)
-        //     })
+        const starting = this.context.starting;
+        const destination = this.context.destination;
+        RideApiService.getAllRides(starting, destination)
+            .then(data => this.context.setRides(data))
     }
 
 
