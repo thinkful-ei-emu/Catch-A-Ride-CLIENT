@@ -13,7 +13,7 @@ const RidesApiService={
   },
 
   postNewRide(obj){
-    return fetch(`${config.API_ENDPOINT}/rides/passenger`,{
+    return fetch(`${config.API_ENDPOINT}/rides/driver`,{
       method:'POST',
       headers:{
         'content-type':'application/json',
