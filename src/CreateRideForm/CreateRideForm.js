@@ -1,5 +1,5 @@
-import React from "react";
-import RidesService from '../services/RidesService/rides-driver-service'
+import React from 'react';
+import RidesService from '../services/RidesService/rides-driver-service';
 
 
 
@@ -9,15 +9,16 @@ export default class CreateRideForm1 extends React.Component {
 
 
 
+  //Grabs input values on the form
   grabValues=()=>{
   
-    let time=document.getElementById('timeinput').value+':00'
-    let date=document.getElementById('dateinput').value
-    let starting=document.getElementById('starting').value
-    let destination=document.getElementById('destination').value
-    let description=document.getElementById('description').value
-    let capacity=document.getElementById('capacity').value
-    console.log('stuff')
+    let time=document.getElementById('timeinput').value+':00';
+    let date=document.getElementById('dateinput').value;
+    let starting=document.getElementById('starting').value;
+    let destination=document.getElementById('destination').value;
+    let description=document.getElementById('description').value;
+    let capacity=document.getElementById('capacity').value;
+    
 
     return {
       starting,
@@ -26,15 +27,15 @@ export default class CreateRideForm1 extends React.Component {
       time,
       description,
       capacity
-          }
+    };
 
 
   }
-
+  //Takes values from input form and puts them into an api call to the server.
   SubmitForm=(e)=>{
     e.preventDefault();
-   let body=this.grabValues()
-   console.log(body);
+    let body=this.grabValues();
+    console.log(body);
   //  RidesService.postNewRide(body);
   }
   render() {

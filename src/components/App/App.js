@@ -13,7 +13,7 @@ import RegistrationForm from '../RegistrationForm/RegistrationForm';
 import LoginForm from '../LoginForm/LoginForm';
 import CreateRideForm from '../../CreateRideForm/CreateRideForm';
 
-library.add(fas, faMapMarkedAlt)
+library.add(fas, faMapMarkedAlt);
 
 class App extends Component {
   render() {
