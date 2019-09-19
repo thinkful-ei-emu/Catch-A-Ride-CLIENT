@@ -24,6 +24,7 @@ class LoginPage extends React.Component {
     const profile = googleUser.getBasicProfile();
    
     const id_token = googleUser.getAuthResponse().id_token;
+    const googleResponse = googleUser.getAuthResponse();
     TokenService.saveAuthToken(id_token);
     TokenService.getAuthToken();
 
@@ -31,7 +32,7 @@ class LoginPage extends React.Component {
       id_token
     });
 
-    console.log(id_token);
+    
 
     // console.log(id_token);
 
@@ -94,8 +95,10 @@ class LoginPage extends React.Component {
   render() {
     return (
       <>
-        <button onClick={() => this.sendRequest()}>Test Request</button>
-        <p>Need a Google Account? Sign up <a href='https://accounts.google.com/signup/v2/webcreateaccount?flowName=GlifWebSignIn&flowEntry=SignUp'>here</a></p>
+        <h2>Log In</h2>
+        <br></br>
+        <button onClick={() => this.sendRequest()}>Test Request</button><br></br>
+        
         {!this.state.loggedIn ? (
           
           <GoogleLogin
