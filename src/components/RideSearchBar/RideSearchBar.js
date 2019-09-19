@@ -12,3 +12,4 @@ export default class RideSearchBar extends Component {
         )
     }
 }
+

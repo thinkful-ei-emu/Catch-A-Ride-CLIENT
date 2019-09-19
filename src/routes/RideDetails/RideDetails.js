@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import config from '../../config'
 import RideContext from '../../context/RideContext';
+import Gmaps from '../../components/Maps/Gmaps';
 
 export default class RideDetails extends Component {
     // console.log(this.props.match.params.ride_id)
@@ -8,7 +9,8 @@ export default class RideDetails extends Component {
     static contextType = RideContext;
 
     componentDidMount() {
-        console.log(this.props.match.params.ride_id);
+        // console.log(config.GMAPS_API_KEY)
+        // console.log(this.props.match.params.ride_id);
         fetch(`${config.API_ENDPOINT}/rides/${this.props.match.params.ride_id}`)
             .then(res => res.json())
             .then(data => this.context.setRide(data))
@@ -20,6 +22,8 @@ export default class RideDetails extends Component {
             <>
                 <div>
                     <h2>Ride Details</h2>
+                    {/* <Gmaps /> */}
+                    <div id="map"></div>
                     <span>Meetup Address: {this.context.ride.starting}</span>
                     <br />
                     <span>Meetup Time: {this.context.ride.time}</span>
