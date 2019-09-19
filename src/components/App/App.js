@@ -5,11 +5,11 @@ import LoginPage from '../LoginPage/LoginPage';
 import Rides from '../Rides/Rides';
 import Header from '../Header/Header';
 
-import { Route, Link } from 'react-router-dom';
+
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons';
-import RegistrationForm from '../RegistrationForm/RegistrationForm';
+
 import CreateRideForm from '../../components/CreateRideForm/CreateRideForm';
 import PrivateRoute from '../../Utils/PrivateRoute';
 import PublicRoute from '../../Utils/PublicRoute';
