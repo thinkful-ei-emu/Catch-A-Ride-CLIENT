@@ -1,5 +1,6 @@
 import React from 'react';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
+import TokenService from '../../services/token-service'
 
 import config from '../../config';
 
@@ -21,12 +22,20 @@ class LoginPage extends React.Component {
   onSignIn = async (googleUser) => {
     const profile = googleUser.getBasicProfile();
     const id_token = googleUser.getAuthResponse().id_token;
+    TokenService.saveAuthToken(id_token);
+    TokenService.getAuthToken();
+    
+    
 
     this.setState({
       id_token
     });
 
-    console.log(id_token);
+    
+
+    console.log(googleUser.getAuthResponse());
+
+    // console.log(id_token);
 
     // console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
     // console.log('Name: ' + profile.getName());
