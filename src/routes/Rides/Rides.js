@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Ride from '../Ride/Ride';
+import Ride from '../../components/Ride/Ride';
 import RideContext from '../../context/RideContext';
-import RideSearchBar from '../RideSearchBar/RideSearchBar';
+import RideSearchBar from '../../components/RideSearchBar/RideSearchBar';
 import { Link } from 'react-router-dom'
 import './Rides.css';
 
