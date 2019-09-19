@@ -1,6 +1,7 @@
 import React from 'react';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import TokenService from '../../services/token-service';
+import {Redirect} from 'react-router-dom';
 
 import config from '../../config';
 
@@ -19,21 +20,17 @@ class LoginPage extends React.Component {
     script.src = './js/script.js';
   }
 
-  onSignIn = async (googleUser) => {
+  onSignIn = async googleUser => {
     const profile = googleUser.getBasicProfile();
     const id_token = googleUser.getAuthResponse().id_token;
     TokenService.saveAuthToken(id_token);
     TokenService.getAuthToken();
-    
-    
 
     this.setState({
       id_token
     });
 
-    
-
-    console.log(googleUser.getAuthResponse());
+    console.log(id_token);
 
     // console.log(id_token);
 
@@ -59,65 +56,65 @@ class LoginPage extends React.Component {
       this.setState({
         loggedIn: true
       });
-    }
-    catch (e) {
+    } catch (e) {
       console.error(e.message);
     }
-  }
-  googleResponse = (response) => {
+  };
+  googleResponse = response => {
     console.log(response);
-  }
+  };
 
-  logout = (response) => {
+  logout = response => {
     this.setState({
       loggedIn: false,
-      id_token:  null
+      id_token: null
     });
     TokenService.clearAuthToken();
 
     console.log('Signed Out.');
-  }
+  };
 
   async sendRequest() {
     try {
       let res = await fetch(config.API_ENDPOINT + '/auth', {
         method: 'GET',
         headers: {
-          'Authorization': `bearer ${this.state.id_token}`
+          Authorization: `bearer ${this.state.id_token}`
         }
       });
       res = await res.text();
 
       console.log('res', res);
-    }
-    catch (e) {
+    } catch (e) {
       console.error(e.message);
     }
   }
 
   render() {
-    return <>
-      <button onClick={() => this.sendRequest()}>
-        Test Request
-      </button>
+    return (
+      <>
+        <button onClick={() => this.sendRequest()}>Test Request</button>
+        <p>Need a Google Account Sing up <a href='https://accounts.google.com/signup/v2/webcreateaccount?flowName=GlifWebSignIn&flowEntry=SignUp'>here</a></p>
+        {!this.state.loggedIn ? (
+          
+          <GoogleLogin
+            clientId={config.CLIENT_ID}
+            buttonText={this.state.loggedIn ? 'Signed In' : 'Sign In'}
+            onSuccess={this.onSignIn}
+            onFailure={this.googleResponse}
+            cookiePolicy={'single_host_origin'}
+          ></GoogleLogin>
+        ) : (
 
-      <GoogleLogin
-        clientId={config.CLIENT_ID}
-        buttonText={this.state.loggedIn ? 'Signed In' : 'Sign In'}
-        onSuccess={this.onSignIn}
-        onFailure={this.googleResponse}
-        cookiePolicy={'single_host_origin'}
-      >
-      </GoogleLogin>
-
-      <GoogleLogout
-        clientId={config.CLIENT_ID}
-        buttonText='Sign Out'
-        onLogoutSuccess={this.logout}
-        
-      />
-
-    </>;
+          <Redirect to='/rides'/>
+          // <GoogleLogout
+          //   clientId={config.CLIENT_ID}
+          //   buttonText="Sign Out"
+          //   onLogoutSuccess={this.logout}
+          // />
+        )}
+      </>
+    );
   }
 }
 

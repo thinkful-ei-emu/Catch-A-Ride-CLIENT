@@ -1,17 +1,18 @@
-import React, { Component } from "react";
-import "./App.css";
-import LoginPage from "../LoginPage/LoginPage";
+import React, { Component } from 'react';
+import './App.css';
+import LoginPage from '../LoginPage/LoginPage';
 
-import Rides from "../Rides/Rides";
-import Header from "../Header/Header";
+import Rides from '../Rides/Rides';
+import Header from '../Header/Header';
 
-import { Route, Link } from "react-router-dom";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fas } from "@fortawesome/free-solid-svg-icons";
-import { faMapMarkedAlt } from "@fortawesome/free-solid-svg-icons";
-import RegistrationForm from "../RegistrationForm/RegistrationForm";
-import CreateRideForm from "../../components/CreateRideForm/CreateRideForm";
-
+import { Route, Link } from 'react-router-dom';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons';
+import RegistrationForm from '../RegistrationForm/RegistrationForm';
+import CreateRideForm from '../../components/CreateRideForm/CreateRideForm';
+import PrivateRoute from '../../Utils/PrivateRoute';
+import PublicRoute from '../../Utils/PublicRoute';
 library.add(fas, faMapMarkedAlt);
 
 class App extends Component {
@@ -19,10 +20,10 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Route exact path="/" component={LoginPage} />
+        <PublicRoute exact path="/" component={LoginPage} />
         {/* <Route path="/login" component={LoginPage} /> */}
-        <Route path="/rides" component={Rides} />
-        <Route path="/createride" component={CreateRideForm}></Route>
+        <PrivateRoute path="/rides" component={Rides} />
+        <PrivateRoute path="/createride" component={CreateRideForm}/>
       </div>
     );
   }

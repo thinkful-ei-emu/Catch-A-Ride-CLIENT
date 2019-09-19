@@ -6,7 +6,7 @@ const RidesApiService={
   getAllRides(){
     return fetch(`${config.API_ENDPOINT}/rides/driver`,{
       headers:{
-        Authorization:`${TokenService.getAuthToken()}`
+        Authorization:`bearer ${TokenService.getAuthToken()}`
       }
     })
       .then(res=>
@@ -17,7 +17,7 @@ const RidesApiService={
       method:'POST',
       headers:{
         'content-type':'application/json',
-        Authorization:`${TokenService.getAuthToken()}`,
+        Authorization:`bearer ${TokenService.getAuthToken()}`,
         
       },
       body:obj
@@ -28,7 +28,7 @@ const RidesApiService={
 
   
   deleteRide(){
-    return fetch(`${config.API_ENDPOINT}/rides/driver`,{
+    return fetch(`bearer ${config.API_ENDPOINT}/rides/driver`,{
       method:'DELETE',
       headers:{Authorization:`${TokenService.getAuthToken()}`}
     });
