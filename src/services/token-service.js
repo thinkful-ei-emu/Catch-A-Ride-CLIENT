@@ -1,5 +1,5 @@
-import config from "../config";
-import { GoogleLogin, GoogleLogout } from 'react-google-login';
+import config from '../config';
+// import { GoogleLogin, GoogleLogout } from 'react-google-login';
 
 const TokenService = {
   saveAuthToken(token) {

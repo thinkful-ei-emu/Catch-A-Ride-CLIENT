@@ -1,5 +1,5 @@
-import config from '../config';
-import RideContext from '../context/RideContext';
+// import config from '../config';
+// import RideContext from '../context/RideContext';
 
 const RideApiService = {
   getRides(destination, starting) {

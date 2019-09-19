@@ -5,14 +5,15 @@ import LoginPage from '../LoginPage/LoginPage';
 import Rides from '../Rides/Rides';
 import Header from '../Header/Header';
 
-import { Route, Link } from 'react-router-dom';
+// import { Route, Link } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons';
-import RegistrationForm from '../RegistrationForm/RegistrationForm';
+// import RegistrationForm from '../RegistrationForm/RegistrationForm';
 import CreateRideForm from '../../components/CreateRideForm/CreateRideForm';
 import PrivateRoute from '../../Utils/PrivateRoute';
 import PublicRoute from '../../Utils/PublicRoute';
+import UserRides from '../UserRides/UserRides';
 library.add(fas, faMapMarkedAlt);
 
 class App extends Component {
@@ -24,6 +25,7 @@ class App extends Component {
         {/* <Route path="/login" component={LoginPage} /> */}
         <PrivateRoute path="/rides" component={Rides} />
         <PrivateRoute path="/createride" component={CreateRideForm}/>
+        <PrivateRoute path='/user-rides' component={UserRides} />
       </div>
     );
   }

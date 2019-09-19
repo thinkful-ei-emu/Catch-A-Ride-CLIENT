@@ -1,11 +1,12 @@
 import config from '../../config';
+import TokenService from '../token-service';
 
 
 const RidesApiService={
   getAllRides(){
     return fetch(`${config.API_ENDPOINT}/rides/passenger`,{
       headers:{
-        Authorization:''
+        Authorization:`bearer ${TokenService.getAuthToken()}`
       }
     })
       .then(res=>
@@ -17,7 +18,7 @@ const RidesApiService={
       method:'POST',
       headers:{
         'content-type':'application/json',
-        Authorization:'',
+        Authorization:`bearer ${TokenService.getAuthToken()}`,
         
       },
       body:obj
@@ -28,7 +29,7 @@ const RidesApiService={
   deleteRide(){
     return fetch(`${config.API_ENDPOINT}/rides/passenger`,{
       method:'DELETE',
-      headers:{Authorization:''}
+      headers:{Authorization:`bearer ${TokenService.getAuthToken()}`}
     });
     
   }

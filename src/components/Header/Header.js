@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link,Redirect} from 'react-router-dom';
+import {Link,/*Redirect*/} from 'react-router-dom';
 import './Header.css';
 import {GoogleLogout} from 'react-google-login';
 import TokenService from '../../services/token-service';
@@ -28,8 +28,8 @@ class Header extends Component {
                   {/* hardcoded right now, want to be dynamic based on page */}
                   {/* <h2>Rides</h2> */}
                   <Link className='navlink' to='/rides'>All Rides</Link>
-                  {/* {' '} */}
-                  {/* <Link to='/'>My Rides</Link> */}
+                  {' '}
+                  <Link className='navLink' to='/user-rides'>My Rides</Link>
                   {' '}
                   <Link className='navlink' to='/createride'>Create Ride</Link>
                   {' '}

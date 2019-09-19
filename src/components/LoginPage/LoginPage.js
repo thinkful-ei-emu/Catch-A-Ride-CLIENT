@@ -1,5 +1,5 @@
 import React from 'react';
-import { GoogleLogin, GoogleLogout } from 'react-google-login';
+import { GoogleLogin, /*GoogleLogout*/ } from 'react-google-login';
 import TokenService from '../../services/token-service';
 import {Redirect} from 'react-router-dom';
 
@@ -22,6 +22,7 @@ class LoginPage extends React.Component {
 
   onSignIn = async googleUser => {
     const profile = googleUser.getBasicProfile();
+   
     const id_token = googleUser.getAuthResponse().id_token;
     TokenService.saveAuthToken(id_token);
     TokenService.getAuthToken();
@@ -94,7 +95,7 @@ class LoginPage extends React.Component {
     return (
       <>
         <button onClick={() => this.sendRequest()}>Test Request</button>
-        <p>Need a Google Account Sing up <a href='https://accounts.google.com/signup/v2/webcreateaccount?flowName=GlifWebSignIn&flowEntry=SignUp'>here</a></p>
+        <p>Need a Google Account? Sign up <a href='https://accounts.google.com/signup/v2/webcreateaccount?flowName=GlifWebSignIn&flowEntry=SignUp'>here</a></p>
         {!this.state.loggedIn ? (
           
           <GoogleLogin

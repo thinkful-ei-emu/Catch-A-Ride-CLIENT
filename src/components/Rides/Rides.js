@@ -11,7 +11,7 @@ class Rides extends Component {
   static contextType = RideContext;
 
   componentDidMount() {
-    const starting = this.context.s;
+    // const starting = this.context.s;
     RideApiService.getRides()
       .then(res => {
         this.context.setRides(res);
