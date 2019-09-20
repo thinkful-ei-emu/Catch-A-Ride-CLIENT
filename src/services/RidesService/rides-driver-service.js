@@ -3,11 +3,20 @@ import TokenService from '../token-service';
 
 
 const RidesApiService = {
+  getDriverRides() {
+    return fetch(`${config.API_ENDPOINT}/rides/driver`, {
+      headers: {
+        Authorization: `bearer ${TokenService.getAuthToken()}`
+      }
+    })
+      .then(res =>
+        !res.ok ? res.json().then(e => Promise.reject(e)) : res.json());
+  },
   getAllRides(starting, destination) {
     const body = {
       starting,
       destination
-    }
+    };
     return fetch(`${config.API_ENDPOINT}/rides`, {
       method: 'POST',
       headers: {
@@ -20,7 +29,7 @@ const RidesApiService = {
         (!res.ok)
           ? res.json().then(e => Promise.reject(e))
           : res.json()
-      )
+      );
   },
   postNewRide(obj) {
     return fetch(`${config.API_ENDPOINT}/rides/driver`, {

@@ -9,7 +9,7 @@ export default class UserRides extends React.Component {
   static contextType = RideContext;
 
   componentDidMount() {
-    DriversApiService.getAllRides()
+    DriversApiService.getDriverRides()
       .then(res => {
         this.context.setDriverRides(res);
       });
