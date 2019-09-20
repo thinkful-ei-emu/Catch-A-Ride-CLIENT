@@ -37,11 +37,19 @@ const RidesApiService = {
   },
 
 
-  deleteRide() {
-    return fetch(`bearer ${config.API_ENDPOINT}/rides/driver`, {
+  deleteRide(ride_id) {
+    return fetch(`${config.API_ENDPOINT}/rides/driver`, {
       method: 'DELETE',
-      headers: { Authorization: `${TokenService.getAuthToken()}` }
-    });
+      headers: {
+        'content-type': 'application/json',
+        Authorization: `bearer ${TokenService.getAuthToken()}`
+      },
+      body: JSON.stringify({ ride_id })
+    })
+      .then(res => 
+        res.json()
+      )
+      .then(res => console.log(res));
   }
 };
 

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import RideApiService from '../services/RidesService/rides-passenger-service';
 
 const RideContext = React.createContext({
   rides: [],
@@ -65,11 +64,6 @@ export class RideProvider extends Component {
     this.setState({ driverRides });
   }
 
-  handleJoin = (ride_id) => {
-    console.log('Adding passenger...')
-    RideApiService.passengerJoinRide(ride_id)
-  }
-
   render() {
     const value = {
       rides: this.state.rides,
@@ -83,8 +77,7 @@ export class RideProvider extends Component {
       passengerRides: this.state.passengerRides,
       driverRides: this.state.driverRides,
       setPassengerRides: this.setPassengerRides,
-      setDriverRides: this.setDriverRides,
-      handleJoin: this.handleJoin
+      setDriverRides: this.setDriverRides
     };
     return (
       <RideContext.Provider value={value}>
