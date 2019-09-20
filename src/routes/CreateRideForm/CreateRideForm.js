@@ -12,13 +12,13 @@ export default class CreateRideForm1 extends React.Component {
 
   grabValues = () => {
 
-    let time = document.getElementById('timeinput').value + ':00';
+    let time = document.getElementById('timeinput').value;
     let date = document.getElementById('dateinput').value;
     let starting = document.getElementById('starting').value;
     let destination = document.getElementById('destination').value;
     let description = document.getElementById('description').value;
     let capacity = document.getElementById('capacity').value;
-
+    console.log(date)
     return JSON.stringify({
       starting,
       destination,
@@ -34,9 +34,8 @@ export default class CreateRideForm1 extends React.Component {
   SubmitForm = (e) => {
     e.preventDefault();
     let body = this.grabValues();
-    // console.log(body);
-    RidesService.postNewRide(body);
-    this.props.history.push('/rides');
+    // RidesService.postNewRide(body);
+    // this.props.history.push('/rides');
   }
 
   render() {
