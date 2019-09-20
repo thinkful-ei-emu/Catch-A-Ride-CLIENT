@@ -18,7 +18,6 @@ export default class CreateRideForm1 extends React.Component {
     let destination = document.getElementById('destination').value;
     let description = document.getElementById('description').value;
     let capacity = document.getElementById('capacity').value;
-    console.log(date)
     return JSON.stringify({
       starting,
       destination,
