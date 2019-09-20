@@ -17,7 +17,7 @@ export default UserContext;
 export class UserProvider extends Component {
   constructor(props) {
     super(props);
-    const state = { user: {}, error: null };
+     this.state = { user: {}, error: null };
 
   //   const jwtPayload = TokenService.parseAuthToken();
 
@@ -57,6 +57,7 @@ export class UserProvider extends Component {
 
     setUser = user => {
       this.setState({ user });
+      console.log(user);
     }
 
 

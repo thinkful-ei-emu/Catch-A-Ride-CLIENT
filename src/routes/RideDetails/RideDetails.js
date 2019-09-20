@@ -48,7 +48,7 @@ export default class RideDetails extends Component {
             <>
                 <div>
                   <h2>Ride Details</h2>
-                  <Gmaps />
+                  {/* <Gmaps /> */}
                   <div id="map"></div>
                   <span>Meetup Address: {starting}</span>
                   <br />
