@@ -34,6 +34,10 @@ export class RideProvider extends Component {
   setRides = (rides) => {
     this.setState({ rides });
   }
+  deleteRide=(rideid)=>{
+    const newRides=this.state.rides.filter(ride=>ride.id!==rideid);
+    this.setState({rides:newRides});
+  }
 
   setRide = (ride) => {
     this.setState({ ride });
@@ -77,7 +81,8 @@ export class RideProvider extends Component {
       passengerRides: this.state.passengerRides,
       driverRides: this.state.driverRides,
       setPassengerRides: this.setPassengerRides,
-      setDriverRides: this.setDriverRides
+      setDriverRides: this.setDriverRides,
+      deleteRide:this.deleteRide
     };
     return (
       <RideContext.Provider value={value}>

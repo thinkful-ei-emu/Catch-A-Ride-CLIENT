@@ -2,10 +2,13 @@ import React from 'react';
 import { GoogleLogin, /*GoogleLogout*/ } from 'react-google-login';
 import TokenService from '../../services/token-service';
 import {Redirect} from 'react-router-dom';
+import UserContext from '../../context/UserContext';
 
 import config from '../../config';
 
 class LoginPage extends React.Component {
+  static contextType=UserContext
+  
   constructor(props) {
     super(props);
 
@@ -15,10 +18,7 @@ class LoginPage extends React.Component {
     };
   }
 
-  componentDidMount() {
-    const script = document.createElement('script');
-    script.src = './js/script.js';
-  }
+  
 
   onSignIn = async googleUser => {
     const profile = googleUser.getBasicProfile();
@@ -27,6 +27,9 @@ class LoginPage extends React.Component {
     const googleResponse = googleUser.getAuthResponse();
     TokenService.saveAuthToken(id_token);
     TokenService.getAuthToken();
+    this.context.setUser({user_id:profile.getId(),
+    name:profile.getName(),
+  email:profile.getEmail()});
 
     this.setState({
       id_token

@@ -4,9 +4,9 @@ import LoginPage from '../LoginPage/LoginPage';
 
 import Rides from '../../routes/Rides/Rides';
 import Header from '../Header/Header';
-import RideContext from '../../context/RideContext';
 
-import { Route, Switch } from 'react-router-dom';
+
+import {Switch } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons'
@@ -17,10 +17,11 @@ import RideDetails from '../../routes/RideDetails/RideDetails';
 import PrivateRoute from '../../Utils/PrivateRoute';
 import PublicRoute from '../../Utils/PublicRoute';
 import UserRides from '../UserRides/UserRides';
+
 library.add(fas, faMapMarkedAlt);
 
 class App extends Component {
-  static contextType = RideContext;
+  
   render() {
     return (
       <div className="App">

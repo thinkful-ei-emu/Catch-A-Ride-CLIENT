@@ -31,7 +31,13 @@ export default class RideDetails extends Component {
     }
 
     handleDelete = (ride_id) => {
-        DriverApiService.deleteRide(ride_id);
+      this.context.deleteRide(ride_id);
+      return DriverApiService.deleteRide(ride_id)
+        .then(()=>{this.props.history.push('/rides')
+        
+      })
+        
+
     }
 
     render() {
@@ -42,7 +48,7 @@ export default class RideDetails extends Component {
             <>
                 <div>
                   <h2>Ride Details</h2>
-                  {/* <Gmaps /> */}
+                  <Gmaps />
                   <div id="map"></div>
                   <span>Meetup Address: {starting}</span>
                   <br />

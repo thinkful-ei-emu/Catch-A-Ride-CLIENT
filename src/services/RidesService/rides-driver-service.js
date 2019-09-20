@@ -54,11 +54,8 @@ const RidesApiService = {
         Authorization: `bearer ${TokenService.getAuthToken()}`
       },
       body: JSON.stringify({ ride_id })
-    })
-      .then(res => 
-        res.json()
-      )
-      .then(res => console.log(res));
+    });
+      
   }
 };
 
