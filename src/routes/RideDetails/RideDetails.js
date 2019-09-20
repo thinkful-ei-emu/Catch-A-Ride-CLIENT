@@ -4,6 +4,7 @@ import RideContext from '../../context/RideContext';
 import Gmaps from '../../components/Maps/Gmaps';
 import moment from 'moment';
 import TokenService from '../../services/token-service';
+import JoinRideButton from '../../components/JoinRideButton/JoinRideButton';
 
 export default class RideDetails extends Component {
     static contextType = RideContext;
@@ -20,7 +21,7 @@ export default class RideDetails extends Component {
     }
 
     render() {
-        const { starting, destination, time, date, capacity } = this.context.ride
+        const { id, starting, destination, time, date, capacity } = this.context.ride
         let dateStr = moment(date).format('MM/DD/YYYY');
         //Div#map for Maps container, styles in gmaps.css in component folder
         return (
@@ -44,8 +45,9 @@ export default class RideDetails extends Component {
                     <p>{this.context.ride.description}</p>
                 </div>
                 <div>
-                    <button onClick={e => console.log('Ride Cancelled.')}>Delete Ride</button>
-                    <button onClick={e => console.log('Ride Cancelled.')}>Cancel Ride</button>
+                    <button type="button" onClick={() => this.context.handleJoin(id)}>Join</button>
+                    <button type="button" onClick={e => console.log('Ride Cancelled.')}>Delete Ride</button>
+                    <button type="button" onClick={e => console.log('Ride Cancelled.')}>Cancel Ride</button>
                 </div>
             </>
         )

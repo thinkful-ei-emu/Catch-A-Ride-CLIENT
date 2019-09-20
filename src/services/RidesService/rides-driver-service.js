@@ -27,7 +27,7 @@ const RidesApiService = {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
-        Authorization: '',
+        Authorization: `bearer ${TokenService.getAuthToken()}`
 
       },
       body: obj
@@ -42,7 +42,6 @@ const RidesApiService = {
       method: 'DELETE',
       headers: { Authorization: `${TokenService.getAuthToken()}` }
     });
-
   }
 };
 

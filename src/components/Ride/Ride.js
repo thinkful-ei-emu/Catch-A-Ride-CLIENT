@@ -24,8 +24,6 @@ class Ride extends Component {
                 </span>
                 <span># of seats: {this.props.ride.capacity}</span><br />
                 <span>Description: {this.props.ride.description}</span>
-                <p>Join Ride</p>
-                <JoinRideButton />
             </>
         )
     }
