@@ -56,7 +56,7 @@ class LoginPage extends React.Component {
       });
       stuff = await stuff.json();
 
-      console.log(stuff);
+   
 
       this.setState({
         loggedIn: true
