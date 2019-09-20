@@ -15,11 +15,7 @@ import LoginForm from '../../routes/LoginForm/LoginForm';
 import CreateRideForm from '../../routes/CreateRideForm/CreateRideForm';
 import RideDetails from '../../routes/RideDetails/RideDetails';
 
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons';
 
-import CreateRideForm from '../../components/CreateRideForm/CreateRideForm';
 import PrivateRoute from '../../Utils/PrivateRoute';
 import PublicRoute from '../../Utils/PublicRoute';
 import UserRides from '../UserRides/UserRides';
