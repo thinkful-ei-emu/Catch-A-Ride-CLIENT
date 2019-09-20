@@ -29,12 +29,10 @@ class App extends Component {
           <Switch>
             <PublicRoute exact path="/" component={LoginPage} />
             {/* <Route path="/login" component={LoginPage} /> */}
-            <PrivateRoute path="/rides" component={Rides} />
+            <PrivateRoute exact path="/rides" component={Rides} />
             <PrivateRoute path="/createride" component={CreateRideForm} />
             <PrivateRoute path='/user-rides' component={UserRides} />
-            <PrivateRoute path='/rides/:ride_id' render={({ match }) => <RideDetails match={match} rides={this.context.rides.find((ride) => {
-              return ride.id === match.params.ride_id
-            })} />} />
+            <PrivateRoute path='/rides/:ride_id' component={RideDetails} />
           </Switch>
         </main>
       </div >

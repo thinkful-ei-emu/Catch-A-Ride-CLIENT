@@ -3,12 +3,18 @@ import config from '../../config'
 import RideContext from '../../context/RideContext';
 import Gmaps from '../../components/Maps/Gmaps';
 import moment from 'moment';
+import TokenService from '../../services/token-service';
 
 export default class RideDetails extends Component {
     static contextType = RideContext;
 
     componentDidMount() {
-        fetch(`${config.API_ENDPOINT}/rides/${this.props.match.params.ride_id}`)
+        fetch(`${config.API_ENDPOINT}/rides/${this.props.match.params.ride_id}`, {
+            method: 'GET',
+            headers: {
+                Authorization: `bearer ${TokenService.getAuthToken()}`
+            }
+        })
             .then(res => res.json())
             .then(data => this.context.setRide(data))
     }
