@@ -38,8 +38,8 @@ const RidesApiService = {
       .then(res => {
         (!res.ok)
           ? res.json().then(e => Promise.reject(e))
-          : res.json()
-      })
+          : res.json();
+      });
   },
   passengerJoinRide(ride_id) {
     return fetch(`${config.API_ENDPOINT}/rides/passenger`, {
@@ -53,8 +53,8 @@ const RidesApiService = {
       .then(res => {
         (!res.ok)
           ? res.json().then(e => Promise.reject(e))
-          : res.json()
-      })
+          : res.json();
+      });
   },
 };
 
