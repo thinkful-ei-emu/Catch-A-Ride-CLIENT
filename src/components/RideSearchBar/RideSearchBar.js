@@ -6,9 +6,10 @@ export default class RideSearchBar extends Component {
     render() {
         return (
             <div className='searchbar'>
-                <h3>Search For A Ride</h3>
+                <h3>Search For Rides</h3>
                 <SearchBox />
             </div>
         )
     }
 }
+

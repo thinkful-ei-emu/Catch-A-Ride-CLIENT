@@ -9,22 +9,20 @@ import './CreateRideForm.css';
 
 
 export default class CreateRideForm1 extends React.Component {
-  state={
-    created:null
+  state = {
+    created: null
   }
 
 
 
   grabValues = () => {
 
-    let time = document.getElementById('timeinput').value + ':00';
+    let time = document.getElementById('timeinput').value;
     let date = document.getElementById('dateinput').value;
     let starting = document.getElementById('starting').value;
     let destination = document.getElementById('destination').value;
     let description = document.getElementById('description').value;
     let capacity = document.getElementById('capacity').value;
-    console.log('stuff');
-
     return JSON.stringify({
       starting,
       destination,
@@ -42,9 +40,10 @@ export default class CreateRideForm1 extends React.Component {
     let body = this.grabValues();
     console.log(body);
     RidesService.postNewRide(body)
-      .then(()=>this.setState({created:true}));
-    
+      .then(() => this.setState({ created: true }));
+
   }
+
   render() {
     return (
       <>
@@ -83,7 +82,7 @@ export default class CreateRideForm1 extends React.Component {
             </select>
           </div>
           <button className='createRide' type='submit'>Share A Ride!</button>
-          {this.state.created===true?'Ride Created!':''}
+          {this.state.created === true ? 'Ride Created!' : ''}
         </form>
       </>
     );
