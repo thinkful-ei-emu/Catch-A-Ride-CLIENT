@@ -3,6 +3,7 @@ import Ride from '../../components/Ride/Ride';
 import RideContext from '../../context/RideContext';
 import RideSearchBar from '../../components/RideSearchBar/RideSearchBar';
 import { Link } from 'react-router-dom'
+import RideApiService from '../../services/RidesService/rides-driver-service';
 import './Rides.css';
 
 class Rides extends Component {
@@ -10,7 +11,6 @@ class Rides extends Component {
   static contextType = RideContext;
 
   componentDidMount() {
-    // const starting = this.context.s;
     RideApiService.getRides()
       .then(res => {
         this.context.setRides(res);
