@@ -27,7 +27,8 @@ export class RideProvider extends Component {
       destination: '',
       starting: '',
       passengerRides: [],
-      driverRides: []
+      driverRides: [],
+      error: null
     };
   }
 
@@ -48,10 +49,10 @@ export class RideProvider extends Component {
   }
 
   setStarting = (starting) => {
-    console.log(starting.length);
-    console.log(typeof starting);
+    // console.log(starting.length);
+    // console.log(typeof starting);
     this.setState({ starting });
-    console.log(this.state.starting);
+    // console.log(this.state.starting);
   }
 
   setError = error => {
@@ -85,7 +86,9 @@ export class RideProvider extends Component {
       driverRides: this.state.driverRides,
       setPassengerRides: this.setPassengerRides,
       setDriverRides: this.setDriverRides,
-      deleteRide:this.deleteRide
+      deleteRide: this.deleteRide,
+      setError: this.setError,
+      clearError: this.clearError
     };
     return (
       <RideContext.Provider value={value}>

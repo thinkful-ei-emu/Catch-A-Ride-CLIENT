@@ -7,13 +7,14 @@ class Ride extends Component {
   render() {
     const date = moment(this.props.ride.date).format('MM/DD/YYYY');
     const time = moment(this.props.ride.time, 'HH:mm').format('h:mmA');
-    console.log(this.props.ride);
+    console.log('ride',this.props.ride);
     return (
       <>
-        <p className='driver-info'>
+        <p className='ride-info'>
           {/* {this.props.ride.date} */}
           {date} @ {time}
         </p>
+        
         <span className='labels'>
           <h3 className='locations start'>Meetup Location</h3>
           <h3 className='locations destination'>Destination</h3>
@@ -22,6 +23,7 @@ class Ride extends Component {
           <p>{this.props.ride.starting}</p>
           <p>{this.props.ride.destination}</p>
         </span>
+        <p className='driver'>Driver Name: {this.props.ride.driver_name}</p>
         <p># of seats: {this.props.ride.capacity}</p>
         <p>Description: {this.props.ride.description}</p>
       </>

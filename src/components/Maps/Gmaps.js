@@ -50,7 +50,7 @@ export class Gmaps extends Component {
         height: '400px',
         width: '100%',
       };
-      console.log(this.state);
+    //   console.log(this.state);
       return (
         <>
           <Map google={this.props.google} zoom={5} style={mapStyles} initialCenter={{ lat: 37.0902, lng: -95.7129 }}>

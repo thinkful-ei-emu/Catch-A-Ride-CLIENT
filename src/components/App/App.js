@@ -34,7 +34,7 @@ class App extends Component {
           </Switch>
         </main>
         <footer></footer>
-      </div >
+      </div>
     );
   }
 }

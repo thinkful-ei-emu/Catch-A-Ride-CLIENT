@@ -11,6 +11,9 @@ import './RideDetails.css';
 
 export default class RideDetails extends Component {
     static contextType = RideContext;
+    state = {
+      error: null
+    };
 
     componentDidMount() {
       fetch(`${config.API_ENDPOINT}/rides/${this.props.match.params.ride_id}`, {
@@ -39,7 +42,12 @@ export default class RideDetails extends Component {
         });
     }
 
+    handleErrorClose = () => {
+      this.setState({ error: null });
+    }
+
     render() {
+      const { error } = this.state;
       const { id, starting, destination, time, date, capacity } = this.context.ride;
       let dateStr = moment(date).format('MM/DD/YYYY');
       let timeStr = moment(time, 'HH:mm').format('h:mmA');
@@ -50,6 +58,7 @@ export default class RideDetails extends Component {
           <div className="google-map">
             <Gmaps />
           </div>
+          {error && <span className='errorBox'>{error}<button className='errorButton'>X</button></span>}
           <div className='ride-details'>
             <p>Meetup Address: {starting}</p>
             <p>Destination: {destination}</p>
