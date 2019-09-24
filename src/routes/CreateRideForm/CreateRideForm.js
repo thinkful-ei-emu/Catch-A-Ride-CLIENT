@@ -1,6 +1,7 @@
 import React from 'react';
 import RidesService from '../../services/RidesService/rides-driver-service';
 import './CreateRideForm.css';
+import {Redirect} from 'react-router-dom';
 
 
 // do we want a screen after submitting form that confirms that the ride was created?
@@ -18,7 +19,7 @@ export default class CreateRideForm1 extends React.Component {
   grabValues = () => {
 
     let time = document.getElementById('timeinput').value;
-    let date = document.getElementById('dateinput').value;
+    let date = document.getElementById('today').value;
     let starting = document.getElementById('starting').value;
     let destination = document.getElementById('destination').value;
     let description = document.getElementById('description').value;
@@ -43,8 +44,15 @@ export default class CreateRideForm1 extends React.Component {
       .then(() => this.setState({ created: true }));
 
   }
+  componentDidMount(){
+    let today = new Date().toISOString().substr(0, 10);
+document.querySelector("#today").value = today;
+  }
 
   render() {
+    if (this.state.created===true){
+      return <Redirect to='/user-rides'/>
+    }
     return (
       <>
         <h2>Create Ride</h2>
@@ -58,8 +66,8 @@ export default class CreateRideForm1 extends React.Component {
             <input placeholder="Enter Destination " id='destination' required></input>
           </div>
           <div>
-            <label className='rideLabel createDate' htmlFor='dateinput' required>Date</label>
-            <input type="date" id='dateinput'></input>
+            <label className='rideLabel createDate' htmlFor='today' required>Date</label>
+            <input type="date" id='today'></input>
           </div>
           <div>
             <label className='rideLabel createTime' htmlFor='timeinput' required>Time</label>
