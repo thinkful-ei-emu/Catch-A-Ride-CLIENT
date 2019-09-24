@@ -11,13 +11,13 @@
   color: black;
 }
 
-.locations {
+.labels {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
 
-.maps {
+.locations {
   display: flex;
   flex-direction: row;
   justify-content: space-around;

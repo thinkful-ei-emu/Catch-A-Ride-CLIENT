@@ -10,6 +10,7 @@
 
 @media only screen and (min-width: 700px) {
   .searchbar {
+    /* min-width: 554px; */
     width: 40%;
   }
 }

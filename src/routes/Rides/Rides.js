@@ -2,19 +2,19 @@ import React, { Component } from 'react';
 import Ride from '../../components/Ride/Ride';
 import RideContext from '../../context/RideContext';
 import RideSearchBar from '../../components/RideSearchBar/RideSearchBar';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import './Rides.css';
-import JoinRideButton from '../../components/JoinRideButton/JoinRideButton';
+// import JoinRideButton from '../../components/JoinRideButton/JoinRideButton';
 
 class Rides extends Component {
   static contextType = RideContext;
 
   renderRidesList() {
     const ridePosts = this.context.rides.map((ride, i) => (
-      <li key={i}><Link to={`/rides/${ride.id}`}><Ride ride={ride} /></Link></li>
+      <li className='single-ride' key={i}><Link to={`/rides/${ride.id}`}><Ride ride={ride} /></Link></li>
     ));
     return (
-      <ul>
+      <ul className='ridesList'>
         {ridePosts}
       </ul>
     );

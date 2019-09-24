@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 // import AuthApiService from '../services/auth-api-service';
+import TokenService from '../services/token-service';
 
 
 const UserContext = React.createContext({
@@ -8,6 +9,8 @@ const UserContext = React.createContext({
   setError: () => { },
   clearError: () => { },
   setUser: () => { },
+  loggedIn: false,
+  setLoggedIn: () => {},
   // processLogin: () => { },
   // processLogout: () => { },
 });
@@ -17,7 +20,7 @@ export default UserContext;
 export class UserProvider extends Component {
   constructor(props) {
     super(props);
-     this.state = { user: {}, error: null };
+     this.state = { user: {}, error: null, loggedIn: false };
 
   //   const jwtPayload = TokenService.parseAuthToken();
 
@@ -60,6 +63,18 @@ export class UserProvider extends Component {
       console.log(user);
     }
 
+    clearUser = () => {
+      this.setState({user: {}});
+    }
+
+
+    setLoggedIn = user => {
+      this.setState({loggedIn: TokenService.hasAuthToken(), user});
+    }
+
+    setLogOut = () => {
+      this.setState({loggedIn: TokenService.hasAuthToken(), user: {}});
+    }
 
     // processLogin = authToken => {
     //   TokenService.saveAuthToken(authToken);
@@ -109,6 +124,9 @@ export class UserProvider extends Component {
         setError: this.setError,
         clearError: this.clearError,
         setUser: this.setUser,
+        loggedIn: this.state.loggedIn,
+        setLoggedIn: this.setLoggedIn,
+        clearUser: this.clearUser
         // processLogin: this.processLogin,
         // processLogout: this.processLogout,
       };

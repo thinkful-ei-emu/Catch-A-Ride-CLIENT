@@ -1,5 +1,5 @@
 import React from 'react';
-import { GoogleLogin, /*GoogleLogout*/ } from 'react-google-login';
+import { GoogleLogin } from 'react-google-login';
 import TokenService from '../../services/token-service';
 import {Redirect} from 'react-router-dom';
 import UserContext from '../../context/UserContext';
@@ -9,14 +9,13 @@ import config from '../../config';
 class LoginPage extends React.Component {
   static contextType=UserContext
   
-  constructor(props) {
-    super(props);
+  // constructor(props) {
+  //   super(props);
 
-    this.state = {
-      loggedIn: false,
-      id_token: null
-    };
-  }
+  //   this.state = {
+  //     // id_token: null
+  //   };
+  // }
 
   
 
@@ -26,14 +25,17 @@ class LoginPage extends React.Component {
     const id_token = googleUser.getAuthResponse().id_token;
     const googleResponse = googleUser.getAuthResponse();
     TokenService.saveAuthToken(id_token);
+    
     TokenService.getAuthToken();
-    this.context.setUser({user_id:profile.getId(),
-    name:profile.getName(),
-  email:profile.getEmail()});
-
-    this.setState({
-      id_token
+    this.context.setLoggedIn({
+      user_id:profile.getId(),
+      name:profile.getName(),
+      email:profile.getEmail()
     });
+
+    // this.setState({
+    //   id_token
+    // });
 
     
 
@@ -45,7 +47,7 @@ class LoginPage extends React.Component {
     // console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
 
     try {
-      let stuff = await fetch(config.API_ENDPOINT + '/auth/glogin', {
+      let user = await fetch(config.API_ENDPOINT + '/auth/glogin', {
         method: 'POST',
         headers: {
           'content-type': 'application/json'
@@ -54,13 +56,9 @@ class LoginPage extends React.Component {
           id_token
         })
       });
-      stuff = await stuff.json();
-
-   
-
-      this.setState({
-        loggedIn: true
-      });
+      user = await user.json();
+      console.log('on sign in', user);
+      // console.log('loggedIn',this.state.loggedIn);
     } catch (e) {
       console.error(e.message);
     }
@@ -69,31 +67,30 @@ class LoginPage extends React.Component {
     console.log(response);
   };
 
-  logout = response => {
-    this.setState({
-      loggedIn: false,
-      id_token: null
-    });
+  logout = () => {
     TokenService.clearAuthToken();
+    // this.setState({
+    //   id_token: null
+    // });
 
     console.log('Signed Out.');
   };
 
-  async sendRequest() {
-    try {
-      let res = await fetch(config.API_ENDPOINT + '/auth', {
-        method: 'GET',
-        headers: {
-          Authorization: `bearer ${this.state.id_token}`
-        }
-      });
-      res = await res.text();
+  // async sendRequest() {
+  //   try {
+  //     let res = await fetch(config.API_ENDPOINT + '/auth', {
+  //       method: 'GET',
+  //       headers: {
+  //         Authorization: `bearer ${this.state.id_token}`
+  //       }
+  //     });
+  //     res = await res.text();
 
-      console.log('res', res);
-    } catch (e) {
-      console.error(e.message);
-    }
-  }
+  //     console.log('res', res);
+  //   } catch (e) {
+  //     console.error(e.message);
+  //   }
+  // }
 
   render() {
     return (
@@ -102,23 +99,16 @@ class LoginPage extends React.Component {
         <br></br>
         <button onClick={() => this.sendRequest()}>Test Request</button><br></br>
         
-        {!this.state.loggedIn ? (
-          
+        {!this.context.loggedIn ? (
           <GoogleLogin
             clientId={config.CLIENT_ID}
-            buttonText={this.state.loggedIn ? 'Signed In' : 'Sign In'}
+            buttonText={this.context.loggedIn ? 'Signed In' : 'Sign In'}
             onSuccess={this.onSignIn}
             onFailure={this.googleResponse}
             cookiePolicy={'single_host_origin'}
           ></GoogleLogin>
         ) : (
-
-          <Redirect to='/rides'/>
-          // <GoogleLogout
-          //   clientId={config.CLIENT_ID}
-          //   buttonText="Sign Out"
-          //   onLogoutSuccess={this.logout}
-          // />
+          <Redirect to='/rides' />
         )}
       </>
     );

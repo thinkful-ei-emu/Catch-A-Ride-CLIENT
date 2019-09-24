@@ -82,8 +82,9 @@ export default class CreateRideForm1 extends React.Component {
             </select>
           </div>
           <button className='createRide' type='submit'>Share A Ride!</button>
-          {this.state.created === true ? 'Ride Created!' : ''}
+          
         </form>
+        {this.state.created === true ? <div className='rideMessage'>Ride Created!</div> : ''}
       </>
     );
   }

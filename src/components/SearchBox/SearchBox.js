@@ -8,9 +8,9 @@ export default class SearchBox extends Component {
 
   //Handles get for rides filtered my destination and starting
   handleSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
     // console.log('Destination ', this.context.destination)
-    // console.log('Starting Location: ', this.context.starting)
+    console.log('Starting Location: ', this.context.starting.length);
     const starting = this.context.starting;
     const destination = this.context.destination;
     RideApiService.getAllRides(starting, destination)
@@ -21,10 +21,10 @@ export default class SearchBox extends Component {
   render() {
     return (
       <form className='search-form' onSubmit={(e) => this.handleSubmit(e)}>
-        <label htmlFor='dest-input' className='search-dest'>Destination: </label>
-        <input id='dest-input' placeholder="123 Address St. New York, New York" value={this.context.destination} onChange={e => this.context.setDestination(e.target.value)} /><br />
         <label htmlFor='start-input' className='search-start'>Starting: </label>
         <input id='start-input' placeholder="123 Address St. New York, New York" value={this.context.starting} onChange={e => this.context.setStarting(e.target.value)} /><br />
+        <label htmlFor='dest-input' className='search-dest'>Destination: </label>
+        <input id='dest-input' placeholder="123 Address St. New York, New York" value={this.context.destination} onChange={e => this.context.setDestination(e.target.value)} /><br />
         <button className='search-submit' type="submit">Submit</button>
       </form>
     );

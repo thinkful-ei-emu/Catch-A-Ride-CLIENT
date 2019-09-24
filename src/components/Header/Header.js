@@ -1,49 +1,50 @@
 import React, { Component } from 'react';
-import {Link,/*Redirect*/} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import './Header.css';
 import {GoogleLogout} from 'react-google-login';
 import TokenService from '../../services/token-service';
 import config from '../../config';
+import UserContext from '../../context/UserContext';
 
 class Header extends Component {
-    state={
-      loggedIn:true
-    }
-    
-    logout = () => {
-      this.setState({loggedIn:false});
-        
-      TokenService.clearAuthToken();
-      window.location.reload();
-      
-    
-      console.log('Signed Out.');
-    };
+  static contextType = UserContext;
 
-    render() {
-      return (
-            <>
-                <h1>Catch-A-Ride</h1>
-                <nav className='navbar'>
-                  {/* hardcoded right now, want to be dynamic based on page */}
-                  {/* <h2>Rides</h2> */}
-                  <Link className='navlink' to='/rides'>All Rides</Link>
-                  {' '}
-                  <Link className='navLink' to='/user-rides'>My Rides</Link>
-                  {' '}
-                  <Link className='navlink' to='/createride'>Create Ride</Link>
-                  {' '}
-                  {/* <Link className='navlink' to='/'>Logout</Link> */}
-                  <GoogleLogout
-                    clientId={config.CLIENT_ID}
-                    buttonText="Sign Out"
-                    onLogoutSuccess={this.logout}
-                  />
-                </nav>
-            </>
-      );
+  logout = () => {
+    TokenService.clearAuthToken();
+    this.context.setLoggedIn();
+    this.context.clearUser();
+    console.log('Signed Out.');
+  };
+
+  renderNavBar() {
+    return (
+      <nav className='navbar'>
+        <Link className='navlink' to='/rides'>All Rides</Link>
+        {' '}
+        <Link className='navlink' to='/user-rides'>My Rides</Link>
+        {' '}
+        <Link className='navlink' to='/createride'>Create Ride</Link>
+        {' '}
+        <GoogleLogout
+          className='google-button'
+          clientId={config.CLIENT_ID}
+          buttonText="Sign Out"
+          onLogoutSuccess={this.logout}
+        />
+      </nav>
+    );
+  }
+
+  render() {
+    console.log('authToken',TokenService.hasAuthToken());
+    return (
+        <>
+          <h1>Catch-A-Ride</h1>
+          {this.context.loggedIn ? this.renderNavBar() : '' }
+        </>
+    );
       
-    }
+  }
 }
 
 

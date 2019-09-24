@@ -48,7 +48,10 @@ export class RideProvider extends Component {
   }
 
   setStarting = (starting) => {
+    console.log(starting.length);
+    console.log(typeof starting);
     this.setState({ starting });
+    console.log(this.state.starting);
   }
 
   setError = error => {

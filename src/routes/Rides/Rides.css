@@ -1,4 +1,4 @@
-.all-rides {
+.ridesList {
   padding-left: 0px;
 }
 
@@ -9,8 +9,12 @@
   padding-bottom: 20px;
   border-radius: 10px 10px 5px 5px;
   background: #22554e;
-  color: white;
   width: 80%;
+}
+
+.single-ride a:link, .single-ride a:visited, .single-ride a:hover, .single-ride a:active {
+  color: white;
+  text-decoration: none;
 }
 
 @media only screen and (min-width: 700px) {
@@ -19,7 +23,7 @@
     width: 25%;
   }
 
-  .all-rides {
+  .ridesList {
     display: flex;
     flex-flow: row wrap;
     align-content: space-around;

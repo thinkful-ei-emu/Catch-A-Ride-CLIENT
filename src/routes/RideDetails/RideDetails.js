@@ -4,9 +4,10 @@ import RideContext from '../../context/RideContext';
 import Gmaps from '../../components/Maps/Gmaps';
 import moment from 'moment';
 import TokenService from '../../services/token-service';
-import JoinRideButton from '../../components/JoinRideButton/JoinRideButton';
+// import JoinRideButton from '../../components/JoinRideButton/JoinRideButton';
 import PassengerApiService from '../../services/RidesService/rides-passenger-service';
 import DriverApiService from '../../services/RidesService/rides-driver-service';
+import './RideDetails.css';
 
 export default class RideDetails extends Component {
     static contextType = RideContext;
@@ -33,43 +34,35 @@ export default class RideDetails extends Component {
     handleDelete = (ride_id) => {
       this.context.deleteRide(ride_id);
       return DriverApiService.deleteRide(ride_id)
-        .then(()=>{this.props.history.push('/rides')
+        .then(()=>{this.props.history.push('/rides');
         
-      })
-        
-
+        });
     }
 
     render() {
       const { id, starting, destination, time, date, capacity } = this.context.ride;
       let dateStr = moment(date).format('MM/DD/YYYY');
+      let timeStr = moment(time, 'HH:mm').format('h:mmA');
       //Div#map for Maps container, styles in gmaps.css in component folder
       return (
-            <>
-                <div>
-                  <h2>Ride Details</h2>
-                  {/* <Gmaps /> */}
-                  <div id="map"></div>
-                  <span>Meetup Address: {starting}</span>
-                  <br />
-                  <span>Destination: {destination}</span>
-                  <br />
-                  <span>Meetup Time: {time}</span>
-                  <br />
-                  <span>Meetup Date: {dateStr}</span>
-                  <br />
-                  <span># of Seats: {capacity}</span>
-                </div>
-                <div>
-                  <h6>Ride Description</h6>
-                  <p>{this.context.ride.description}</p>
-                </div>
-                <div>
-                  <button type="button" onClick={() => this.handleJoin(id)}>Join</button>
-                  <button type="button" onClick={() => this.handleDelete(id)}>Delete Ride</button>
-                  <button type="button" onClick={() => this.handleCancel(id)}>Cancel Ride</button>
-                </div>
-            </>
+        <>
+          <h2>Ride Details</h2>
+          <div className="google-map">
+            <Gmaps />
+          </div>
+          <div className='ride-details'>
+            <p>Meetup Address: {starting}</p>
+            <p>Destination: {destination}</p>
+            <p>Meetup Time: {timeStr}</p>
+            <p>Meetup Date: {dateStr}</p>
+            <p># of Seats: {capacity}</p>
+            <h4>Ride Description:</h4>
+            <p>{this.context.ride.description}</p>
+            <button type="button" onClick={() => this.handleJoin(id)}>Join</button>
+            <button type="button" onClick={() => this.handleDelete(id)}>Delete Ride</button>
+            <button type="button" onClick={() => this.handleCancel(id)}>Cancel Ride</button>
+          </div>
+        </>
       );
     }
 }
