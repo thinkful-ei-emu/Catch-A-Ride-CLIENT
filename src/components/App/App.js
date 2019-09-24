@@ -9,6 +9,7 @@ import PublicRoute from '../../Utils/PublicRoute';
 import UserRides from '../UserRides/UserRides';
 import CreateRideForm from '../../routes/CreateRideForm/CreateRideForm';
 import RideDetails from '../../routes/RideDetails/RideDetails';
+// import UserContext from '../../context/UserContext';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -19,9 +20,7 @@ import './App.css';
 library.add(fas, faMapMarkedAlt);
 
 class App extends Component {
-  
   render() {
-    // console.log('route', <Route exact path='/' />);
     return (
       <div className="App">
         <Header />

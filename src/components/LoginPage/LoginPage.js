@@ -57,7 +57,7 @@ class LoginPage extends React.Component {
         })
       });
       user = await user.json();
-      console.log('on sign in', user);
+      // console.log('on sign in', user);
       // console.log('loggedIn',this.state.loggedIn);
     } catch (e) {
       console.error(e.message);
@@ -73,7 +73,7 @@ class LoginPage extends React.Component {
     //   id_token: null
     // });
 
-    console.log('Signed Out.');
+    // console.log('Signed Out.');
   };
 
   // async sendRequest() {

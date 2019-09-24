@@ -20,20 +20,12 @@ export default UserContext;
 export class UserProvider extends Component {
   constructor(props) {
     super(props);
-     this.state = { user: {}, error: null, loggedIn: false };
-
-  //   const jwtPayload = TokenService.parseAuthToken();
-
-  //   if (jwtPayload)
-  //     state.user = {
-  //       id: jwtPayload.user_id,
-  //       name: jwtPayload.name,
-  //       username: jwtPayload.sub,
-  //     };
-
-  //   this.state = state;
-  //   IdleService.setIdleCallback(this.logoutBecauseIdle);
-   }
+    this.state = { 
+      user: {}, 
+      error: null, 
+      loggedIn: TokenService.hasAuthToken() 
+    };
+  }
 
   // componentDidMount() {
   //   if (TokenService.hasAuthToken()) {
@@ -58,21 +50,20 @@ export class UserProvider extends Component {
       this.setState({ error: null });
     }
 
-    setUser = user => {
-      this.setState({ user });
-      console.log(user);
-    }
+    // setUser = user => {
+    //   this.setState({ user });
+    //   // console.log(user);
+    // }
 
-    clearUser = () => {
-      this.setState({user: {}});
-    }
-
+    // clearUser = () => {
+    //   this.setState({user: {}});
+    // }
 
     setLoggedIn = user => {
       this.setState({loggedIn: TokenService.hasAuthToken(), user});
     }
 
-    setLogOut = () => {
+    setLoggedOut = () => {
       this.setState({loggedIn: TokenService.hasAuthToken(), user: {}});
     }
 
@@ -123,10 +114,11 @@ export class UserProvider extends Component {
         error: this.state.error,
         setError: this.setError,
         clearError: this.clearError,
-        setUser: this.setUser,
+        // setUser: this.setUser,
         loggedIn: this.state.loggedIn,
         setLoggedIn: this.setLoggedIn,
-        clearUser: this.clearUser
+        // clearUser: this.clearUser,
+        setLoggedOut: this.setLoggedOut
         // processLogin: this.processLogin,
         // processLogout: this.processLogout,
       };

@@ -11,9 +11,9 @@ class Header extends Component {
 
   logout = () => {
     TokenService.clearAuthToken();
-    this.context.setLoggedIn();
-    this.context.clearUser();
-    console.log('Signed Out.');
+    this.context.setLoggedOut();
+    // console.log(this.props.history);
+    // this.context.clearUser();
   };
 
   renderNavBar() {
@@ -36,7 +36,6 @@ class Header extends Component {
   }
 
   render() {
-    console.log('authToken',TokenService.hasAuthToken());
     return (
         <>
           <h1>Catch-A-Ride</h1>
