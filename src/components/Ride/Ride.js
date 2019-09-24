@@ -6,7 +6,7 @@ class Ride extends Component {
 
 
     render() {
-        console.log(this.props.ride)
+        // console.log(this.props.ride)
         return (
             <>
                 <p className='driver-info'>

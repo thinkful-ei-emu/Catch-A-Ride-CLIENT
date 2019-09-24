@@ -27,7 +27,9 @@ export class RideProvider extends Component {
       destination: '',
       starting: '',
       passengerRides: [],
-      driverRides: []
+      driverRides: [],
+      startingC: { lat: null, lng: null },
+      destinationC: { lat: null, lng: null }
     };
   }
 
@@ -64,12 +66,22 @@ export class RideProvider extends Component {
     this.setState({ driverRides });
   }
 
+  setStartingC = (lat, lng) => {
+    this.setState({ startingC: { lat: lat, lng: lng } })
+  }
+
+  setDestinationC = (lat, lng) => {
+    this.setState({ destinationC: { lat, lng } })
+  }
+
   render() {
     const value = {
       rides: this.state.rides,
       ride: this.state.ride,
       destination: this.state.destination,
       starting: this.state.starting,
+      startingC: this.state.startingC,
+      destinationC: this.state.destinationC,
       setRides: this.setRides,
       setRide: this.setRide,
       setDestination: this.setDestination,
@@ -77,7 +89,9 @@ export class RideProvider extends Component {
       passengerRides: this.state.passengerRides,
       driverRides: this.state.driverRides,
       setPassengerRides: this.setPassengerRides,
-      setDriverRides: this.setDriverRides
+      setDriverRides: this.setDriverRides,
+      setStartingC: this.setStartingC,
+      setDestinationC: this.setDestinationC,
     };
     return (
       <RideContext.Provider value={value}>

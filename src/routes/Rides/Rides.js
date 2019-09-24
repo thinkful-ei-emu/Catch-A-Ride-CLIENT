@@ -4,7 +4,6 @@ import RideContext from '../../context/RideContext';
 import RideSearchBar from '../../components/RideSearchBar/RideSearchBar';
 import { Link } from 'react-router-dom'
 import './Rides.css';
-import JoinRideButton from '../../components/JoinRideButton/JoinRideButton';
 
 class Rides extends Component {
   static contextType = RideContext;
