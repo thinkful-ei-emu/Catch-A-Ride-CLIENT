@@ -86,17 +86,16 @@ export class RideProvider extends Component {
     this.setState({ driverRides });
   }
 
-<<<<<<< HEAD
   setStartingC = (lat, lng) => {
     this.setState({ startingC: { lat: lat, lng: lng } })
   }
 
   setDestinationC = (lat, lng) => {
     this.setState({ destinationC: { lat, lng } })
-=======
+  }
+  
   clearDriverRides = () => {
     this.setState({driverRides: []});
->>>>>>> mvp-styling
   }
 
   render() {
@@ -115,16 +114,13 @@ export class RideProvider extends Component {
       driverRides: this.state.driverRides,
       setPassengerRides: this.setPassengerRides,
       setDriverRides: this.setDriverRides,
-<<<<<<< HEAD
       setStartingC: this.setStartingC,
       setDestinationC: this.setDestinationC,
-=======
       deleteRide: this.deleteRide,
       setError: this.setError,
       clearError: this.clearError,
       clearPassengerRides: this.clearPassengerRides,
       clearDriverRides: this.clearDriverRides
->>>>>>> mvp-styling
     };
     return (
       <RideContext.Provider value={value}>
