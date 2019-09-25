@@ -20,6 +20,7 @@ export default class UserRides extends React.Component {
         this.context.setDriverRides(res);
       })
       .catch(res => {
+        this.context.clearDriverRides();
         this.setState({driverError: res.error});
       });
     PassengersApiService.getAllRides()
@@ -27,6 +28,7 @@ export default class UserRides extends React.Component {
         this.context.setPassengerRides(res);
       })
       .catch(res => {
+        this.context.clearPassengerRides();
         this.setState({passError: res.error});
       });
   }

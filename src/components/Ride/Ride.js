@@ -5,14 +5,11 @@ import './Ride.css';
 
 class Ride extends Component {
   render() {
-    const date = moment(this.props.ride.date).format('MM/DD/YYYY');
-    const time = moment(this.props.ride.time, 'HH:mm').format('h:mmA');
-    console.log('ride',this.props.ride);
+    const date_time = moment(this.props.ride.date_time).format('MM/DD/YYYY @ h:mmA');
     return (
       <>
         <p className='ride-info'>
-          {/* {this.props.ride.date} */}
-          {date} @ {time}
+          {date_time}
         </p>
         
         <span className='labels'>

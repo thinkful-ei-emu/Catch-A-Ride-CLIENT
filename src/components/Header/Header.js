@@ -9,9 +9,12 @@ import UserContext from '../../context/UserContext';
 class Header extends Component {
   static contextType = UserContext;
 
+  // have state here to make pages rerender
+
   logout = () => {
     TokenService.clearAuthToken();
     this.context.setLoggedOut();
+    
     // console.log(this.props.history);
     // this.context.clearUser();
   };

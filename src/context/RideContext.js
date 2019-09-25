@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PassengerApiService from '../services/RidesService/rides-passenger-service';
 
 const RideContext = React.createContext({
   rides: [],
@@ -32,9 +33,16 @@ export class RideProvider extends Component {
     };
   }
 
+  // handleJoin = (ride_id) => {
+  //   PassengerApiService.passengerJoinRide(ride_id)
+  //   .catch(res => console.log(res));
+  //   ;
+  // }
+
   setRides = (rides) => {
     this.setState({ rides });
   }
+
   deleteRide=(rideid)=>{
     const newRides=this.state.rides.filter(ride=>ride.id!==rideid);
     this.setState({rides:newRides});
@@ -68,8 +76,16 @@ export class RideProvider extends Component {
     this.setState({ passengerRides });
   }
 
+  clearPassengerRides = () => {
+    this.setState({passengerRides: []});
+  }
+
   setDriverRides = (driverRides) => {
     this.setState({ driverRides });
+  }
+
+  clearDriverRides = () => {
+    this.setState({driverRides: []});
   }
 
   render() {
@@ -88,7 +104,9 @@ export class RideProvider extends Component {
       setDriverRides: this.setDriverRides,
       deleteRide: this.deleteRide,
       setError: this.setError,
-      clearError: this.clearError
+      clearError: this.clearError,
+      clearPassengerRides: this.clearPassengerRides,
+      clearDriverRides: this.clearDriverRides
     };
     return (
       <RideContext.Provider value={value}>

@@ -12,6 +12,7 @@ const RidesApiService = {
       .then(res =>
         !res.ok ? res.json().then(e => Promise.reject(e)) : res.json());
   },
+  
   getAllRides(starting, destination) {
     let body;
     if(starting.length === 0 && destination.length > 1) {
@@ -39,6 +40,7 @@ const RidesApiService = {
           : res.json()
       );
   },
+  
   postNewRide(obj) {
     return fetch(`${config.API_ENDPOINT}/rides/driver`, {
       method: 'POST',
@@ -62,7 +64,9 @@ const RidesApiService = {
         Authorization: `bearer ${TokenService.getAuthToken()}`
       },
       body: JSON.stringify({ ride_id })
-    });
+    })
+      .then(res =>
+        !res.ok ? res.json().then(e => Promise.reject(e)) : res.json());
       
   }
 };

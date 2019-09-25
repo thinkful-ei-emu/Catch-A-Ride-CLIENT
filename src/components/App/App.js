@@ -20,6 +20,7 @@ import './App.css';
 library.add(fas, faMapMarkedAlt);
 
 class App extends Component {
+
   render() {
     return (
       <div className="App">

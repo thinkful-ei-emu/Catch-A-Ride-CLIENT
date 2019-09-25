@@ -21,7 +21,7 @@ export class UserProvider extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      user: {}, 
+      user: TokenService.getUser(), 
       error: null, 
       loggedIn: TokenService.hasAuthToken() 
     };
@@ -60,10 +60,12 @@ export class UserProvider extends Component {
     // }
 
     setLoggedIn = user => {
+      TokenService.saveUser(user);
       this.setState({loggedIn: TokenService.hasAuthToken(), user});
     }
 
     setLoggedOut = () => {
+      TokenService.clearUser();
       this.setState({loggedIn: TokenService.hasAuthToken(), user: {}});
     }
 
