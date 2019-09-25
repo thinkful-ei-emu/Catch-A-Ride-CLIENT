@@ -1,5 +1,7 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import RidesService from '../../services/RidesService/rides-driver-service';
+// import RideContext from '../../context/RideContext';
 import './CreateRideForm.css';
 
 
@@ -9,6 +11,8 @@ import './CreateRideForm.css';
 
 
 export default class CreateRideForm1 extends React.Component {
+  // static contextType = RideContext;
+
   state = {
     created: null
   }
@@ -40,11 +44,12 @@ export default class CreateRideForm1 extends React.Component {
     let body = this.grabValues();
     console.log(body);
     RidesService.postNewRide(body)
-      .then(() => this.setState({ created: true }));
+      .then(res => this.setState({ created: true, ride_id: res.id }));
 
   }
 
   render() {
+    const {ride_id} = this.state;
     return (
       <>
         <h2>Create Ride</h2>
@@ -82,8 +87,9 @@ export default class CreateRideForm1 extends React.Component {
             </select>
           </div>
           <button className='createRide' type='submit'>Share A Ride!</button>
-          {this.state.created === true ? 'Ride Created!' : ''}
+          
         </form>
+        {this.state.created === true ? <div className='rideMessage'>Ride Created! <Link to={`/rides/${ride_id}`}>Go to Ride</Link></div> : ''}
       </>
     );
   }

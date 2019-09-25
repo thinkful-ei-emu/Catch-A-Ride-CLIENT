@@ -13,6 +13,16 @@ const TokenService = {
   },
   hasAuthToken() {
     return !!TokenService.getAuthToken();
+  },
+  getUser() {
+    const user = window.localStorage.getItem('user');
+    return JSON.parse(user) || {};
+  },
+  saveUser(user) {
+    window.localStorage.setItem('user', JSON.stringify(user));
+  },
+  clearUser() {
+    window.localStorage.removeItem('user');
   }
 };
 

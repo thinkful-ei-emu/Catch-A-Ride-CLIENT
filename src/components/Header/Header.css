@@ -2,12 +2,7 @@ h1 {
   font-family: 'Slackey', cursive;
 }
 
-/* h2 {
-  color: white;
-} */
-
 .navbar {
-  /* do we want it to extend all the way across or look more like  */
   background: #22554e;
   width: 100%;
   padding: 10px 0;
@@ -19,4 +14,10 @@ h1 {
 
 .navlink:hover {
   color: #f2de6a;
+}
+
+@media only screen and (max-width: 400px) {
+  .google-button {
+    margin-top: 10px;
+  }
 }

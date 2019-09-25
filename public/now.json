@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "name": "Catch-A-Ride App",
+  "alias":"catch-a-ride",
+  "routes": [
+      {
+        "src": "^/static/(.*)",
+        "dest": "/static/$1"
+      },
+      {
+        "src": ".*",
+        "dest": "/index.html"
+      }
+  ]
+}

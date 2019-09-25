@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PassengerApiService from '../services/RidesService/rides-passenger-service';
 
 const RideContext = React.createContext({
   rides: [],
@@ -29,12 +30,24 @@ export class RideProvider extends Component {
       passengerRides: [],
       driverRides: [],
       startingC: { lat: null, lng: null },
-      destinationC: { lat: null, lng: null }
+      destinationC: { lat: null, lng: null },
+      error: null
     };
   }
 
+  // handleJoin = (ride_id) => {
+  //   PassengerApiService.passengerJoinRide(ride_id)
+  //   .catch(res => console.log(res));
+  //   ;
+  // }
+
   setRides = (rides) => {
     this.setState({ rides });
+  }
+
+  deleteRide=(rideid)=>{
+    const newRides=this.state.rides.filter(ride=>ride.id!==rideid);
+    this.setState({rides:newRides});
   }
 
   setRide = (ride) => {
@@ -46,7 +59,10 @@ export class RideProvider extends Component {
   }
 
   setStarting = (starting) => {
+    // console.log(starting.length);
+    // console.log(typeof starting);
     this.setState({ starting });
+    // console.log(this.state.starting);
   }
 
   setError = error => {
@@ -62,16 +78,25 @@ export class RideProvider extends Component {
     this.setState({ passengerRides });
   }
 
+  clearPassengerRides = () => {
+    this.setState({passengerRides: []});
+  }
+
   setDriverRides = (driverRides) => {
     this.setState({ driverRides });
   }
 
+<<<<<<< HEAD
   setStartingC = (lat, lng) => {
     this.setState({ startingC: { lat: lat, lng: lng } })
   }
 
   setDestinationC = (lat, lng) => {
     this.setState({ destinationC: { lat, lng } })
+=======
+  clearDriverRides = () => {
+    this.setState({driverRides: []});
+>>>>>>> mvp-styling
   }
 
   render() {
@@ -90,8 +115,16 @@ export class RideProvider extends Component {
       driverRides: this.state.driverRides,
       setPassengerRides: this.setPassengerRides,
       setDriverRides: this.setDriverRides,
+<<<<<<< HEAD
       setStartingC: this.setStartingC,
       setDestinationC: this.setDestinationC,
+=======
+      deleteRide: this.deleteRide,
+      setError: this.setError,
+      clearError: this.clearError,
+      clearPassengerRides: this.clearPassengerRides,
+      clearDriverRides: this.clearDriverRides
+>>>>>>> mvp-styling
     };
     return (
       <RideContext.Provider value={value}>

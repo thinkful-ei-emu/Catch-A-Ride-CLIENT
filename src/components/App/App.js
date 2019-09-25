@@ -1,26 +1,26 @@
 import React, { Component } from 'react';
-import './App.css';
-import LoginPage from '../LoginPage/LoginPage';
+import {Switch, Route } from 'react-router-dom';
 
+import LoginPage from '../LoginPage/LoginPage';
 import Rides from '../../routes/Rides/Rides';
 import Header from '../Header/Header';
-import RideContext from '../../context/RideContext';
-
-import { Route, Switch } from 'react-router-dom';
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons'
-import CreateRideForm from '../../routes/CreateRideForm/CreateRideForm';
-import RideDetails from '../../routes/RideDetails/RideDetails';
-
-
 import PrivateRoute from '../../Utils/PrivateRoute';
 import PublicRoute from '../../Utils/PublicRoute';
 import UserRides from '../UserRides/UserRides';
+import CreateRideForm from '../../routes/CreateRideForm/CreateRideForm';
+import RideDetails from '../../routes/RideDetails/RideDetails';
+// import UserContext from '../../context/UserContext';
+
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons';
+
+import './App.css';
+
 library.add(fas, faMapMarkedAlt);
 
 class App extends Component {
-  static contextType = RideContext;
+
   render() {
     return (
       <div className="App">
@@ -28,14 +28,14 @@ class App extends Component {
         <main>
           <Switch>
             <PublicRoute exact path="/" component={LoginPage} />
-            {/* <Route path="/login" component={LoginPage} /> */}
             <PrivateRoute exact path="/rides" component={Rides} />
             <PrivateRoute path="/createride" component={CreateRideForm} />
             <PrivateRoute path='/user-rides' component={UserRides} />
             <PrivateRoute path='/rides/:ride_id' component={RideDetails} />
           </Switch>
         </main>
-      </div >
+        <footer></footer>
+      </div>
     );
   }
 }

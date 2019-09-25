@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Ride from '../../components/Ride/Ride';
 import RideContext from '../../context/RideContext';
 import RideSearchBar from '../../components/RideSearchBar/RideSearchBar';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import './Rides.css';
 
 class Rides extends Component {
@@ -10,10 +10,10 @@ class Rides extends Component {
 
   renderRidesList() {
     const ridePosts = this.context.rides.map((ride, i) => (
-      <li key={i}><Link to={`/rides/${ride.id}`}><Ride ride={ride} /></Link></li>
+      <li className='single-ride' key={i}><Link to={`/rides/${ride.id}`}><Ride ride={ride} /></Link></li>
     ));
     return (
-      <ul>
+      <ul className='ridesList'>
         {ridePosts}
       </ul>
     );

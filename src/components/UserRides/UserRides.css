@@ -1,0 +1,38 @@
+.driverRides, .passengerRides {
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+.ride {
+  width: 90%;
+  margin: 0 auto;
+  background-color: #22554E;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px 10px 5px 5px;
+}
+
+.divide {
+  background-color: #22554E;
+  color: white;
+  font-size: 20px;
+}
+
+.rideLink {
+  text-decoration: none;
+  color: white;
+}
+
+@media only screen and (min-width: 700px) {
+  .ride {
+    margin: 10px 10px;
+    width: 25%;
+  }
+
+  .driverRides, .passengerRides {
+    display: flex;
+    flex-flow: row wrap;
+    align-content: space-around;
+    justify-content: center;
+  }
+}
