@@ -97,7 +97,6 @@ class LoginPage extends React.Component {
       <>
         <h2>Log In</h2>
         <br></br>
-        <button onClick={() => this.sendRequest()}>Test Request</button><br></br>
         
         {!this.context.loggedIn ? (
           <GoogleLogin

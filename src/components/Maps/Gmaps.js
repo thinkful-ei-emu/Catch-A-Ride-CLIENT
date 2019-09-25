@@ -21,7 +21,7 @@ export class Gmaps extends Component {
           <Marker position={this.context.startingC} />
         </Map>
       </div>
-    )
+    );
   }
 }
 

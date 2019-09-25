@@ -25,8 +25,21 @@
 }
 
 .rideMessage {
-  margin-top: 20px;
+  margin-bottom: 20px;
   color: black;
+}
+
+.ride-link {
+  color: #22554e;
+}
+
+.ride-link:visited {
+  color: #22554e;
+}
+
+.ride-link:hover {
+  /* need to change this color, just a stand-in */
+  color: orange;
 }
 
 @media only screen and (min-width: 700px) {

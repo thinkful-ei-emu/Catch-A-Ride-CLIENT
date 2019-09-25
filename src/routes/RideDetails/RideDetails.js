@@ -17,25 +17,25 @@ export default class RideDetails extends Component {
       message: null
     };
 
-  componentDidMount() {
-    fetch(`${config.API_ENDPOINT}/rides/${this.props.match.params.ride_id}`, {
-      method: 'GET',
-      headers: {
-        "content-type": "application/json",
-        Authorization: `bearer ${TokenService.getAuthToken()}`
-      }
-    })
-      .then(res => res.json())
-      .then(data => this.context.setRide(data))
-      .then(() => {
-        let startLat = this.context.ride.startCoorLat
-        let startLng = this.context.ride.startCoorLong
-        this.context.setStartingC(startLat, startLng);
-        let destLat = this.context.ride.destCoorLat
-        let destLng = this.context.ride.destCoorLong
-        this.context.setDestinationC(destLat, destLng);
-      });
-  }
+    componentDidMount() {
+      fetch(`${config.API_ENDPOINT}/rides/${this.props.match.params.ride_id}`, {
+        method: 'GET',
+        headers: {
+          'content-type': 'application/json',
+          Authorization: `bearer ${TokenService.getAuthToken()}`
+        }
+      })
+        .then(res => res.json())
+        .then(data => this.context.setRide(data))
+        .then(() => {
+          let startLat = this.context.ride.startCoorLat;
+          let startLng = this.context.ride.startCoorLong;
+          this.context.setStartingC(startLat, startLng);
+          let destLat = this.context.ride.destCoorLat;
+          let destLng = this.context.ride.destCoorLong;
+          this.context.setDestinationC(destLat, destLng);
+        });
+    }
 
     handleJoin = (ride_id) => {
       PassengerApiService.passengerJoinRide(ride_id)
@@ -98,8 +98,8 @@ export default class RideDetails extends Component {
                 <div className="google-map">
                   <Gmaps />
                 </div>
-                {message && <span>{message}<button className='messageButton' aria-label='close' onClick={() => this.handleMessageClose()}>X</button></span>}
-                {error && <span className='errorBox'>{error}<button className='errorButton' aria-label='close' onClick={() => this.handleErrorClose()}>X</button></span>}
+                {message && <div className='messageBox'>{message}<button className='messageButton' aria-label='close' onClick={() => this.handleMessageClose()}>X</button></div>}
+                {error && <div className='errorBox'>{error}<button className='errorButton' aria-label='close' onClick={() => this.handleErrorClose()}>X</button></div>}
                 <div className='ride-details'>
                   <p>Driver: {driver_name}</p>
                   <p>Meetup Address: {starting}</p>

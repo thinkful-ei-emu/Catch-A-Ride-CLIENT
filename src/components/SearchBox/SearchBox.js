@@ -30,7 +30,7 @@ export default class SearchBox extends Component {
     const { error } = this.state;
     return (
       <>
-        {error && <span className='error'>{error}<button className='errorButton' aria-label='close' onClick={() => this.handleErrorClose()}>X</button></span>}
+        {error && <div className='error'>{error}<button className='errButton' aria-label='close' onClick={() => this.handleErrorClose()}>X</button></div>}
         <form className='search-form' onSubmit={(e) => this.handleSubmit(e)}>
           <label htmlFor='start-input' className='search-start'>Starting: </label>
           <input id='start-input' placeholder="123 Address St. New York, New York" value={this.context.starting} onChange={e => this.context.setStarting(e.target.value)} /><br />

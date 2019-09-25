@@ -1,3 +1,51 @@
 div {
   position: relative;
 }
+
+.messageBox, .errorBox {
+  font-size: 18px;
+  padding: 5px 7px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.messageBox {
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.messageButton {
+  background-color: #F2F9FB;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.errorBox {
+  border: 1px solid red;
+  border-radius: 5px;
+  color: red;
+}
+
+.errorButton {
+  color: red;
+  background-color: #F2F9FB;
+  border: 1px solid red;
+  border-radius: 5px;
+}
+
+.messageButton, .errorButton {
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+@media only screen and (min-width: 700px) {
+  .messageBox {
+    width: 30%;
+    font-size: 20px;
+  }
+
+  .errorBox {
+    width: 40%;
+    font-size: 20px;
+  }
+}
