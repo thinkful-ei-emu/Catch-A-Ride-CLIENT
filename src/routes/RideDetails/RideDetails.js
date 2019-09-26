@@ -7,6 +7,7 @@ import TokenService from '../../services/token-service';
 import JoinRideButton from '../../components/JoinRideButton/JoinRideButton';
 import PassengerApiService from '../../services/RidesService/rides-passenger-service';
 import DriverApiService from '../../services/RidesService/rides-driver-service';
+import RidesVoteService from '../../services/RidesService/rides-vote-service';
 
 export default class RideDetails extends Component {
     static contextType = RideContext;
@@ -33,15 +34,22 @@ export default class RideDetails extends Component {
     handleDelete = (ride_id) => {
       this.context.deleteRide(ride_id);
       return DriverApiService.deleteRide(ride_id)
-        .then(()=>{this.props.history.push('/rides')
+        .then(()=>{this.props.history.push('/rides');
         
-      })
+        })}
+
+      handleUpVote=(driverId,rideId)=>{
+        RidesVoteService.postUpVote(driverId,rideId);
+      }
+      handleDownVote=(driverId,rideId)=>{
+        RidesVoteService.postDownVote(driverId,rideId);
+      };
         
 
-    }
+    
 
     render() {
-      const { id, starting, destination, time, date, capacity } = this.context.ride;
+      const { id, starting, destination, time, date, capacity,driver_id } = this.context.ride;
       let dateStr = moment(date).format('MM/DD/YYYY');
       //Div#map for Maps container, styles in gmaps.css in component folder
       return (
@@ -68,6 +76,10 @@ export default class RideDetails extends Component {
                   <button type="button" onClick={() => this.handleJoin(id)}>Join</button>
                   <button type="button" onClick={() => this.handleDelete(id)}>Delete Ride</button>
                   <button type="button" onClick={() => this.handleCancel(id)}>Cancel Ride</button>
+                  <button type="button" onClick={() => console.log(this.context.ride)}>Check</button>
+                  <button type="button" onClick={() => this.handleUpVote(driver_id,id)}>&uarr;</button>
+                  <button type="button" onClick={() => this.handleDownVote(driver_id,id)}>&darr;</button>
+
                 </div>
             </>
       );
