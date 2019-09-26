@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Switch, Route } from 'react-router-dom';
+import {Switch, Route, Redirect } from 'react-router-dom';
 
 import LoginPage from '../LoginPage/LoginPage';
 import Rides from '../../routes/Rides/Rides';
@@ -9,7 +9,9 @@ import PublicRoute from '../../Utils/PublicRoute';
 import UserRides from '../UserRides/UserRides';
 import CreateRideForm from '../../routes/CreateRideForm/CreateRideForm';
 import RideDetails from '../../routes/RideDetails/RideDetails';
-// import UserContext from '../../context/UserContext';
+import TokenService from '../../services/token-service';
+import config from '../../config';
+import UserContext from '../../context/UserContext'
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -21,7 +23,18 @@ library.add(fas, faMapMarkedAlt);
 
 class App extends Component {
 
+  static contextType = UserContext;
+
+  state = {
+    time: Date.now(),
+  }
+
+
   render() {
+    if(this.state.time > Number(TokenService.getExpiresAt())){
+      TokenService.removeItems([config.TOKEN_KEY, 'user', 'expires_at']);
+    }
+
     return (
       <div className="App">
         <Header />

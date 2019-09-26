@@ -11,6 +11,12 @@ const TokenService = {
   clearAuthToken() {
     window.localStorage.removeItem(config.TOKEN_KEY);
   },
+  removeItems(array){
+    for(let item of array){
+      window.localStorage.removeItem(item)
+    }
+  },
+
   hasAuthToken() {
     return !!TokenService.getAuthToken();
   },
@@ -23,6 +29,12 @@ const TokenService = {
   },
   clearUser() {
     window.localStorage.removeItem('user');
+  },
+  saveExpiresAt(expires_at){
+    window.localStorage.setItem('expires_at', expires_at);
+  },
+  getExpiresAt(){
+    return window.localStorage.getItem('expires_at');
   }
 };
 
