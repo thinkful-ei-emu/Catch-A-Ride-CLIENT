@@ -1,7 +1,7 @@
 CATCH-A-RIDE
 ============
 
-Ridesharing App! Ridesharing made easy. Consolidated carpools.
+Ridesharing made easy. Consolidated carpools.
 
 ## Getting Started
 
