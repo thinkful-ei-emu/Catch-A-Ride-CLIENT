@@ -29,7 +29,7 @@ const RidesApiService = {
   
   passengerCancelRide(ride_id) {
     return fetch(`${config.API_ENDPOINT}/rides/passenger`, {
-      method: 'DELETE',
+      method: 'PATCH',
       headers: {
         'content-type': 'application/json',
         Authorization: `bearer ${TokenService.getAuthToken()}`
