@@ -71,8 +71,14 @@ export default class RideDetails extends Component {
       let dateStr = new Date(this.context.ride.date_time).toLocaleString();
       let newStr = dateStr.split(', ');
       let dateFormat = newStr[0];
-      // let timeFormat = moment(newStr[1], 'HH:mm').format('h:mmA');
-      let timeFormat = newStr[1];
+      let time = newStr[1];
+      let timeFormat = '';
+      if(!time) {
+        timeFormat = 'Invalid Date';
+      } else {
+        let timeArr = time.split(':');
+        timeFormat = `${timeArr[0]}:${timeArr[2]}`; 
+      }
       //Div#map for Maps container, styles in gmaps.css in component folder
       if(!this.context.ride) {
         return <div>Loading</div>;
