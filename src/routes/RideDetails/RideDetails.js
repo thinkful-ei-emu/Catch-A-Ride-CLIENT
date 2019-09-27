@@ -79,6 +79,24 @@ export default class RideDetails extends Component {
         let timeArr = time.split(':');
         timeFormat = `${timeArr[0]}:${timeArr[2]}`; 
       }
+      let remainingSeats = 0;
+      let count = 0;
+
+      let sRArray = Object.keys(this.context.ride);
+      // console.log(sRArray);
+      console.log(sRArray);
+
+      for(let i = 6; i < sRArray.length; i++){
+        count++;
+        if(capacity < count){
+          break;
+        }
+
+        if(this.context.ride[sRArray[i]] === null){
+          remainingSeats++;
+        }
+      }
+
       //Div#map for Maps container, styles in gmaps.css in component folder
       if(!this.context.ride) {
         return <div>Loading</div>;
@@ -100,7 +118,8 @@ export default class RideDetails extends Component {
                   <p>Destination: {destination}</p>
                   <p>Meetup Date: {dateFormat}</p>
                   <p>Meetup Time: {timeFormat}</p>
-                  <p># of Seats: {capacity}</p>
+                  <p>Capacity: {capacity}</p>
+                  <p>Remaining Seats: {remainingSeats}</p>
                   <h4>Ride Description:</h4>
                   <p>{this.context.ride.description}</p>
                   {this.context.ride.driver_id === user_id 
