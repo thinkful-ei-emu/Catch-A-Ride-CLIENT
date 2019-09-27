@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import RidesService from '../../services/RidesService/rides-driver-service';
 // import RideContext from '../../context/RideContext';
 import './CreateRideForm.css';
+import {Redirect} from 'react-router-dom';
 
 export default class CreateRideForm1 extends React.Component {
   // static contextType = RideContext;
@@ -14,7 +15,7 @@ export default class CreateRideForm1 extends React.Component {
   grabValues = () => {
 
     let time = document.getElementById('timeinput').value;
-    let date = document.getElementById('dateinput').value;
+    let date = document.getElementById('today').value;
     let starting = document.getElementById('starting').value;
     let destination = document.getElementById('destination').value;
     let description = document.getElementById('description').value;
@@ -38,9 +39,16 @@ export default class CreateRideForm1 extends React.Component {
       .then(res => this.setState({ created: true, ride_id: res.id }));
 
   }
+  componentDidMount(){
+    let today = new Date().toISOString().substr(0, 10);
+    document.querySelector("#today").value = today;
+  }
 
   render() {
     const {ride_id} = this.state;
+    if (this.state.created===true){
+      return <Redirect to='/user-rides'/>
+    }
     return (
       <>
         <h2>Create Ride</h2>
@@ -55,8 +63,8 @@ export default class CreateRideForm1 extends React.Component {
             <input placeholder="Enter Destination " id='destination' required></input>
           </div>
           <div>
-            <label className='rideLabel createDate' htmlFor='dateinput' required>Date</label>
-            <input type="date" id='dateinput'></input>
+            <label className='rideLabel createDate' htmlFor='today' required>Date</label>
+            <input type="date" id='today'></input>
           </div>
           <div>
             <label className='rideLabel createTime' htmlFor='timeinput' required>Time</label>

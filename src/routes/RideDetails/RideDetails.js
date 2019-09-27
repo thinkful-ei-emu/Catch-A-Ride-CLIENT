@@ -63,6 +63,9 @@ export default class RideDetails extends Component {
 
     handleMessageClose = () => {
       this.setState({ message: null});
+    
+      // .then(()=>{this.props.history.push('/rides');
+        
     }
 
     render() {
@@ -128,7 +131,8 @@ export default class RideDetails extends Component {
                   {this.context.ride.driver_id === user_id 
                     ? <button type="button" onClick={() => this.handleDelete(id)}>Delete Ride</button> 
                     : <><button type="button" onClick={() => this.handleJoin(id)}>Join</button>
-                      <button type="button" onClick={() => this.handleCancel(id)}>Cancel Ride</button></> }
+                      <button type="button" onClick={() => this.handleCancel(id)}>Cancel Ride</button>
+                    </>}
                   
                 </div>
               </>

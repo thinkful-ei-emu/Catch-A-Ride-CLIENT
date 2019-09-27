@@ -46,6 +46,7 @@ const RidesApiService = {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
+        'Accept':'application/json',
         Authorization: `bearer ${TokenService.getAuthToken()}`
 
       },
