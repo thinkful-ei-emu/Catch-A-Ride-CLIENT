@@ -16,6 +16,13 @@ h1 {
   color: #f2de6a;
 }
 
+/* .logo {
+  position: relative;
+  top: 3px;
+  margin-right: 10px;
+  height: 30px;
+} */
+
 @media only screen and (max-width: 400px) {
   .google-button {
     margin-top: 10px;

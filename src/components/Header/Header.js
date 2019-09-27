@@ -41,7 +41,10 @@ class Header extends Component {
   render() {
     return (
         <>
-          <h1>Catch-A-Ride</h1>
+          <h1>
+            {/* <img className='logo' src="https://img.icons8.com/wired/64/000000/fiat-500.png"></img> */}
+            Catch-A-Ride
+          </h1>
           {this.context.loggedIn ? this.renderNavBar() : '' }
         </>
     );

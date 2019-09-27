@@ -46,7 +46,10 @@ export default class RideDetails extends Component {
     handleCancel = (ride_id) => {
       // if the user is part of this ride set message in state to say 'You have left this ride' 
       PassengerApiService.passengerCancelRide(ride_id)
-        .catch(res => this.setState({error: res.error}));       
+        // .then(() => this.setState({message: 'You have left this ride'}))
+        // .then(() => console.log('something happens'))
+        .catch(res => this.setState({error: res.error}));     
+        this.setState({message: 'You have already joined this ride'});  
     }
 
     handleDelete = (ride_id) => {
