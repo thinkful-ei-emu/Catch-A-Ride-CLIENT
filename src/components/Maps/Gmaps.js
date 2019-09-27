@@ -16,7 +16,7 @@ export class Gmaps extends Component {
 
     return (
       <div>
-        <Map google={this.props.google} zoom={5} style={mapStyles} initialCenter={{ lat: 37.0902, lng: -95.7129 }}center={this.context.destinationC}>
+        <Map google={this.props.google} zoom={6} style={mapStyles} initialCenter={{ lat: 37.0902, lng: -95.7129 }}center={this.context.destinationC}>
           <Marker position={this.context.destinationC} />
           <Marker position={this.context.startingC} />
         </Map>

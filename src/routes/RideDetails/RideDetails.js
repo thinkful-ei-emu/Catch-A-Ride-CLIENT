@@ -8,7 +8,6 @@ import TokenService from '../../services/token-service';
 import PassengerApiService from '../../services/RidesService/rides-passenger-service';
 import DriverApiService from '../../services/RidesService/rides-driver-service';
 import './RideDetails.css';
-import RidesVoteService from '../../services/RidesService/rides-vote-service';
 
 export default class RideDetails extends Component {
     static contextType = RideContext;
