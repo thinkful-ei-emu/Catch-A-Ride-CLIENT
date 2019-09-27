@@ -23,6 +23,8 @@ class LoginPage extends React.Component {
     const profile = googleUser.getBasicProfile();
    
     const id_token = googleUser.getAuthResponse().id_token;
+    const expires_at = googleUser.getAuthResponse().expires_at;
+    TokenService.saveExpiresAt(expires_at);
     const googleResponse = googleUser.getAuthResponse();
     TokenService.saveAuthToken(id_token);
     

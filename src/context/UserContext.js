@@ -120,7 +120,7 @@ export class UserProvider extends Component {
         loggedIn: this.state.loggedIn,
         setLoggedIn: this.setLoggedIn,
         // clearUser: this.clearUser,
-        setLoggedOut: this.setLoggedOut
+        setLoggedOut: this.setLoggedOut,
         // processLogin: this.processLogin,
         // processLogout: this.processLogout,
       };
