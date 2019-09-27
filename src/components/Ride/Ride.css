@@ -4,11 +4,15 @@
   top: 0px;
   margin-top: 0;
   padding: 5px 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   text-align: left;
   background: #CBEAEF;
   border: #CBEAEF 1px solid;
   border-radius: 5px 5px 0 0;
   color: black;
+  width: 100%;
+  left: 0;
 }
 
 .labels {

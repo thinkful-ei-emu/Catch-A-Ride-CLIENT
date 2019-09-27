@@ -65,26 +65,14 @@ export default class RideDetails extends Component {
       this.setState({ message: null});
     }
 
-    // renderButtons = () => {
-    // if userId matches the driver id is the comparison we want to use, need to figure out how to use usercontext here as well, will also fix navbar/rerendering issues
-    //   console.log('button');
-    //   // passenger buttons
-    //   // <button type="button" onClick={() => this.handleJoin(id)}>Join</button>
-    //   // <button type="button" onClick={() => this.handleCancel(id)}>Cancel Ride</button>
-
-    //   // driver button
-    //   // <button type="button" onClick={() => this.handleDelete(id)}>Delete Ride</button>
-     
-    // }
-
     render() {
       const { error, message } = this.state;
-      const { id, starting, destination, time, date, capacity, driver_name } = this.context.ride;
-      let dateStr = moment(date).format('MM/DD/YYYY,h:mmA');
-      let newStr = dateStr.split(',');
+      const { id, starting, destination, date_time, capacity, driver_name } = this.context.ride;
+      let dateStr = new Date(this.context.ride.date_time).toLocaleString();
+      let newStr = dateStr.split(', ');
       let dateFormat = newStr[0];
+      // let timeFormat = moment(newStr[1], 'HH:mm').format('h:mmA');
       let timeFormat = newStr[1];
-      console.log(message);
       //Div#map for Maps container, styles in gmaps.css in component folder
       if(!this.context.ride) {
         return <div>Loading</div>;

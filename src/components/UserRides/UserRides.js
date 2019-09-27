@@ -62,10 +62,10 @@ export default class UserRides extends React.Component {
       <>
         <h2>My Rides</h2>
         <h3 className='divide'>Driver</h3>
-        {driverError && <p className='error'>{driverError}</p>}
+        {driverError && <p className='errorMessage'>{driverError}</p>}
         {this.driverRidesList()}
         <h3 className='divide'>Passenger</h3>
-        {passError && <p className='error'>{passError}</p>}
+        {passError && <p className='errorMessage'>{passError}</p>}
         {this.passengerRidesList()}
       </>
     );
