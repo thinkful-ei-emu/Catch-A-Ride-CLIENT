@@ -44,12 +44,9 @@ export default class RideDetails extends Component {
     }
     
     handleCancel = (ride_id) => {
-      // if the user is part of this ride set message in state to say 'You have left this ride' 
       PassengerApiService.passengerCancelRide(ride_id)
-        // .then(() => this.setState({message: 'You have left this ride'}))
-        // .then(() => console.log('something happens'))
-        .catch(res => this.setState({error: res.error}));     
-        this.setState({message: 'You have already joined this ride'});  
+        .then(() => this.setState({message: 'You have left this ride'}))
+        .catch(res => this.setState({error: res.error}));
     }
 
     handleDelete = (ride_id) => {
@@ -82,12 +79,11 @@ export default class RideDetails extends Component {
         let timeArr = time.split(':');
         timeFormat = `${timeArr[0]}:${timeArr[2]}`; 
       }
+
       let remainingSeats = 0;
       let count = 0;
 
       let sRArray = Object.keys(this.context.ride);
-      // console.log(sRArray);
-      console.log(sRArray);
 
       for(let i = 6; i < sRArray.length; i++){
         count++;
@@ -98,6 +94,10 @@ export default class RideDetails extends Component {
         if(this.context.ride[sRArray[i]] === null){
           remainingSeats++;
         }
+      }
+
+      if(remainingSeats === 0) {
+        remainingSeats = 'This ride is full';
       }
 
       //Div#map for Maps container, styles in gmaps.css in component folder

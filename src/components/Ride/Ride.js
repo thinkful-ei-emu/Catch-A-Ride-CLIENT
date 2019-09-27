@@ -21,6 +21,10 @@ class Ride extends Component {
         remainingSeats++;
       }
     }
+    if(remainingSeats === 0) {
+      remainingSeats = 'This ride is full';
+    }
+
     return (
       <>
         <p className='ride-info'>
