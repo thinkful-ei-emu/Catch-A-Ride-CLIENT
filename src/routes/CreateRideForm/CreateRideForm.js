@@ -9,7 +9,8 @@ export default class CreateRideForm1 extends React.Component {
   // static contextType = RideContext;
 
   state = {
-    created: null
+    created: null,
+    today: ''
   }
 
   grabValues = () => {
@@ -40,14 +41,13 @@ export default class CreateRideForm1 extends React.Component {
 
   }
   componentDidMount(){
-    let today = new Date().toISOString().substr(0, 10);
-    document.querySelector("#today").value = today;
+    this.setState({today: new Date().toISOString().substr(0, 10)});
   }
 
   render() {
     const {ride_id} = this.state;
     if (this.state.created===true){
-      return <Redirect to='/user-rides'/>
+      return <Redirect to='/user-rides'/>;
     }
     return (
       <>
@@ -64,7 +64,7 @@ export default class CreateRideForm1 extends React.Component {
           </div>
           <div>
             <label className='rideLabel createDate' htmlFor='today' required>Date</label>
-            <input type="date" id='today'></input>
+            <input type="date" id='today' defaultValue={this.state.today}></input>
           </div>
           <div>
             <label className='rideLabel createTime' htmlFor='timeinput' required>Time</label>
