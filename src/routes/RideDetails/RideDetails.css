@@ -21,15 +21,19 @@ div {
 }
 
 .errorBox {
-  border: 1px solid red;
+  color: #FC5C66;
+  border: 1px solid #FC5C66;
+  /* border: 1px solid red; */
   border-radius: 5px;
-  color: red;
+  /* color: red; */
 }
 
 .errorButton {
-  color: red;
+  color: #FC5C66;
+  border: 1px solid #FC5C66;
+  /* color: red; */
   background-color: #F2F9FB;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   border-radius: 5px;
 }
 

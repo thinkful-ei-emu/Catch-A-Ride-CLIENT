@@ -22,6 +22,6 @@ it('renders without crashing', () => {
     p6: null,
     p7: null
   };
-  ReactDOM.render(<MemoryRouter><Ride ride = {ride} /></MemoryRouter>, div);
+  ReactDOM.render(<MemoryRouter><Ride ride={ride} /></MemoryRouter>, div);
   ReactDOM.unmountComponentAtNode(div);
 });

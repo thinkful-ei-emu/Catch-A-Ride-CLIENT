@@ -32,12 +32,12 @@ class Ride extends Component {
         </p>
         
         <span className='labels'>
-          <h3 className='locations start'>Meetup Location</h3>
-          <h3 className='locations destination'>Destination</h3>
+          <h3 className='locations'>Meetup<br />Location</h3>
+          <h3 className='locations'>Destination</h3>
         </span>
         <span className='locations'>
-          <p>{this.props.ride.starting}</p>
-          <p>{this.props.ride.destination}</p>
+          <p className='location'>{this.props.ride.starting}</p>
+          <p className='destination'>{this.props.ride.destination}</p>
         </span>
         <p className='driver'>Driver Name: {this.props.ride.driver_name}</p>
         <p>Capacity: {this.props.ride.capacity}</p>

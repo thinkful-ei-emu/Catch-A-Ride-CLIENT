@@ -15,16 +15,20 @@
   padding: 5px 7px;
   width: 90%;
   margin: 0 auto;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   border-radius: 5px;
-  color: red;
+  /* color: red; */
+  color: #FC5C66;
+  border: 1px solid #FC5C66;
   margin-bottom: 10px;
 }
 
 .errButton {
-  color: red;
-  background-color: white;
-  border: 1px solid red;
+  color: #FC5C66;
+  border: 1px solid #FC5C66;
+  /* color: red; */
+  /* background-color: white; */
+  /* border: 1px solid red; */
   border-radius: 5px;
   margin-left: 10px;
   vertical-align: middle;
