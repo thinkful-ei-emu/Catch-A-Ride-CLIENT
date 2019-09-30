@@ -55,27 +55,27 @@ export default class CreateRideForm1 extends React.Component {
         {this.state.created === true ? <div className='rideMessage'>Ride Created! <Link className='ride-link' to={`/rides/${ride_id}`}>Go to Ride</Link></div> : ''}
         <form className='newRideForm' onSubmit={this.SubmitForm}>
           <div>
-            <label className='rideLabel createStart' htmlFor='starting'>Starting Point</label>
+            <label className='rideLabel createStart' htmlFor='starting'>Starting Point</label><br/>
             <input placeholder="Enter Location You Leave From" id='starting' required></input>
           </div>
           <div>
-            <label className='rideLabel createDest' htmlFor='destination'>Destination</label>
+            <label className='rideLabel createDest' htmlFor='destination'>Destination</label><br/>
             <input placeholder="Enter Destination " id='destination' required></input>
           </div>
           <div>
-            <label className='rideLabel createDate' htmlFor='today' required>Date</label>
+            <label className='rideLabel createDate' htmlFor='today' required>Date</label><br/>
             <input type="date" id='today'></input>
           </div>
           <div>
-            <label className='rideLabel createTime' htmlFor='timeinput' required>Time</label>
+            <label className='rideLabel createTime' htmlFor='timeinput' required>Time</label><br/>
             <input type="time" id='timeinput' defaultValue='12:00'></input>
           </div>
           <div>
-            <label className='rideLabel createDesc' htmlFor='description'> Description</label>
+            <label className='rideLabel createDesc' htmlFor='description'> Description</label><br/>
             <input placeholder="Enter Details About vehicle and Individual needs for ride" id='description' required></input>
           </div>
           <div>
-            <label className='rideLabel createSeat' htmlFor='capacity'># of Seats</label>
+            <label className='rideLabel createSeat' htmlFor='capacity'># of Seats</label><br/>
             <select className='rideSpace' id='capacity'>
               <option value='1'>1</option>
               <option value='2'>2</option>
@@ -85,7 +85,7 @@ export default class CreateRideForm1 extends React.Component {
               <option value="6">6</option>
               <option value="7">7</option>
             </select>
-          </div>
+          </div><br/>
           <button className='createRide' type='submit'>Share A Ride!</button>
         </form>
       </>
