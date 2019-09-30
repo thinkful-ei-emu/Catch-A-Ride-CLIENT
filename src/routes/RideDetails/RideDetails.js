@@ -14,7 +14,8 @@ export default class RideDetails extends Component {
   
     state = {
       error: null,
-      message: null
+      message: null,
+      isEditing: false
     };
 
     componentDidMount() {
@@ -66,6 +67,23 @@ export default class RideDetails extends Component {
     
       // .then(()=>{this.props.history.push('/rides');
         
+    }
+
+    createEditForm = () => {
+      this.setState({isEditing: true});
+    }
+
+    closeEditForm = () => {
+      this.setState({isEditing: false});
+    }
+
+    handleEditForm = () => {
+      let ride_id = this.context.ride.id;
+      let newDescription = document.getElementById('newDescription').value;
+      DriverApiService.editDescription(ride_id, newDescription)
+        .then(res => {
+          this.context.setRide(res);
+        });
     }
 
     render() {
@@ -129,10 +147,20 @@ export default class RideDetails extends Component {
                   <h4>Ride Description:</h4>
                   <p>{this.context.ride.description}</p>
                   {this.context.ride.driver_id === user_id 
-                    ? <button type="button" onClick={() => this.handleDelete(id)}>Delete Ride</button> 
+                    ? <><button type="button" onClick={() => this.handleDelete(id)}>Delete Ride</button> 
+                        <button type="button" onClick={() => this.createEditForm()}>Edit Description</button>
+                      </>
                     : <><button type="button" onClick={() => this.handleJoin(id)}>Join</button>
                       <button type="button" onClick={() => this.handleCancel(id)}>Cancel Ride</button>
                     </>}
+                  {this.state.isEditing 
+                    ? <><form className='editForm'>
+                      <label htmlFor='editForm'></label>
+                      <input type='text' id='newDescription' placeholder='enter new description'></input></form>
+                      <button type="submit" onClick={() => this.handleEditForm()}>Enter</button>
+                      <button type="button" onClick={() => this.closeEditForm()}>Close</button></>
+                    : <p></p>
+                  }
                   
                 </div>
               </>

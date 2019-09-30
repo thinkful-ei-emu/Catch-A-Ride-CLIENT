@@ -69,6 +69,19 @@ const RidesApiService = {
       .then(res =>
         !res.ok ? res.json().then(e => Promise.reject(e)) : res.json());
       
+  },
+
+  editDescription(ride_id, updatedDescription){
+    return fetch(`${config.API_ENDPOINT}/rides/${ride_id}`, {
+      method: 'PATCH',
+      headers: {
+        'content-type': 'application/json',
+        Authorization: `bearer ${TokenService.getAuthToken()}`
+      },
+      body: JSON.stringify({ updatedDescription })
+    })
+      .then(res =>
+        !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()); 
   }
 };
 
