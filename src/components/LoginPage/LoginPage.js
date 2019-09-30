@@ -1,14 +1,13 @@
 import React from 'react';
 import { GoogleLogin } from 'react-google-login';
 import TokenService from '../../services/token-service';
-import {Redirect} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import UserContext from '../../context/UserContext';
-
 import config from '../../config';
 
 class LoginPage extends React.Component {
-  static contextType=UserContext
-  
+  static contextType = UserContext
+
   // constructor(props) {
   //   super(props);
 
@@ -17,31 +16,23 @@ class LoginPage extends React.Component {
   //   };
   // }
 
-  
+
 
   onSignIn = async googleUser => {
     const profile = googleUser.getBasicProfile();
-   
+
     const id_token = googleUser.getAuthResponse().id_token;
     const expires_at = googleUser.getAuthResponse().expires_at;
     TokenService.saveExpiresAt(expires_at);
-    const googleResponse = googleUser.getAuthResponse();
+    // const googleResponse = googleUser.getAuthResponse();
     TokenService.saveAuthToken(id_token);
-    
+
     TokenService.getAuthToken();
     this.context.setLoggedIn({
-      user_id:profile.getId(),
-      name:profile.getName(),
-      email:profile.getEmail()
+      user_id: profile.getId(),
+      name: profile.getName(),
+      email: profile.getEmail()
     });
-
-    // this.setState({
-    //   id_token
-    // });
-
-    
-
-    // console.log(id_token);
 
     // console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
     // console.log('Name: ' + profile.getName());
@@ -49,6 +40,7 @@ class LoginPage extends React.Component {
     // console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
 
     try {
+      // eslint-disable-next-line no-unused-vars
       let user = await fetch(config.API_ENDPOINT + '/auth/glogin', {
         method: 'POST',
         headers: {
@@ -65,17 +57,13 @@ class LoginPage extends React.Component {
       console.error(e.message);
     }
   };
+
   googleResponse = response => {
     console.log(response);
   };
 
   logout = () => {
     TokenService.clearAuthToken();
-    // this.setState({
-    //   id_token: null
-    // });
-
-    // console.log('Signed Out.');
   };
 
   // async sendRequest() {
@@ -99,7 +87,7 @@ class LoginPage extends React.Component {
       <>
         <h2>Log In</h2>
         <br></br>
-        
+
         {!this.context.loggedIn ? (
           <GoogleLogin
             clientId={config.CLIENT_ID}
@@ -109,8 +97,8 @@ class LoginPage extends React.Component {
             cookiePolicy={'single_host_origin'}
           ></GoogleLogin>
         ) : (
-          <Redirect to='/rides' />
-        )}
+            <Redirect to='/rides' />
+          )}
       </>
     );
   }

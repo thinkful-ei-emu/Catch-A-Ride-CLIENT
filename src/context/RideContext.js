@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PassengerApiService from '../services/RidesService/rides-passenger-service';
 
 const RideContext = React.createContext({
   rides: [],
@@ -45,9 +44,9 @@ export class RideProvider extends Component {
     this.setState({ rides });
   }
 
-  deleteRide=(rideid)=>{
-    const newRides=this.state.rides.filter(ride=>ride.id!==rideid);
-    this.setState({rides:newRides});
+  deleteRide = (rideid) => {
+    const newRides = this.state.rides.filter(ride => ride.id !== rideid);
+    this.setState({ rides: newRides });
   }
 
   setRide = (ride) => {
@@ -59,10 +58,7 @@ export class RideProvider extends Component {
   }
 
   setStarting = (starting) => {
-    // console.log(starting.length);
-    // console.log(typeof starting);
     this.setState({ starting });
-    // console.log(this.state.starting);
   }
 
   setError = error => {
@@ -79,7 +75,7 @@ export class RideProvider extends Component {
   }
 
   clearPassengerRides = () => {
-    this.setState({passengerRides: []});
+    this.setState({ passengerRides: [] });
   }
 
   setDriverRides = (driverRides) => {
@@ -93,9 +89,9 @@ export class RideProvider extends Component {
   setDestinationC = (lat, lng) => {
     this.setState({ destinationC: { lat, lng } })
   }
-  
+
   clearDriverRides = () => {
-    this.setState({driverRides: []});
+    this.setState({ driverRides: [] });
   }
 
   render() {

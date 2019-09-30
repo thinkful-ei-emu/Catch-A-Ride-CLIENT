@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Switch, Route, Redirect } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 
 import LoginPage from '../LoginPage/LoginPage';
 import Rides from '../../routes/Rides/Rides';
@@ -13,13 +13,13 @@ import TokenService from '../../services/token-service';
 import config from '../../config';
 import UserContext from '../../context/UserContext'
 
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons';
+// import { library } from '@fortawesome/fontawesome-svg-core';
+// import { fas } from '@fortawesome/free-solid-svg-icons';
+// import { faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons';
 
 import './App.css';
 
-library.add(fas, faMapMarkedAlt);
+// library.add(fas, faMapMarkedAlt);
 
 class App extends Component {
 
@@ -31,7 +31,7 @@ class App extends Component {
 
 
   render() {
-    if(this.state.time > Number(TokenService.getExpiresAt())){
+    if (this.state.time > Number(TokenService.getExpiresAt())) {
       TokenService.removeItems([config.TOKEN_KEY, 'user', 'expires_at']);
     }
 

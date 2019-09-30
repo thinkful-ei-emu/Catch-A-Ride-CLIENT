@@ -10,7 +10,7 @@ const UserContext = React.createContext({
   clearError: () => { },
   setUser: () => { },
   loggedIn: false,
-  setLoggedIn: () => {},
+  setLoggedIn: () => { },
   // processLogin: () => { },
   // processLogout: () => { },
 });
@@ -20,10 +20,10 @@ export default UserContext;
 export class UserProvider extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
-      user: TokenService.getUser(), 
-      error: null, 
-      loggedIn: TokenService.hasAuthToken() 
+    this.state = {
+      user: TokenService.getUser(),
+      error: null,
+      loggedIn: TokenService.hasAuthToken()
     };
   }
 
@@ -36,98 +36,94 @@ export class UserProvider extends Component {
   //   }
   // }
 
-  // componentWillUnmount() {
-  //   IdleService.unRegisterIdleResets();
-  //   TokenService.clearCallbackBeforeExpiry();
+
+  setError = error => {
+    console.error(error);
+    this.setState({ error });
+  }
+
+  clearError = () => {
+    this.setState({ error: null });
+  }
+
+  // setUser = user => {
+  //   this.setState({ user });
+  //   // console.log(user);
   // }
 
-    setError = error => {
-      console.error(error);
-      this.setState({ error });
-    }
+  // clearUser = () => {
+  //   this.setState({user: {}});
+  // }
 
-    clearError = () => {
-      this.setState({ error: null });
-    }
+  setLoggedIn = user => {
+    TokenService.saveUser(user);
+    this.setState({ loggedIn: TokenService.hasAuthToken(), user });
+  }
 
-    // setUser = user => {
-    //   this.setState({ user });
-    //   // console.log(user);
-    // }
+  setLoggedOut = () => {
+    TokenService.clearUser();
+    this.setState({ loggedIn: TokenService.hasAuthToken(), user: {} });
+  }
 
-    // clearUser = () => {
-    //   this.setState({user: {}});
-    // }
+  // processLogin = authToken => {
+  //   TokenService.saveAuthToken(authToken);
+  //   const jwtPayload = TokenService.parseAuthToken();
+  //   this.setUser({
+  //     id: jwtPayload.user_id,
+  //     name: jwtPayload.name,
+  //     username: jwtPayload.sub,
+  //   });
+  //   IdleService.regiserIdleTimerResets();
+  //   TokenService.queueCallbackBeforeExpiry(() => {
+  //     this.fetchRefreshToken();
+  //   });
+  // }
 
-    setLoggedIn = user => {
-      TokenService.saveUser(user);
-      this.setState({loggedIn: TokenService.hasAuthToken(), user});
-    }
+  // processLogout = () => {
+  //   TokenService.clearAuthToken();
+  //   TokenService.clearCallbackBeforeExpiry();
+  //   IdleService.unRegisterIdleResets();
+  //   this.setUser({});
+  // }
 
-    setLoggedOut = () => {
-      TokenService.clearUser();
-      this.setState({loggedIn: TokenService.hasAuthToken(), user: {}});
-    }
+  // logoutBecauseIdle = () => {
+  //   TokenService.clearAuthToken();
+  //   TokenService.clearCallbackBeforeExpiry();
+  //   IdleService.unRegisterIdleResets();
+  //   this.setUser({ idle: true });
+  // }
 
-    // processLogin = authToken => {
-    //   TokenService.saveAuthToken(authToken);
-    //   const jwtPayload = TokenService.parseAuthToken();
-    //   this.setUser({
-    //     id: jwtPayload.user_id,
-    //     name: jwtPayload.name,
-    //     username: jwtPayload.sub,
-    //   });
-    //   IdleService.regiserIdleTimerResets();
-    //   TokenService.queueCallbackBeforeExpiry(() => {
-    //     this.fetchRefreshToken();
-    //   });
-    // }
+  // fetchRefreshToken = () => {
+  //   AuthApiService.refreshToken()
+  //     .then(res => {
+  //       TokenService.saveAuthToken(res.authToken);
+  //       TokenService.queueCallbackBeforeExpiry(() => {
+  //         this.fetchRefreshToken();
+  //       });
+  //     })
+  //     .catch(err => {
+  //       this.setError(err);
+  //     });
+  // }
 
-    // processLogout = () => {
-    //   TokenService.clearAuthToken();
-    //   TokenService.clearCallbackBeforeExpiry();
-    //   IdleService.unRegisterIdleResets();
-    //   this.setUser({});
-    // }
-
-    // logoutBecauseIdle = () => {
-    //   TokenService.clearAuthToken();
-    //   TokenService.clearCallbackBeforeExpiry();
-    //   IdleService.unRegisterIdleResets();
-    //   this.setUser({ idle: true });
-    // }
-
-    // fetchRefreshToken = () => {
-    //   AuthApiService.refreshToken()
-    //     .then(res => {
-    //       TokenService.saveAuthToken(res.authToken);
-    //       TokenService.queueCallbackBeforeExpiry(() => {
-    //         this.fetchRefreshToken();
-    //       });
-    //     })
-    //     .catch(err => {
-    //       this.setError(err);
-    //     });
-    // }
-
-    render() {
-      const value = {
-        user: this.state.user,
-        error: this.state.error,
-        setError: this.setError,
-        clearError: this.clearError,
-        // setUser: this.setUser,
-        loggedIn: this.state.loggedIn,
-        setLoggedIn: this.setLoggedIn,
-        // clearUser: this.clearUser,
-        setLoggedOut: this.setLoggedOut,
-        // processLogin: this.processLogin,
-        // processLogout: this.processLogout,
-      };
-      return (
-        <UserContext.Provider value={value}>
-          {this.props.children}
-        </UserContext.Provider>
-      );
-    }
+  render() {
+    const value = {
+      user: this.state.user,
+      error: this.state.error,
+      setError: this.setError,
+      clearError: this.clearError,
+      // setUser: this.setUser,
+      loggedIn: this.state.loggedIn,
+      setLoggedIn: this.setLoggedIn,
+      // clearUser: this.clearUser,
+      setLoggedOut: this.setLoggedOut,
+      // processLogin: this.processLogin,
+      // processLogout: this.processLogout,
+    };
+    return (
+      <UserContext.Provider value={value}>
+        {this.props.children}
+      </UserContext.Provider>
+    );
+  }
 }

@@ -1,13 +1,16 @@
-import React, { Component, useContext } from 'react';
+import React, { Component } from 'react';
 import config from '../../config';
 import RideContext from '../../context/RideContext';
 import UserContext from '../../context/UserContext';
 import Gmaps from '../../components/Maps/Gmaps';
-import moment from 'moment';
 import TokenService from '../../services/token-service';
 import PassengerApiService from '../../services/RidesService/rides-passenger-service';
 import DriverApiService from '../../services/RidesService/rides-driver-service';
 import './RideDetails.css';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMapMarkedAlt, faTrashAlt, faUserSlash } from '@fortawesome/free-solid-svg-icons';
+
 
 export default class RideDetails extends Component {
   static contextType = RideContext;
@@ -68,15 +71,13 @@ export default class RideDetails extends Component {
 
   handleMessageClose = () => {
     this.setState({ message: null });
-
     // .then(()=>{this.props.history.push('/rides');
-
   }
 
   render() {
     const { error, message } = this.state;
     const { id, starting, destination, date_time, capacity, driver_name } = this.context.ride;
-    let dateStr = new Date(this.context.ride.date_time).toLocaleString();
+    let dateStr = new Date(date_time).toLocaleString();
     let newStr = dateStr.split(', ');
     let dateFormat = newStr[0];
     let time = newStr[1];
@@ -108,7 +109,6 @@ export default class RideDetails extends Component {
       remainingSeats = 'This ride is full';
     }
 
-    //Div#map for Maps container, styles in gmaps.css in component folder
     if (this.state.error) {
       return <div>{error && <div className='errorBox'>{error}<button className='errorButton' aria-label='close' onClick={() => this.handleErrorClose()}>X</button></div>}</div>;
     }
@@ -136,12 +136,13 @@ export default class RideDetails extends Component {
                 <p>Remaining Seats: {remainingSeats}</p>
                 <h4>Ride Description:</h4>
                 <p>{this.context.ride.description}</p>
-                {this.context.ride.driver_id === user_id
-                  ? <button type="button" onClick={() => this.handleDelete(id)}>Delete Ride</button>
-                  : <><button type="button" onClick={() => this.handleJoin(id)}>Join</button>
-                    <button type="button" onClick={() => this.handleCancel(id)}>Cancel Ride</button>
-                  </>}
-
+                <div id="ride-btn">
+                  {this.context.ride.driver_id === user_id
+                    ? <button type="button" onClick={() => this.handleDelete(id)}>Delete Ride <FontAwesomeIcon icon={faTrashAlt} /></button>
+                    : <><button type="button" onClick={() => this.handleJoin(id)}>Join <FontAwesomeIcon icon={faMapMarkedAlt} /></button>
+                      <button type="button" onClick={() => this.handleCancel(id)}>Cancel Ride <FontAwesomeIcon icon={faUserSlash} /></button>
+                    </>}
+                </div>
               </div>
             </>
           );
