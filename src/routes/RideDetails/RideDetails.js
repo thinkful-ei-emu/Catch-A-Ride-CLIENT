@@ -8,6 +8,7 @@ import TokenService from '../../services/token-service';
 import PassengerApiService from '../../services/RidesService/rides-passenger-service';
 import DriverApiService from '../../services/RidesService/rides-driver-service';
 import './RideDetails.css';
+import EditModal from '../../components/EditModal/EditModal';
 
 export default class RideDetails extends Component {
     static contextType = RideContext;
@@ -91,8 +92,10 @@ export default class RideDetails extends Component {
       DriverApiService.editRideDetails(ride_id, updatedDetails)
         .then(res => {
           this.context.setRide(res);
+          console.log(this.context.ride);
           this.setState({isEditing: false});
-        });
+        })
+        .catch(res => this.setState({error: res.error}));
     }
 
     render() {
@@ -107,7 +110,8 @@ export default class RideDetails extends Component {
         timeFormat = 'Invalid Date';
       } else {
         let timeArr = time.split(':');
-        timeFormat = `${timeArr[0]}:${timeArr[2]}`; 
+        let amPM = timeArr[2].split(' ');
+        timeFormat = `${timeArr[0]}:${timeArr[1]} ${amPM[1]}`; 
       }
 
       let remainingSeats = 0;
@@ -162,24 +166,7 @@ export default class RideDetails extends Component {
                     : <><button type="button" onClick={() => this.handleJoin(id)}>Join</button>
                       <button type="button" onClick={() => this.handleCancel(id)}>Cancel Ride</button>
                     </>}
-                  {this.state.isEditing 
-                    ? <><form className='editForm'>
-                      <p>Edit Whichever Details As Needed</p>
-                      <label htmlFor='newStarting'>Starting</label>
-                      <input type='text' id='newStarting' defaultValue={starting}></input>
-                      <label htmlFor='newDestination'>Destination</label>
-                      <input type='text' id='newDestination' defaultValue={destination}></input>
-                      <label htmlFor='newDescription'>Description</label>
-                      <input type='text' id='newDescription' defaultValue={description}></input>
-                      <label htmlFor='newDate'>Date</label>
-                      <input type='text' id='newDate' defaultValue={dateFormat}></input>
-                      <label htmlFor='newTime'>Time</label>
-                      <input type='text' id='newTime' defaultValue={timeFormat}></input>
-                    </form>
-                      <button type="submit" onClick={() => this.handleEditForm()}>Enter</button>
-                      <button type="button" onClick={() => this.closeEditForm()}>Close</button></>
-                    : <p></p>
-                  }
+                  {this.state.isEditing && <EditModal handleEditForm = {this.handleEditForm} closeEditForm = {this.closeEditForm} timeFormat={timeFormat} dateFormat={dateFormat} />}
                   
                 </div>
               </>
