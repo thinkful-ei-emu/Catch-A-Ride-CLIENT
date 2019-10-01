@@ -2,7 +2,7 @@
 
 describe('Driver can add a ride', function () {
   beforeEach(() => {
-    cy.login().visit('/')
+    // cy.login().visit('/')
   });
 
   context('Before submit', () => {
