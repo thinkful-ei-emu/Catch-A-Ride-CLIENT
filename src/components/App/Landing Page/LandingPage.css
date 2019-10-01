@@ -27,5 +27,6 @@
   color:white;
   height:30px;
   transition:1.3s;
+  cursor: pointer;
   
 }
