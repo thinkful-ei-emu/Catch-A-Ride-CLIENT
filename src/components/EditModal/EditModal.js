@@ -1,5 +1,6 @@
 import React from 'react';
 import RideContext from '../../context/RideContext';
+import './EditModal.css';
 
 export default class Modal extends React.Component{
 
@@ -11,7 +12,7 @@ export default class Modal extends React.Component{
       const {timeFormat, dateFormat, handleEditForm, closeEditForm} = this.props;
     
       return (
-        <div>
+        <div className='modal'>
           <form className='editForm'>
             <p>Edit Whichever Details As Needed</p>
             <label htmlFor='newStarting'>Starting</label>
@@ -25,7 +26,7 @@ export default class Modal extends React.Component{
             <label htmlFor='newTime'>Time</label>
             <input type='text' id='newTime' defaultValue={timeFormat}></input>
           </form>
-          <button type="submit" onClick={() => handleEditForm()}>Enter</button>
+          <button type="submit" onClick={() => handleEditForm()}>Save</button>
           <button type="button" onClick={() => closeEditForm()}>Close</button>     
         </div>
       );
