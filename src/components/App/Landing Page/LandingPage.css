@@ -6,7 +6,7 @@
   
 }
 .intro{
-  width:40%;
+  width:90%;
   font-size:24px;
   margin:0 auto;
 }
@@ -32,5 +32,22 @@
 }
 
 .landing h2{
- padding-top:200px;
+ padding-top:100px;
+}
+
+@media only screen and (min-width:700px){
+
+  .landing h2{
+    padding-top:320px;
+  }
+  .intro{
+    width: 75%;
+  }
+
+}
+
+@media only screen and (min-width:1200px){
+  .intro{
+    width:40%
+  }
 }
