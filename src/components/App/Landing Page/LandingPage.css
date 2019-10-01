@@ -6,8 +6,8 @@
   
 }
 .intro{
-  width:60%;
-  font-size:20px;
+  width:40%;
+  font-size:24px;
   margin:0 auto;
 }
 
@@ -29,4 +29,8 @@
   transition:1.3s;
   cursor: pointer;
   
+}
+
+.landing h2{
+ padding-top:200px;
 }
