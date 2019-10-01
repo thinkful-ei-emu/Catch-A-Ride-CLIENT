@@ -11,16 +11,11 @@ import CreateRideForm from '../../routes/CreateRideForm/CreateRideForm';
 import RideDetails from '../../routes/RideDetails/RideDetails';
 import TokenService from '../../services/token-service';
 import config from '../../config';
-import UserContext from '../../context/UserContext'
-
-// import { library } from '@fortawesome/fontawesome-svg-core';
-// import { fas } from '@fortawesome/free-solid-svg-icons';
-// import { faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons';
+import UserContext from '../../context/UserContext';
+import Footer from '../Footer/Footer';
 
 import './App.css';
-import LandingPage from './Landing Page/LandingPage';
 
-// library.add(fas, faMapMarkedAlt);
 
 class App extends Component {
 
@@ -42,14 +37,13 @@ class App extends Component {
         <main>
           <Switch>
             <PublicRoute exact path="/" component={LoginPage} />
-            <PublicRoute path='/Landing' component={LandingPage}/>
             <PrivateRoute exact path="/rides" component={Rides} />
-            <PrivateRoute path="/createride" component={CreateRideForm} />
+            <PrivateRoute path="/create-ride" component={CreateRideForm} />
             <PrivateRoute path='/user-rides' component={UserRides} />
             <PrivateRoute path='/rides/:ride_id' component={RideDetails} />
           </Switch>
         </main>
-        {/* <footer></footer> */}
+        <Footer />
       </div>
     );
   }

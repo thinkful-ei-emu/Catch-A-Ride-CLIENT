@@ -11,43 +11,50 @@
   margin:0 auto;
 }
 
-.landing button{
-  border-radius:3px;
-  border:1px solid black;
-  background-color:white;
-  color: rgba(47, 57, 116, 0.73);
-  height:22px;
-  transition:1.3s;
-
-
-}
-
-.landing button:hover{
-  background-color:rgba(47, 57, 116, 0.73);
-  color:white;
-  height:30px;
-  transition:1.3s;
-  cursor: pointer;
-  
-}
-
 .landing h2{
- padding-top:100px;
+ padding-top: 40px;
+}
+
+.title {
+  margin-top: 0;
+}
+
+.psuedo-header {
+  height: 60px;
+}
+
+.psuedo-footer {
+  height: 30px;
 }
 
 @media only screen and (min-width:700px){
+  .psuedo-header {
+    height: 150px;
+  }
 
   .landing h2{
-    padding-top:320px;
+    padding-top:50px;
   }
   .intro{
     width: 75%;
   }
 
+  .psuedo-footer {
+    height: 60px;
+  }
+
 }
 
 @media only screen and (min-width:1200px){
+  .psuedo-header {
+    height: 150px;
+  }
+
   .intro{
     width:40%
+  }
+
+  .psuedo-footer {
+    height: 100px;
   }
 }

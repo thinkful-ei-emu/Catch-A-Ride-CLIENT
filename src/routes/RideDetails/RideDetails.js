@@ -142,43 +142,44 @@ export default class RideDetails extends Component {
       if (this.state.error) {
         return <div>{error && <div className='errorBox'>{error}<button className='errorButton' aria-label='close' onClick={() => this.handleErrorClose()}>X</button></div>}</div>;
       }
-      //Div#map for Maps container, styles in gmaps.css in component folder
-      else if(!this.context.ride) {
+      else if (!this.context.ride) {
         return <div>Loading</div>;
       } else {
-        return ( 
+        return (
           <UserContext.Consumer>{(userContext) => {
-            const {user_id} = userContext.user;
+            const { user_id } = userContext.user;
             return (
-              <>
-                <h2>Ride Details</h2>
-                <div className="google-map">
-                  <Gmaps />
-                </div>
-                {message && <div className='messageBox'>{message}<button className='messageButton' aria-label='close' onClick={() => this.handleMessageClose()}>X</button></div>}
-                {error && <div className='errorBox'>{error}<button className='errorButton' aria-label='close' onClick={() => this.handleErrorClose()}>X</button></div>}
-                <div className='ride-details'>
-                  <p>Driver: {driver_name}</p>
-                  <p>Meetup Address: {starting}</p>
-                  <p>Destination: {destination}</p>
-                  <p>Meetup Date: {dateFormat}</p>
-                  <p>Meetup Time: {timeFormat}</p>
-                  <p>Capacity: {capacity}</p>
-                  <p>Remaining Seats: {remainingSeats}</p>
-                  <h4>Ride Description:</h4>
-                  <p>{description}</p>
-                  <div id='ride-btn'>
-                    {this.context.ride.driver_id === user_id 
-                      ? <><button type="button" onClick={() => this.handleDelete(id)}>Delete Ride</button> 
-                        <button type="button" onClick={() => this.createEditForm()}>Edit Details</button>
-                      </>
-                      : <><button type="button" onClick={() => this.handleJoin(id)}>Join</button>
-                      <button type="button" onClick={() => this.handleCancel(id)}>Cancel Ride</button>
+            <>
+              <h2>Ride Details</h2>
+              <div className="google-map">
+                <Gmaps />
+              </div>
+              {message && <div className='messageBox'>{message}<button className='messageButton' aria-label='close' onClick={() => this.handleMessageClose()}>X</button></div>}
+              {error && <div className='errorBox'>{error}<button className='errorButton' aria-label='close' onClick={() => this.handleErrorClose()}>X</button></div>}
+              <div className='ride-details'>
+                <p>Driver: {driver_name}</p>
+                <p>Meetup Address: {starting}</p>
+                <p>Destination: {destination}</p>
+                <p>Meetup Date: {dateFormat}</p>
+                <p>Meetup Time: {timeFormat}</p>
+                <p>Capacity: {capacity}</p>
+                <p>Remaining Seats: {remainingSeats}</p>
+                <h4>Ride Description:</h4>
+                <p>{this.context.ride.description}</p>
+                <div id="ride-btn">
+                  {this.context.ride.driver_id === user_id
+                    ? <> 
+                      <button type="button" onClick={() => this.handleDelete(id)}>Delete Ride <FontAwesomeIcon icon={faTrashAlt} /></button>
+                      <button type="button" onClick={() => this.createEditForm()}>Edit Details</button>
+                    </>
+                    : <>
+                      <button type="button" onClick={() => this.handleJoin(id)}>Join <FontAwesomeIcon icon={faMapMarkedAlt} /></button>
+                      <button type="button" onClick={() => this.handleCancel(id)}>Cancel Ride <FontAwesomeIcon icon={faUserSlash} /></button>
                     </>}
-                    {this.state.isEditing && <EditModal handleEditForm = {this.handleEditForm} closeEditForm = {this.closeEditForm} timeFormat={timeFormat} dateFormat={dateFormat} />}
+                  {this.state.isEditing && <EditModal handleEditForm = {this.handleEditForm} closeEditForm = {this.closeEditForm} timeFormat={timeFormat} dateFormat={dateFormat} />}
                   
-                  </div>
                 </div>
+              </div>
             </>
             );
           }}
