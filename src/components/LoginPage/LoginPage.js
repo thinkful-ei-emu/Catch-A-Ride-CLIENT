@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom';
 import UserContext from '../../context/UserContext';
 import config from '../../config';
 import './LoginPage.css';
+import Logo from'./landing-logo.png';
 
 class LoginPage extends React.Component {
   static contextType = UserContext
@@ -90,7 +91,7 @@ class LoginPage extends React.Component {
           <div className='psuedo-header'></div>
           <h1>
             {/* <img className='logo' src="https://img.icons8.com/wired/64/000000/fiat-500.png"></img> */}
-          Catch-A-Ride
+            <img src={Logo}/>
           </h1>
           <h2>Need A Ride?</h2>
           <section className="intro">
