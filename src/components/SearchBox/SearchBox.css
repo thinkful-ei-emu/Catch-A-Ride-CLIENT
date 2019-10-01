@@ -10,6 +10,30 @@
   line-height: 2em;
 }
 
+.search-form button{
+  border:1px solid black;
+  border-radius:3px;
+  background:  #b8e3ea;
+  color:black;
+  min-height:31px;
+  transition: 1.3s;
+  margin-top:5px;
+  
+
+}
+
+.search-form button:hover{
+ 
+    border:1px solid white;
+    background: #F2DE6A;
+    color:black;
+    min-height:35px;
+    cursor: pointer;
+    
+  
+
+}
+
 .error {
   font-size: 18px;
   padding: 5px 7px;

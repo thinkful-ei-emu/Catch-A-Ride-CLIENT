@@ -18,6 +18,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons';
 
 import './App.css';
+import LandingPage from './Landing Page/LandingPage';
 
 library.add(fas, faMapMarkedAlt);
 
@@ -41,13 +42,14 @@ class App extends Component {
         <main>
           <Switch>
             <PublicRoute exact path="/" component={LoginPage} />
+            <PublicRoute path='/Landing' component={LandingPage}/>
             <PrivateRoute exact path="/rides" component={Rides} />
             <PrivateRoute path="/createride" component={CreateRideForm} />
             <PrivateRoute path='/user-rides' component={UserRides} />
             <PrivateRoute path='/rides/:ride_id' component={RideDetails} />
           </Switch>
         </main>
-        <footer></footer>
+        {/* <footer></footer> */}
       </div>
     );
   }
