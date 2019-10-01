@@ -91,13 +91,14 @@ export default class RideDetails extends Component {
       DriverApiService.editRideDetails(ride_id, updatedDetails)
         .then(res => {
           this.context.setRide(res);
+          this.setState({isEditing: false});
         });
     }
 
     render() {
       const { error, message } = this.state;
-      const { id, starting, destination, date_time, capacity, driver_name } = this.context.ride;
-      let dateStr = new Date(this.context.ride.date_time).toLocaleString();
+      const { id, starting, destination, date_time, capacity, driver_name, description } = this.context.ride;
+      let dateStr = new Date(date_time).toLocaleString();
       let newStr = dateStr.split(', ');
       let dateFormat = newStr[0];
       let time = newStr[1];
@@ -153,7 +154,7 @@ export default class RideDetails extends Component {
                   <p>Capacity: {capacity}</p>
                   <p>Remaining Seats: {remainingSeats}</p>
                   <h4>Ride Description:</h4>
-                  <p>{this.context.ride.description}</p>
+                  <p>{description}</p>
                   {this.context.ride.driver_id === user_id 
                     ? <><button type="button" onClick={() => this.handleDelete(id)}>Delete Ride</button> 
                         <button type="button" onClick={() => this.createEditForm()}>Edit Details</button>
@@ -165,15 +166,15 @@ export default class RideDetails extends Component {
                     ? <><form className='editForm'>
                       <p>Edit Whichever Details As Needed</p>
                       <label htmlFor='newStarting'>Starting</label>
-                      <input type='text' id='newStarting' placeholder='enter new starting location'></input>
+                      <input type='text' id='newStarting' defaultValue={starting}></input>
                       <label htmlFor='newDestination'>Destination</label>
-                      <input type='text' id='newDestination' placeholder='enter new destination'></input>
+                      <input type='text' id='newDestination' defaultValue={destination}></input>
                       <label htmlFor='newDescription'>Description</label>
-                      <input type='text' id='newDescription' placeholder='enter new description'></input>
+                      <input type='text' id='newDescription' defaultValue={description}></input>
                       <label htmlFor='newDate'>Date</label>
-                      <input type='date' id='newDate' ></input>
+                      <input type='text' id='newDate' defaultValue={dateFormat}></input>
                       <label htmlFor='newTime'>Time</label>
-                      <input type='time' id='newTime'></input>
+                      <input type='text' id='newTime' defaultValue={timeFormat}></input>
                     </form>
                       <button type="submit" onClick={() => this.handleEditForm()}>Enter</button>
                       <button type="button" onClick={() => this.closeEditForm()}>Close</button></>
