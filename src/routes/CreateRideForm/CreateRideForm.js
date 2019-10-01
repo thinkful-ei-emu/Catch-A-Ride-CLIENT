@@ -47,12 +47,11 @@ export default class CreateRideForm1 extends React.Component {
   render() {
     const {ride_id} = this.state;
     if (this.state.created===true){
-      return <Redirect to='/user-rides'/>;
+      return <Redirect to={`/rides/${ride_id}`} />;
     }
     return (
       <>
         <h2>Create Ride</h2>
-        {this.state.created === true ? <div className='rideMessage'>Ride Created! <Link className='ride-link' to={`/rides/${ride_id}`}>Go to Ride</Link></div> : ''}
         <form className='newRideForm' onSubmit={this.SubmitForm}>
           <div>
             <label className='rideLabel createStart' htmlFor='starting'>Starting Point</label><br/>
@@ -85,7 +84,8 @@ export default class CreateRideForm1 extends React.Component {
               <option value="6">6</option>
               <option value="7">7</option>
             </select>
-          </div><br/>
+          </div>
+          {/* <br/> */}
           <button className='createRide' type='submit'>Share A Ride!</button>
         </form>
       </>

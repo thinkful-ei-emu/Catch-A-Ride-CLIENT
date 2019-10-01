@@ -9,6 +9,7 @@ h1 {
 }
 
 .navlink {
+  margin-left: 5px;
   color: #b8e3ea;
 }
 
@@ -17,15 +18,9 @@ h1 {
   transition: 1.3s;
 }
 
-/* .logo {
-  position: relative;
-  top: 3px;
-  margin-right: 10px;
-  height: 30px;
-} */
-
 @media only screen and (max-width: 400px) {
   .google-button {
+    /* margin-left: 10px; */
     margin-top: 10px;
   }
 }

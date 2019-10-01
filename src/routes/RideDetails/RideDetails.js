@@ -113,7 +113,7 @@ export default class RideDetails extends Component {
       return <div>{error && <div className='errorBox'>{error}<button className='errorButton' aria-label='close' onClick={() => this.handleErrorClose()}>X</button></div>}</div>;
     }
     else if (!this.context.ride) {
-      return <div>Loading</div>
+      return <div>Loading</div>;
     } else {
       return (
         <UserContext.Consumer>{(userContext) => {
@@ -139,7 +139,8 @@ export default class RideDetails extends Component {
                 <div id="ride-btn">
                   {this.context.ride.driver_id === user_id
                     ? <button type="button" onClick={() => this.handleDelete(id)}>Delete Ride <FontAwesomeIcon icon={faTrashAlt} /></button>
-                    : <><button type="button" onClick={() => this.handleJoin(id)}>Join <FontAwesomeIcon icon={faMapMarkedAlt} /></button>
+                    : <>
+                      <button type="button" onClick={() => this.handleJoin(id)}>Join <FontAwesomeIcon icon={faMapMarkedAlt} /></button>
                       <button type="button" onClick={() => this.handleCancel(id)}>Cancel Ride <FontAwesomeIcon icon={faUserSlash} /></button>
                     </>}
                 </div>
