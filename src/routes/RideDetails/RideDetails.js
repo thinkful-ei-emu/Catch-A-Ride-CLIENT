@@ -79,8 +79,16 @@ export default class RideDetails extends Component {
 
     handleEditForm = () => {
       let ride_id = this.context.ride.id;
-      let newDescription = document.getElementById('newDescription').value;
-      DriverApiService.editDescription(ride_id, newDescription)
+      let description = document.getElementById('newDescription').value;
+      let starting = document.getElementById('newStarting').value;
+      let destination = document.getElementById('newDestination').value;
+      let date = document.getElementById('newDate').value;
+      let time = document.getElementById('newTime').value;
+
+      console.log(date, time);
+
+      let updatedDetails = {starting, destination, description, date, time};
+      DriverApiService.editRideDetails(ride_id, updatedDetails)
         .then(res => {
           this.context.setRide(res);
         });
@@ -148,15 +156,25 @@ export default class RideDetails extends Component {
                   <p>{this.context.ride.description}</p>
                   {this.context.ride.driver_id === user_id 
                     ? <><button type="button" onClick={() => this.handleDelete(id)}>Delete Ride</button> 
-                        <button type="button" onClick={() => this.createEditForm()}>Edit Description</button>
+                        <button type="button" onClick={() => this.createEditForm()}>Edit Details</button>
                       </>
                     : <><button type="button" onClick={() => this.handleJoin(id)}>Join</button>
                       <button type="button" onClick={() => this.handleCancel(id)}>Cancel Ride</button>
                     </>}
                   {this.state.isEditing 
                     ? <><form className='editForm'>
-                      <label htmlFor='editForm'></label>
-                      <input type='text' id='newDescription' placeholder='enter new description'></input></form>
+                      <p>Edit Whichever Details As Needed</p>
+                      <label htmlFor='newStarting'>Starting</label>
+                      <input type='text' id='newStarting' placeholder='enter new starting location'></input>
+                      <label htmlFor='newDestination'>Destination</label>
+                      <input type='text' id='newDestination' placeholder='enter new destination'></input>
+                      <label htmlFor='newDescription'>Description</label>
+                      <input type='text' id='newDescription' placeholder='enter new description'></input>
+                      <label htmlFor='newDate'>Date</label>
+                      <input type='date' id='newDate' ></input>
+                      <label htmlFor='newTime'>Time</label>
+                      <input type='time' id='newTime'></input>
+                    </form>
                       <button type="submit" onClick={() => this.handleEditForm()}>Enter</button>
                       <button type="button" onClick={() => this.closeEditForm()}>Close</button></>
                     : <p></p>
