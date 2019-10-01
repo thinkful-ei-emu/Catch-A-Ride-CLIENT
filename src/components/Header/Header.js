@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Header.css';
-import {GoogleLogout} from 'react-google-login';
+import { GoogleLogout } from 'react-google-login';
 import TokenService from '../../services/token-service';
 import config from '../../config';
 import UserContext from '../../context/UserContext';
@@ -17,38 +17,34 @@ class Header extends Component {
 
   renderNavBar() {
     return (
-      <>
-      <h1>
-        {/* <img className='logo' src="https://img.icons8.com/wired/64/000000/fiat-500.png"></img> */}
-        {/* Catch-A-Ride */}
-        <img src={Logo}/>
-      </h1>
       <nav className='navbar'>
-        <Link className='navlink' to='/rides'>All Rides</Link>
-        {' '}
-        <Link className='navlink' to='/user-rides'>My Rides</Link>
-        {' '}
-        <Link className='navlink' to='/create-ride'>Create Ride</Link>
-        {' '}
-        <GoogleLogout
-          className='google-button'
-          clientId={config.CLIENT_ID}
-          buttonText="Sign Out"
-          onLogoutSuccess={this.logout}
-        />
+        <section className='header-item'>
+          <img className='navlogo' src={Logo} />
+        </section>
+        <section className='header-links'>
+          <Link className='navlink' to='/rides'>All Rides</Link>
+          <Link className='navlink' to='/user-rides'>My Rides</Link>
+          <Link className='navlink' to='/create-ride'>Create Ride</Link>
+        </section>
+        <section className='header-item'>
+          <GoogleLogout
+            className='google-button'
+            clientId={config.CLIENT_ID}
+            buttonText="Sign Out"
+            onLogoutSuccess={this.logout}
+          />
+        </section>
       </nav>
-      </>
     );
   }
 
   render() {
     return (
-        <>
-          
-          {this.context.loggedIn ? this.renderNavBar() : '' }
-        </>
+      <div className='frosted-glass'>
+        {this.context.loggedIn && this.renderNavBar()}
+      </div>
     );
-      
+
   }
 }
 
