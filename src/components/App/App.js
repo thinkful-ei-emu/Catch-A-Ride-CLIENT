@@ -49,7 +49,7 @@ class App extends Component {
             <PrivateRoute path='/rides/:ride_id' component={RideDetails} />
           </Switch>
         </main>
-        <footer></footer>
+        {/* <footer></footer> */}
       </div>
     );
   }
