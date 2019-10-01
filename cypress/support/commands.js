@@ -23,3 +23,13 @@
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('login', () => {
+  cy.visit('/login')
+    .window()
+    .then(win => {
+      win.localStorage.setItem(
+        Cypress.env('')
+      );
+    });
+});
