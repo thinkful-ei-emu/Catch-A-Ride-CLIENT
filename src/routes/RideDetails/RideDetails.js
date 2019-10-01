@@ -7,6 +7,7 @@ import TokenService from '../../services/token-service';
 import PassengerApiService from '../../services/RidesService/rides-passenger-service';
 import DriverApiService from '../../services/RidesService/rides-driver-service';
 import './RideDetails.css';
+import EditModal from '../../components/EditModal/EditModal';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkedAlt, faTrashAlt, faUserSlash } from '@fortawesome/free-solid-svg-icons';
@@ -17,7 +18,8 @@ export default class RideDetails extends Component {
 
   state = {
     error: null,
-    message: null
+    message: null,
+    isEditing: false
   };
 
   componentDidMount() {
@@ -73,82 +75,115 @@ export default class RideDetails extends Component {
     this.setState({ message: null });
     // .then(()=>{this.props.history.push('/rides');
   }
-
-  render() {
-    const { error, message } = this.state;
-    const { id, starting, destination, date_time, capacity, driver_name } = this.context.ride;
-    let dateStr = new Date(date_time).toLocaleString();
-    let newStr = dateStr.split(', ');
-    let dateFormat = newStr[0];
-    let time = newStr[1];
-    let timeFormat = '';
-    if (!time) {
-      timeFormat = 'Invalid Date';
-    } else {
-      let timeArr = time.split(':');
-      timeFormat = `${timeArr[0]}:${timeArr[2]}`;
+    createEditForm = () => {
+      this.setState({isEditing: true});
     }
 
-    let remainingSeats = 0;
-    let count = 0;
+    closeEditForm = () => {
+      this.setState({isEditing: false});
+    }
 
-    let sRArray = Object.keys(this.context.ride);
+    handleEditForm = () => {
+      let ride_id = this.context.ride.id;
+      let description = document.getElementById('newDescription').value;
+      let starting = document.getElementById('newStarting').value;
+      let destination = document.getElementById('newDestination').value;
+      let date = document.getElementById('newDate').value;
+      let time = document.getElementById('newTime').value;
 
-    for (let i = 6; i < sRArray.length; i++) {
-      count++;
-      if (capacity < count) {
-        break;
+      console.log(date, time);
+
+      let updatedDetails = {starting, destination, description, date, time};
+      DriverApiService.editRideDetails(ride_id, updatedDetails)
+        .then(res => {
+          this.context.setRide(res);
+          console.log(this.context.ride);
+          this.setState({isEditing: false});
+        })
+        .catch(res => this.setState({error: res.error}));
+    }
+
+    render() {
+      const { error, message } = this.state;
+      const { id, starting, destination, date_time, capacity, driver_name, description } = this.context.ride;
+      let dateStr = new Date(date_time).toLocaleString();
+      let newStr = dateStr.split(', ');
+      let dateFormat = newStr[0];
+      let time = newStr[1];
+      let timeFormat = '';
+      if(!time) {
+        timeFormat = 'Invalid Date';
+      } else {
+        let timeArr = time.split(':');
+        let amPM = timeArr[2].split(' ');
+        timeFormat = `${timeArr[0]}:${timeArr[1]} ${amPM[1]}`; 
       }
 
-      if (this.context.ride[sRArray[i]] === null) {
-        remainingSeats++;
+      let remainingSeats = 0;
+      let count = 0;
+
+      let sRArray = Object.keys(this.context.ride);
+
+      for (let i = 6; i < sRArray.length; i++) {
+        count++;
+        if (capacity < count) {
+          break;
+        }
+
+        if (this.context.ride[sRArray[i]] === null) {
+          remainingSeats++;
+        }
       }
-    }
 
-    if (remainingSeats === 0) {
-      remainingSeats = 'This ride is full';
-    }
+      if (remainingSeats === 0) {
+        remainingSeats = 'This ride is full';
+      }
 
-    if (this.state.error) {
-      return <div>{error && <div className='errorBox'>{error}<button className='errorButton' aria-label='close' onClick={() => this.handleErrorClose()}>X</button></div>}</div>;
-    }
-    else if (!this.context.ride) {
-      return <div>Loading</div>
-    } else {
-      return (
-        <UserContext.Consumer>{(userContext) => {
-          const { user_id } = userContext.user;
-          return (
-            <>
-              <h2>Ride Details</h2>
-              <div className="google-map">
-                <Gmaps />
-              </div>
-              {message && <div className='messageBox'>{message}<button className='messageButton' aria-label='close' onClick={() => this.handleMessageClose()}>X</button></div>}
-              {error && <div className='errorBox'>{error}<button className='errorButton' aria-label='close' onClick={() => this.handleErrorClose()}>X</button></div>}
-              <div className='ride-details'>
-                <p>Driver: {driver_name}</p>
-                <p>Meetup Address: {starting}</p>
-                <p>Destination: {destination}</p>
-                <p>Meetup Date: {dateFormat}</p>
-                <p>Meetup Time: {timeFormat}</p>
-                <p>Capacity: {capacity}</p>
-                <p>Remaining Seats: {remainingSeats}</p>
-                <h4>Ride Description:</h4>
-                <p>{this.context.ride.description}</p>
-                <div id="ride-btn">
-                  {this.context.ride.driver_id === user_id
-                    ? <button type="button" onClick={() => this.handleDelete(id)}>Delete Ride <FontAwesomeIcon icon={faTrashAlt} /></button>
-                    : <><button type="button" onClick={() => this.handleJoin(id)}>Join <FontAwesomeIcon icon={faMapMarkedAlt} /></button>
-                      <button type="button" onClick={() => this.handleCancel(id)}>Cancel Ride <FontAwesomeIcon icon={faUserSlash} /></button>
-                    </>}
+      if (this.state.error) {
+        return <div>{error && <div className='errorBox'>{error}<button className='errorButton' aria-label='close' onClick={() => this.handleErrorClose()}>X</button></div>}</div>;
+      }
+      //Div#map for Maps container, styles in gmaps.css in component folder
+      else if(!this.context.ride) {
+        return <div>Loading</div>;
+      } else {
+        return ( 
+          <UserContext.Consumer>{(userContext) => {
+            const {user_id} = userContext.user;
+            return (
+              <>
+                <h2>Ride Details</h2>
+                <div className="google-map">
+                  <Gmaps />
                 </div>
-              </div>
+                {message && <div className='messageBox'>{message}<button className='messageButton' aria-label='close' onClick={() => this.handleMessageClose()}>X</button></div>}
+                {error && <div className='errorBox'>{error}<button className='errorButton' aria-label='close' onClick={() => this.handleErrorClose()}>X</button></div>}
+                <div className='ride-details'>
+                  <p>Driver: {driver_name}</p>
+                  <p>Meetup Address: {starting}</p>
+                  <p>Destination: {destination}</p>
+                  <p>Meetup Date: {dateFormat}</p>
+                  <p>Meetup Time: {timeFormat}</p>
+                  <p>Capacity: {capacity}</p>
+                  <p>Remaining Seats: {remainingSeats}</p>
+                  <h4>Ride Description:</h4>
+                  <p>{description}</p>
+                  <div id='ride-btn'>
+                    {this.context.ride.driver_id === user_id 
+                      ? <><button type="button" onClick={() => this.handleDelete(id)}>Delete Ride</button> 
+                        <button type="button" onClick={() => this.createEditForm()}>Edit Details</button>
+                      </>
+                      : <><button type="button" onClick={() => this.handleJoin(id)}>Join</button>
+                      <button type="button" onClick={() => this.handleCancel(id)}>Cancel Ride</button>
+                    </>}
+                    {this.state.isEditing && <EditModal handleEditForm = {this.handleEditForm} closeEditForm = {this.closeEditForm} timeFormat={timeFormat} dateFormat={dateFormat} />}
+                  
+                  </div>
+                </div>
             </>
-          );
-        }}
-        </UserContext.Consumer>
-      );
+            );
+          }}
+          </UserContext.Consumer>
+        );
+      }
     }
-  }
 }
