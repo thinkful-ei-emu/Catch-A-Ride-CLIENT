@@ -29,7 +29,8 @@ Cypress.Commands.add('login', () => {
     .window()
     .then(win => {
       win.localStorage.setItem(
-        Cypress.env('')
+        Cypress.env('TOKEN_KEY'),
+        'google-oauth-token'
       );
     });
 });
