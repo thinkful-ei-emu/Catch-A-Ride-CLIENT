@@ -5,6 +5,7 @@ import {GoogleLogout} from 'react-google-login';
 import TokenService from '../../services/token-service';
 import config from '../../config';
 import UserContext from '../../context/UserContext';
+import Logo from './Catch-logo.png';
 
 class Header extends Component {
   static contextType = UserContext;
@@ -43,7 +44,8 @@ class Header extends Component {
         <>
           <h1>
             {/* <img className='logo' src="https://img.icons8.com/wired/64/000000/fiat-500.png"></img> */}
-            Catch-A-Ride
+            {/* Catch-A-Ride */}
+            <img src={Logo}/>
           </h1>
           {this.context.loggedIn ? this.renderNavBar() : '' }
         </>

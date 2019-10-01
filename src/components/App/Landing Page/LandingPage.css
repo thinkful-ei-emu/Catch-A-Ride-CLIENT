@@ -24,6 +24,7 @@
 
 .landing button:hover{
   background-color:rgba(47, 57, 116, 0.73);
+  border:white 1px solid;
   color:white;
   height:30px;
   transition:1.3s;
