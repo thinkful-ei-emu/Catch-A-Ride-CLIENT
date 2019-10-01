@@ -14,7 +14,7 @@ const TokenService = {
   removeItems(array) {
     // eslint-disable-next-line no-unused-vars
     for (let item of array) {
-      window.localStorage.removeItem(item)
+      window.localStorage.removeItem(item);
     }
   },
   hasAuthToken() {

@@ -12,7 +12,7 @@ export class Gmaps extends Component {
     const mapStyles = {
       height: '400px',
       width: '100%',
-    }
+    };
 
     return (
       <div>
