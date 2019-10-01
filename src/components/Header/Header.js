@@ -21,12 +21,17 @@ class Header extends Component {
 
   renderNavBar() {
     return (
+      <>
+      <h1>
+        {/* <img className='logo' src="https://img.icons8.com/wired/64/000000/fiat-500.png"></img> */}
+        Catch-A-Ride
+      </h1>
       <nav className='navbar'>
         <Link className='navlink' to='/rides'>All Rides</Link>
         {' '}
         <Link className='navlink' to='/user-rides'>My Rides</Link>
         {' '}
-        <Link className='navlink' to='/createride'>Create Ride</Link>
+        <Link className='navlink' to='/create-ride'>Create Ride</Link>
         {' '}
         <GoogleLogout
           className='google-button'
@@ -35,16 +40,13 @@ class Header extends Component {
           onLogoutSuccess={this.logout}
         />
       </nav>
+      </>
     );
   }
 
   render() {
     return (
         <>
-          <h1>
-            {/* <img className='logo' src="https://img.icons8.com/wired/64/000000/fiat-500.png"></img> */}
-            Catch-A-Ride
-          </h1>
           {this.context.loggedIn ? this.renderNavBar() : '' }
         </>
     );

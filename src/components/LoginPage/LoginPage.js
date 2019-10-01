@@ -4,6 +4,7 @@ import TokenService from '../../services/token-service';
 import { Redirect } from 'react-router-dom';
 import UserContext from '../../context/UserContext';
 import config from '../../config';
+import './LoginPage.css';
 
 class LoginPage extends React.Component {
   static contextType = UserContext
@@ -85,20 +86,35 @@ class LoginPage extends React.Component {
   render() {
     return (
       <>
-        <h2>Log In</h2>
-        <br></br>
-
-        {!this.context.loggedIn ? (
-          <GoogleLogin
-            clientId={config.CLIENT_ID}
-            buttonText={this.context.loggedIn ? 'Signed In' : 'Sign In'}
-            onSuccess={this.onSignIn}
-            onFailure={this.googleResponse}
-            cookiePolicy={'single_host_origin'}
-          ></GoogleLogin>
-        ) : (
+        <div className="landing">
+          <div className='psuedo-header'></div>
+          <h1>
+            {/* <img className='logo' src="https://img.icons8.com/wired/64/000000/fiat-500.png"></img> */}
+          Catch-A-Ride
+          </h1>
+          <h2>Need A Ride?</h2>
+          <section className="intro">
+            <p>
+              Catch-A-Ride is a useful tool to connect with people and share rides
+              The tool allows people to find others heading in to the same
+              location and effectively carpool together.
+            </p>
+          </section>
+          <h2>Log In</h2>
+          <br></br>
+          {!this.context.loggedIn ? (
+            <GoogleLogin
+              clientId={config.CLIENT_ID}
+              buttonText={this.context.loggedIn ? 'Signed In' : 'Sign In'}
+              onSuccess={this.onSignIn}
+              onFailure={this.googleResponse}
+              cookiePolicy={'single_host_origin'}
+            ></GoogleLogin>
+          ) : (
             <Redirect to='/rides' />
           )}
+          <div className='psuedo-footer'></div>
+        </div>
       </>
     );
   }
