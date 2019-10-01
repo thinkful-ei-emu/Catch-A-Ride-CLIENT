@@ -72,7 +72,7 @@ export default class CreateRideForm1 extends React.Component {
           </div>
           <div>
             <label className='rideLabel createDesc' htmlFor='description'> Description</label><br/>
-            <input placeholder="Enter Details About vehicle and Individual needs for ride" id='description' required></input>
+            <textarea className='description' placeholder="Enter Details About vehicle and Individual needs for ride" id='description' required></textarea>
           </div>
           <div>
             <label className='rideLabel createSeat' htmlFor='capacity'># of Seats</label><br/>
