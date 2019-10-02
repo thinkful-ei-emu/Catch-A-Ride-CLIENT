@@ -14,6 +14,7 @@ import config from '../../config';
 import UserContext from '../../context/UserContext';
 import Footer from '../Footer/Footer';
 
+
 import './App.css';
 
 
@@ -23,20 +24,26 @@ class App extends Component {
 
   state = {
     time: Date.now(),
+    appearHome:true,
   }
 
 
   render() {
+    const {appearHome,propery}=this.state;
     if (this.state.time > Number(TokenService.getExpiresAt())) {
       TokenService.removeItems([config.TOKEN_KEY, 'user', 'expires_at']);
     }
 
     return (
+     
       <div className="App">
         <Header />
         <main>
           <Switch>
+            
+              
             <PublicRoute exact path="/" component={LoginPage} />
+            
             <PrivateRoute exact path="/rides" component={Rides} />
             <PrivateRoute path="/create-ride" component={CreateRideForm} />
             <PrivateRoute path='/user-rides' component={UserRides} />

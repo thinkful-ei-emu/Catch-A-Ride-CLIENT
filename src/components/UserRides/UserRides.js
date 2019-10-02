@@ -60,7 +60,7 @@ export default class UserRides extends React.Component {
     const { driverError, passError } = this.state;
     return (
       <>
-        <h2>My Rides</h2>
+        <h2 className='myrides elegantshadow'>My Rides</h2>
         <h3 className='divide'>Driver</h3>
         {driverError && <p className='errorMessage'>{driverError}</p>}
         {this.driverRidesList()}

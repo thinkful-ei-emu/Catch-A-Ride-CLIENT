@@ -1,6 +1,6 @@
 .searchbar {
-  background: #22554e;
-  border: 1px solid #22554e;
+  background:rgba(26,32,54,.47);
+  border: 1px solid white;
   border-radius: 5px;
   width: 80%;
   margin: 0 auto;

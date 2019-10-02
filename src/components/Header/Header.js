@@ -5,7 +5,7 @@ import { GoogleLogout } from 'react-google-login';
 import TokenService from '../../services/token-service';
 import config from '../../config';
 import UserContext from '../../context/UserContext';
-import Logo from './Catch-logo.png';
+import Logo from '../LoginPage/landing-logo.png';
 
 class Header extends Component {
   static contextType = UserContext;

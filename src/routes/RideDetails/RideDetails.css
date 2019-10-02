@@ -2,14 +2,31 @@
   margin-bottom: 2em;
   font-size: 1.1em;
   line-height: 1.5;
+  border:1px solid white;
+  width:40%;
+  background:rgb(28, 35, 64,.67);
+  margin:0 auto;
+  border-radius: 5px;
 }
 
 #ride-btn button{
   padding: 1em;
   margin: .5em;
+  border: 1px solid #b8e3ea;
+  border-radius:3px;
+  background: #b8e3ea;
+  color: black;
+  min-height: 31px;
+  transition: 1.3s;
+  margin-top: 5px;
 }
 
 #ride-btn button:hover{
+  cursor: pointer;
+  border: 3px solid white;
+  background: #F2DE6A;
+  color: black;
+  min-height: 35px;
   cursor: pointer;
 }
 

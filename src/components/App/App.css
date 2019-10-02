@@ -1,10 +1,11 @@
 .App {
   text-align: center;
   font-family: 'Montserrat Alternates', sans-serif;
-  height: 100vh;
-  min-height:100vh;
+  /* height: 100vh; */
+  min-height:130vh;
   background-image:linear-gradient(to bottom, rgba(246, 243, 243, 0.52),rgba(47, 57, 116, 0.73)), url('https://images.pexels.com/photos/315938/pexels-photo-315938.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
   background-size: cover;
+  color:white;
 }
 
 footer {
@@ -35,4 +36,20 @@ main {
   filter: blur(5px);
   /* overflow: hidden; */
   margin: -10px;
+}
+.fade-appear{
+  opacity: 0.01;
+  
+} 
+ .fade-appear.fade-appear-active{
+  opacity:1;
+  transition: opacity 3s  ease-in;  
+}
+.example-appear {
+  opacity: 0.01;
+}
+
+.example-appear.example-appear-active {
+  opacity: 1;
+  transition: opacity 6s ease-in;
 }

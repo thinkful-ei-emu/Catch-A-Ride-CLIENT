@@ -10,7 +10,7 @@ import './RideDetails.css';
 import EditModal from '../../components/EditModal/EditModal';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarkedAlt, faTrashAlt, faUserSlash } from '@fortawesome/free-solid-svg-icons';
+import { faMapMarkedAlt, faTrashAlt, faUserSlash, faEdit } from '@fortawesome/free-solid-svg-icons';
 
 
 export default class RideDetails extends Component {
@@ -170,7 +170,7 @@ export default class RideDetails extends Component {
                   {this.context.ride.driver_id === user_id
                     ? <> 
                       <button type="button" onClick={() => this.handleDelete(id)}>Delete Ride <FontAwesomeIcon icon={faTrashAlt} /></button>
-                      <button type="button" onClick={() => this.createEditForm()}>Edit Details</button>
+                      <button type="button" onClick={() => this.createEditForm()}>Edit Details <FontAwesomeIcon icon={faEdit}/></button>
                     </>
                     : <>
                       <button type="button" onClick={() => this.handleJoin(id)}>Join <FontAwesomeIcon icon={faMapMarkedAlt} /></button>
