@@ -11,13 +11,13 @@ class Ride extends Component {
 
     let sRArray = Object.keys(this.props.ride);
 
-    for(let i = 6; i < sRArray.length; i++){
+    for(let i = 6; i < sRArray.length; i++) {
       count++;
-      if(this.props.ride.capacity < count){
+      if(this.props.ride.capacity < count) {
         break;
       }
 
-      if(this.props.ride[sRArray[i]] === null){
+      if(this.props.ride[sRArray[i]] === null) {
         remainingSeats++;
       }
     }
