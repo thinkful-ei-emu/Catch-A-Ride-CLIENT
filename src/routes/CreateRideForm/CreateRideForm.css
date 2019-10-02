@@ -57,7 +57,7 @@
 
 .newRideForm div label{
   float: left;
-  font-size:20px
+  font-size:20px;
 }
 
 .newRideForm button{
@@ -75,7 +75,7 @@
   resize: none;
   border-radius:3px;
   border:#b8e3ea solid 1px;
-  border-left:3px solid 
+  border-left:3px solid;
 }
 
 .newRideForm .description:required:valid{

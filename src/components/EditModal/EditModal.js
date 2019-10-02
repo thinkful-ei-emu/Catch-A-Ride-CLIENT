@@ -20,7 +20,7 @@ export default class Modal extends React.Component{
             <label htmlFor='newDestination'>Destination</label>
             <input type='text' id='newDestination' defaultValue={destination}></input>
             <label htmlFor='newDescription'>Description</label>
-            <input type='text' id='newDescription' defaultValue={description}></input>
+            <textarea className='newDescription' type='text' id='newDescription' defaultValue={description}></textarea>
             <label htmlFor='newDate'>Date</label>
             <input type='text' id='newDate' defaultValue={dateFormat}></input>
             <label htmlFor='newTime'>Time</label>
