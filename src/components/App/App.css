@@ -11,3 +11,19 @@ footer {
 main {
   padding-right: 0;
 }
+.fade-appear{
+  opacity: 0.01;
+  
+} 
+ .fade-appear.fade-appear-active{
+  opacity:1;
+  transition: opacity 3s  ease-in;  
+}
+.example-appear {
+  opacity: 0.01;
+}
+
+.example-appear.example-appear-active {
+  opacity: 1;
+  transition: opacity 6s ease-in;
+}

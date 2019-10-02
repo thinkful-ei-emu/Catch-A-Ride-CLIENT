@@ -3,10 +3,18 @@ h1 {
 }
 
 .navbar {
-  background: #22554e;
+  background: rgba(119, 109, 109, 0.226);
   width: 100%;
   padding: 10px 0;
+  
+
 }
+.navbar{
+  /* background-color: rgba(255, 255, 255, .15); */
+  backdrop-filter: blur(40px);  
+}
+
+.navbar
 
 .navlink {
   margin-left: 5px;
