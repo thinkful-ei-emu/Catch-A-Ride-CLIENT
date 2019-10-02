@@ -106,15 +106,9 @@ class LoginPage extends React.Component {
             </h1>
           
             <h2>Need A Ride?</h2>
-            {/* </ReactCSSTransitionGroup> */}
+            
             <section className="intro">
-              {/* <ReactCSSTransitionGroup
-             
-             transitionName="example"
-             transitionAppear={true}
-             transitionAppearTimeout={6000}
-             transitionEnter={false}
-             transitionLeave={false}> */}
+              
               <p>
               Catch-A-Ride is a useful tool to connect with people and share rides
               The tool allows people to find others heading in to the same
@@ -122,7 +116,7 @@ class LoginPage extends React.Component {
               </p>
             
             </section>
-            {/* </ReactCSSTransitionGroup> */}
+           
             <h2>Log In</h2>
           
             <br></br>
