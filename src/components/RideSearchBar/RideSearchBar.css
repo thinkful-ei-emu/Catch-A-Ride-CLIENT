@@ -7,10 +7,15 @@
   padding-bottom: 21px;
   color: white;
 }
+.searchbar input{
+  border-radius: 5px;
+  min-height: 30px;
+  margin-bottom: 7px;
+}
 
 @media only screen and (min-width: 700px) {
   .searchbar {
     /* min-width: 554px; */
-    width: 40%;
+    width: 30%;
   }
 }
