@@ -2,45 +2,63 @@
     background: #22554e;
     text-align: center;
     position: fixed;
-    top: 40%;
+    top: 33%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 75%;
+    width: 90%;
     z-index: 1;
     padding-bottom: 10px;
     margin-top: 100px;
-
+    margin-right: 0;
+    border-radius: 5px;
 }
 
-.editForm{
+.editForm {
     line-height: 2em;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
     background: #22554e;
     color: white;
-    padding: 15px 0;
+    width: 90%;
     border-radius: 5px;
 }
 
-.editForm input{
-    width: 50%;
+.editForm input {
+    width: 80%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    height: 20px;
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 5px;
+    line-height: 2em;
 }
 
-.modal button{
+.editForm label {
+    text-align: left;
+    margin-left: 9%;
+}
+
+.modal button {
     margin: 10px;
     border: 1px solid black;
     border-radius: 5px;
 }
 
+@media only screen and (min-width: 500px) {
+    .modal {
+        width: 75%;
+    }
+}
 
+@media only screen and (min-width: 700px) {
+    .modal {
+        max-width: 600px;
+    }
 
-
+    .editForm input { 
+        margin-top: 10px; 
+        margin-bottom: 10px;
+        height: 20px;
+        padding: 10px;
+        border: 1px solid black;
+        border-radius: 5px;
+    }
+}
