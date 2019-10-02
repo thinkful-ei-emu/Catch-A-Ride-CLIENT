@@ -17,10 +17,10 @@
   text-decoration: none;
 }
 
-@media only screen and (min-width: 700px) {
+@media only screen and (min-width: 500px) {
   .single-ride {
     margin: 10px 10px;
-    width: 25%;
+    max-width: 50%;
   }
 
   .ridesList {
@@ -28,5 +28,17 @@
     flex-flow: row wrap;
     align-content: space-around;
     justify-content: center;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .single-ride {
+    width: 40%;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .single-ride {
+    max-width: 390px;
   }
 }
