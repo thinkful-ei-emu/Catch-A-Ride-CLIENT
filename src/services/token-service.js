@@ -1,5 +1,5 @@
 import config from '../config';
-// import { GoogleLogin, GoogleLogout } from 'react-google-login';
+
 
 const TokenService = {
   saveAuthToken(token) {
@@ -11,8 +11,30 @@ const TokenService = {
   clearAuthToken() {
     window.localStorage.removeItem(config.TOKEN_KEY);
   },
+  removeItems(array) {
+   
+    for (let item of array) {
+      window.localStorage.removeItem(item);
+    }
+  },
   hasAuthToken() {
     return !!TokenService.getAuthToken();
+  },
+  getUser() {
+    const user = window.localStorage.getItem('user');
+    return JSON.parse(user) || {};
+  },
+  saveUser(user) {
+    window.localStorage.setItem('user', JSON.stringify(user));
+  },
+  clearUser() {
+    window.localStorage.removeItem('user');
+  },
+  saveExpiresAt(expires_at) {
+    window.localStorage.setItem('expires_at', expires_at);
+  },
+  getExpiresAt() {
+    return window.localStorage.getItem('expires_at');
   }
 };
 

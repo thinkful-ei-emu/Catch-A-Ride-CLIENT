@@ -1,22 +1,144 @@
-h1 {
-  font-family: 'Slackey', cursive;
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 10px;
 }
 
-/* h2 {
-  color: white;
-} */
+.navbar .navlink{
+  text-decoration: none;
+}
 
-.navbar {
-  /* do we want it to extend all the way across or look more like  */
-  background: #22554e;
-  width: 100%;
-  padding: 10px 0;
+.header-links {
+  display: flex;
+  justify-content: space-between;
 }
 
 .navlink {
+  margin: 0 20px;
   color: #b8e3ea;
 }
 
 .navlink:hover {
   color: #f2de6a;
+  transition: 1.3s;
+}
+
+.navlogo {
+  height: 75px;
+}
+
+.logout-button {
+  font-family: inherit;
+  font-size: inherit;
+  background: none;
+  border: none;
+}
+
+.side-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: fixed;
+  top: 0;
+  width: 0;
+  height: 100vh;
+  box-shadow: 1px 0 10px -2px #000000;
+  overflow-x: hidden;
+  transition: 0.5s;
+  background: inherit;
+  z-index: 2;
+}
+
+.side-nav button {
+  color: white;
+  background: none;
+  border: none;
+  font-family: inherit;
+}
+
+.side-nav button:focus,
+.side-nav button:active {
+  outline: none;
+}
+
+.side-nav .nav-link {
+  margin-bottom: 20px;
+  padding-left: 20px;
+  width: 100%;
+  text-align: left;
+  font-size: 16px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.nav-close {
+  height: 50px;
+  width: 100%;
+  text-align: right;
+  margin: 10px 0;
+}
+
+.nav-close #closeBtn {
+  text-align: center;
+  font-size: 40px;
+  line-height: 40px;
+  width: 50px;
+  height: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+.closeBtn {
+  margin: 10px 0 5px 0;
+  text-align: right;
+  font-size: 40px;
+}
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0;
+  height: 30px;
+}
+
+.hamburger-bar {
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 10px;
+  height: 6px;
+  width: 40px;
+}
+
+.top-nav {
+  padding: 20px 10px;
+}
+
+.navbar-content {
+  display: flex;
+}
+
+.navbar-header {
+  color: white;
+  margin: auto 0px;
+  padding-left: 10px;
+}
+
+
+@media only screen and (max-width: 400px) {
+  .google-button {
+    margin-top: 10px;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .navbar {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 749px) {
+  .top-nav {
+    display: none;
+  }
 }

@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the UI as expected 1`] = `
+Array [
+  <h2
+    className="myrides elegantshadow"
+  >
+    My Rides
+  </h2>,
+  <h3
+    className="divide"
+  >
+    Driver
+  </h3>,
+  <ul
+    className="driverRides"
+  />,
+  <h3
+    className="divide"
+  >
+    Passenger
+  </h3>,
+  <ul
+    className="passengerRides"
+  />,
+]
+`;

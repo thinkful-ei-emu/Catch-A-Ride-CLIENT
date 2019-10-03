@@ -1,0 +1,50 @@
+.landing{
+  color:white;
+  font-size: 12px;
+}
+
+h1 {
+  margin-top: 50px;
+}
+
+.intro{
+  width:90%;
+  font-size:24px;
+  margin:0 auto;
+}
+
+.title {
+  margin-top: 0;
+}
+
+.psuedo-footer {
+  height: 30px;
+}
+
+@media only screen and (min-width:700px){
+  .landing h2{
+    padding-top: 20px;
+   }
+
+  .landing h2{
+    padding-top:50px;
+  }
+  .intro{
+    width: 75%;
+  }
+
+  .psuedo-footer {
+    height: 60px;
+  }
+
+}
+
+@media only screen and (min-width:1200px){
+  .intro{
+    width:40%
+  }
+
+  .psuedo-footer {
+    height: 100px;
+  }
+}

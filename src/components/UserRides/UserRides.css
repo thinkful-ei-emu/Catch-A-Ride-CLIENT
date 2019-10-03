@@ -1,0 +1,52 @@
+.driverRides, .passengerRides {
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+.divide {
+  color: white;
+  font-size: 28px;
+  width: 60%;
+  border-bottom:solid 4px white;
+  margin:0 auto;
+}
+
+.rideLink {
+  text-decoration: none;
+  color: white;
+}
+.errorMessage{
+  background:rgba(25,31,56,0.7);
+  width:50%;
+  margin:0 auto;
+  padding-top:15px;
+  padding-bottom:15px;
+  font-size: 20px;
+  margin-top:10px;
+  border-radius:5px;
+}
+.myrides{
+  font-size:34px;
+}
+
+@media only screen and (min-width: 700px) {
+  .driverRides, .passengerRides {
+    display: flex;
+    flex-flow: row wrap;
+    align-content: space-around;
+    justify-content: center;
+  }
+
+  .divide {
+    width: 33%;
+  }
+}
+
+@media only screen and (min-width: 500px) {
+  .driverRides, .passengerRides {
+    display: flex;
+    flex-flow: row wrap;
+    align-content: space-around;
+    justify-content: center;
+  }
+}

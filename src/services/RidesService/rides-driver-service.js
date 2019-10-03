@@ -12,11 +12,20 @@ const RidesApiService = {
       .then(res =>
         !res.ok ? res.json().then(e => Promise.reject(e)) : res.json());
   },
+  
   getAllRides(starting, destination) {
-    const body = {
-      starting,
-      destination
-    };
+    let body;
+    if(starting.length === 0 && destination.length > 1) {
+      body = { destination };
+    } else if(starting.length > 1 && destination.length === 0) {
+      body = { starting }; 
+    } else {
+      body = {
+        starting,
+        destination
+      };
+    }
+  
     return fetch(`${config.API_ENDPOINT}/rides`, {
       method: 'POST',
       headers: {
@@ -31,11 +40,13 @@ const RidesApiService = {
           : res.json()
       );
   },
+  
   postNewRide(obj) {
     return fetch(`${config.API_ENDPOINT}/rides/driver`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
+        'Accept':'application/json',
         Authorization: `bearer ${TokenService.getAuthToken()}`
 
       },
@@ -54,8 +65,23 @@ const RidesApiService = {
         Authorization: `bearer ${TokenService.getAuthToken()}`
       },
       body: JSON.stringify({ ride_id })
-    });
+    })
+      .then(res =>
+        !res.ok ? res.json().then(e => Promise.reject(e)) : res.json());
       
+  },
+
+  editRideDetails(ride_id, updatedDetails){
+    return fetch(`${config.API_ENDPOINT}/rides/${ride_id}`, {
+      method: 'PATCH',
+      headers: {
+        'content-type': 'application/json',
+        Authorization: `bearer ${TokenService.getAuthToken()}`
+      },
+      body: JSON.stringify(updatedDetails)
+    })
+      .then(res =>
+        !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()); 
   }
 };
 

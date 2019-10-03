@@ -1,4 +1,4 @@
-.all-rides {
+.ridesList {
   padding-left: 0px;
 }
 
@@ -8,21 +8,38 @@
   margin-bottom: 15px;
   padding-bottom: 20px;
   border-radius: 10px 10px 5px 5px;
-  background: #22554e;
-  color: white;
-  width: 80%;
+  /* background:  #1a213a; */
+  width: 90%;
+  background: rgba(26,32,54,.65);
 }
 
-@media only screen and (min-width: 700px) {
+.single-ride a:link, .single-ride a:visited, .single-ride a:hover, .single-ride a:active {
+  color: white;
+  text-decoration: none;
+}
+
+@media only screen and (min-width: 500px) {
   .single-ride {
     margin: 10px 10px;
-    width: 25%;
+    max-width: 50%;
   }
 
-  .all-rides {
+  .ridesList {
     display: flex;
     flex-flow: row wrap;
     align-content: space-around;
     justify-content: center;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .single-ride {
+    width: 40%;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .single-ride {
+    max-width: 390px;
   }
 }
