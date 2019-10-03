@@ -21,6 +21,7 @@ Array [
         id="starting"
         placeholder="Enter Location You Leave From"
         required={true}
+        type="text"
       />
     </div>
     <div>
@@ -35,6 +36,7 @@ Array [
         id="destination"
         placeholder="Enter Destination "
         required={true}
+        type="text"
       />
     </div>
     <div>

@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the UI as expected 1`] = `
+Array [
+  <p
+    className="ride-info"
+  >
+    09/17/2019 @ 2:00PM
+  </p>,
+  <span
+    className="labels"
+  >
+    <h3
+      className="locations"
+    >
+      Meetup
+      <br />
+      Location
+    </h3>
+    <h3
+      className="locations"
+    >
+      Destination
+    </h3>
+  </span>,
+  <span
+    className="locations"
+  >
+    <p
+      className="location"
+    >
+      <svg
+        aria-hidden="true"
+        className="svg-inline--fa fa-map-marker-alt fa-w-12 "
+        data-icon="map-marker-alt"
+        data-prefix="fas"
+        focusable="false"
+        role="img"
+        style={Object {}}
+        viewBox="0 0 384 512"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"
+          fill="currentColor"
+          style={Object {}}
+        />
+      </svg>
+       
+      Virginia Beach
+    </p>
+    <p
+      className="destination"
+    >
+      <svg
+        aria-hidden="true"
+        className="svg-inline--fa fa-map-marker-alt fa-w-12 "
+        data-icon="map-marker-alt"
+        data-prefix="fas"
+        focusable="false"
+        role="img"
+        style={Object {}}
+        viewBox="0 0 384 512"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"
+          fill="currentColor"
+          style={Object {}}
+        />
+      </svg>
+       
+      Blacksburg
+    </p>
+  </span>,
+  <p
+    className="driver"
+  >
+    Driver Name: 
+    Andrew Yin
+  </p>,
+  <p>
+    Capacity: 
+    4
+  </p>,
+  <p>
+    Remaining Seats: 
+    1
+  </p>,
+  <p>
+    Description: 
+    $10 for gas, limited trunk space
+  </p>,
+]
+`;
