@@ -20,7 +20,9 @@ Install dependencies
 ```
 npm install
 ```
-
+```
+npm start
+```
 ## Running the tests
 
 ```
@@ -28,7 +30,6 @@ npm t
 ```
 
 ## Deployment
-
 ```
 npm run deploy
 ```
@@ -41,8 +42,8 @@ npm run deploy
 * [Javascript](https://www.javascript.com)
 
 ## Authors
-* **Adrienne Smith** - [Github]()
-* **Arpan Patel** - [Github]()
-* **Andrew Yin** - [Github]()
-* **Jordon Carter** - [Github]()
-* **Zane Kuehn** - [Github]()
+* **Adrienne Smith**
+* **Arpan Patel**
+* **Andrew Yin** 
+* **Jordon Carter** 
+* **Zane Kuehn**
