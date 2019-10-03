@@ -21,7 +21,7 @@
 
 .newRideForm input:required:valid{
   border-left-color: green;
-  content: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/939465/tick.jpg');
+  
 }
 
 .newRideForm input:required:focus:valid {

@@ -55,19 +55,19 @@ export default class CreateRideForm1 extends React.Component {
         <form className='newRideForm' onSubmit={this.SubmitForm}>
           <div>
             <label className='rideLabel createStart' htmlFor='starting'>Starting Point</label><br/>
-            <input placeholder="Enter Location You Leave From" id='starting' required></input>
+            <input type='text'placeholder="Enter Location You Leave From" id='starting' required></input>
           </div>
           <div>
             <label className='rideLabel createDest' htmlFor='destination'>Destination</label><br/>
-            <input placeholder="Enter Destination " id='destination' required></input>
+            <input type='text' placeholder="Enter Destination " id='destination' required></input>
           </div>
           <div>
-            <label className='rideLabel createDate' htmlFor='today' required>Date</label>
-            <input type="date" id='today' defaultValue={this.state.today}></input>
+            <label className='rideLabel createDate' htmlFor='today' >Date</label>
+            <input type="date" id='today' defaultValue={this.state.today} required></input>
           </div>
           <div>
-            <label className='rideLabel createTime' htmlFor='timeinput' required>Time</label><br/>
-            <input type="time" id='timeinput' defaultValue='12:00'></input>
+            <label className='rideLabel createTime' htmlFor='timeinput' >Time</label><br/>
+            <input type="time" id='timeinput' defaultValue='12:00' required></input>
           </div>
           <div>
             <label className='rideLabel createDesc' htmlFor='description'> Description</label><br/>
@@ -85,7 +85,7 @@ export default class CreateRideForm1 extends React.Component {
               <option value="7">7</option>
             </select>
           </div>
-          {/* <br/> */}
+          
           <button className='createRide' type='submit'>Share A Ride!</button>
         </form>
       </>
