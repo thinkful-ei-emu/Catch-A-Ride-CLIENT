@@ -8,8 +8,9 @@
   margin-bottom: 15px;
   padding-bottom: 20px;
   border-radius: 10px 10px 5px 5px;
-  background:  #1a213a;
+  /* background:  #1a213a; */
   width: 90%;
+  background: rgba(26,32,54,.65);
 }
 
 .single-ride a:link, .single-ride a:visited, .single-ride a:hover, .single-ride a:active {

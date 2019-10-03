@@ -14,7 +14,7 @@
   border:solid 1px #b8e3ea; 
 }
 
-@media only screen and (min-width: 700px) {
+@media only screen and (max-width: 600px) {
   .searchbar {
     max-width: 554px;
   }

@@ -63,52 +63,47 @@ class LoginPage extends React.Component {
 
   render() {
     return (
-      <>
-        <div className="landing">
-          <ReactCSSTransitionGroup
+      <div className="landing">
+        <ReactCSSTransitionGroup
              
-            transitionName="fade"
-            transitionAppear={true}
-            transitionAppearTimeout={3000}
-            transitionEnter={false}
-            transitionLeave={false}>
-            <div className='psuedo-header'></div>
-          
-            <h1>
+          transitionName="fade"
+          transitionAppear={true}
+          transitionAppearTimeout={3000}
+          transitionEnter={false}
+          transitionLeave={false}>
+          <h1>
              
-              <img src={Logo} alt="Catch A Ride Logo"/>
-            </h1>
+            <img src={Logo} alt="Catch A Ride Logo"/>
+          </h1>
           
-            <h2>Need A Ride?</h2>
+          <h2>Need A Ride?</h2>
             
-            <section className="intro">
+          <section className="intro">
               
-              <p>
+            <p>
               Catch-A-Ride is a useful tool to connect with people and share rides
               The tool allows people to find others heading in to the same
               location and effectively carpool together.
-              </p>
+            </p>
             
-            </section>
+          </section>
            
-            <h2>Log In</h2>
+          <h2 className='login'>Log In</h2>
           
-            <br></br>
-            {!this.context.loggedIn ? (
-              <GoogleLogin
-                clientId={config.CLIENT_ID}
-                buttonText={this.context.loggedIn ? 'Signed In' : 'Sign In'}
-                onSuccess={this.onSignIn}
-                onFailure={this.googleResponse}
-                cookiePolicy={'single_host_origin'}
-              ></GoogleLogin>
-            ) : (
-              <Redirect to='/rides' />
-            )}
-          </ReactCSSTransitionGroup>
-          <div className='psuedo-footer'></div>
-        </div>
-      </>
+          <br></br>
+          {!this.context.loggedIn ? (
+            <GoogleLogin
+              clientId={config.CLIENT_ID}
+              buttonText={this.context.loggedIn ? 'Signed In' : 'Sign In'}
+              onSuccess={this.onSignIn}
+              onFailure={this.googleResponse}
+              cookiePolicy={'single_host_origin'}
+            ></GoogleLogin>
+          ) : (
+            <Redirect to='/rides' />
+          )}
+        </ReactCSSTransitionGroup>
+      </div>
     );
   }
 }

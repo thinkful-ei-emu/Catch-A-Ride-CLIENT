@@ -35,7 +35,7 @@ export default class UserRides extends React.Component {
 
   driverRidesList() {
     const driverRides = this.context.driverRides.map((ride, i) => (
-      <li className='ride' key={i}><Link className='rideLink' to={`/rides/${ride.id}`}><Ride ride={ride} /></Link></li>
+      <li className='single-ride' key={i}><Link className='rideLink' to={`/rides/${ride.id}`}><Ride ride={ride} /></Link></li>
     ));
     return (
       <ul className='driverRides'>
@@ -46,7 +46,7 @@ export default class UserRides extends React.Component {
 
   passengerRidesList() {
     const passengerRides = this.context.passengerRides.map((ride, i) => (
-      <li className='ride' key={i}><Link className='rideLink' to={`/rides/${ride.id}`}><Ride ride={ride} /></Link></li>
+      <li className='single-ride' key={i}><Link className='rideLink' to={`/rides/${ride.id}`}><Ride ride={ride} /></Link></li>
     ));
     return (
       <ul className='passengerRides'>
