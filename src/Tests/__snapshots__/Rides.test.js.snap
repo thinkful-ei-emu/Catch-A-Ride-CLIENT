@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the UI as expected 1`] = `
+Array [
+  <h2>
+    Rides
+  </h2>,
+  <div
+    className="searchbar "
+  >
+    <h3>
+      Search For Rides
+    </h3>
+    <form
+      className="search-form"
+      onSubmit={[Function]}
+    >
+      <label
+        className="search-start"
+        htmlFor="start-input"
+      >
+        Starting: 
+      </label>
+      <input
+        id="start-input"
+        onChange={[Function]}
+        placeholder="Enter City Name"
+        value=""
+      />
+      <br />
+      <label
+        className="search-dest"
+        htmlFor="dest-input"
+      >
+        Destination: 
+      </label>
+      <input
+        id="dest-input"
+        onChange={[Function]}
+        placeholder="Enter City Name"
+        value=""
+      />
+      <br />
+      <button
+        className="search-submit"
+        type="submit"
+      >
+        Submit
+      </button>
+    </form>
+  </div>,
+  <ul
+    className="ridesList"
+  />,
+]
+`;
