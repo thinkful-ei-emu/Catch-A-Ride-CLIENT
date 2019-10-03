@@ -59,7 +59,7 @@ class Header extends Component {
               <div className='hamburger-bar'></div>
               <div className='hamburger-bar'></div>
             </span>}
-          <h3 className='navbar-header'>Catch-A-Ride</h3>
+          <h1 className='navbar-header'>Catch-A-Ride</h1>
         </div>
       </div>
 
