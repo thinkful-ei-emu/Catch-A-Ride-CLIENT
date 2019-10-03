@@ -74,7 +74,7 @@ export default class CreateRideForm1 extends React.Component {
             <textarea className='description' placeholder="Enter Details About vehicle and Individual needs for ride" id='description' required></textarea>
           </div>
           <div>
-            <label className='rideLabel createSeat' htmlFor='capacity'># of Seats</label><br/>
+            <label className='rideLabel createSeat' htmlFor='capacity'>Capacity</label><br/>
             <select className='rideSpace' id='capacity'>
               <option value='1'>1</option>
               <option value='2'>2</option>

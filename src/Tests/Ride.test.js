@@ -27,7 +27,6 @@ it('renders without crashing', () => {
   ReactDOM.unmountComponentAtNode(div);
 });
 
-
 it('renders the UI as expected', () => {
   const ride = {
     id: '154a8af7-4f6a-4c65-ab44-e8f659cf6797',
