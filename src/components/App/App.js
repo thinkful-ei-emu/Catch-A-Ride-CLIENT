@@ -39,10 +39,7 @@ class App extends Component {
         <Header />
         <main>
           <Switch>
-            
-              
             <PublicRoute exact path="/" component={LoginPage} />
-            
             <PrivateRoute exact path="/rides" component={Rides} />
             <PrivateRoute path="/create-ride" component={CreateRideForm} />
             <PrivateRoute path='/user-rides' component={UserRides} />
