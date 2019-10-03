@@ -13,13 +13,7 @@ class LoginPage extends React.Component {
   static contextType = UserContext
   state={appearHome:true,}
 
-  // constructor(props) {
-  //   super(props);
-
-  //   this.state = {
-  //     // id_token: null
-  //   };
-  // }
+  
 
 
 
@@ -29,7 +23,7 @@ class LoginPage extends React.Component {
     const id_token = googleUser.getAuthResponse().id_token;
     const expires_at = googleUser.getAuthResponse().expires_at;
     TokenService.saveExpiresAt(expires_at);
-    // const googleResponse = googleUser.getAuthResponse();
+   
     TokenService.saveAuthToken(id_token);
 
     TokenService.getAuthToken();
@@ -39,10 +33,7 @@ class LoginPage extends React.Component {
       email: profile.getEmail()
     });
 
-    // console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-    // console.log('Name: ' + profile.getName());
-    // console.log('Image URL: ' + profile.getImageUrl());
-    // console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+  
 
     try {
       // eslint-disable-next-line no-unused-vars
@@ -56,36 +47,19 @@ class LoginPage extends React.Component {
         })
       });
       user = await user.json();
-      // console.log('on sign in', user);
-      // console.log('loggedIn',this.state.loggedIn);
+      
     } catch (e) {
       console.error(e.message);
     }
   };
 
-  googleResponse = response => {
-    console.log(response);
-  };
+ 
 
   logout = () => {
     TokenService.clearAuthToken();
   };
 
-  // async sendRequest() {
-  //   try {
-  //     let res = await fetch(config.API_ENDPOINT + '/auth', {
-  //       method: 'GET',
-  //       headers: {
-  //         Authorization: `bearer ${this.state.id_token}`
-  //       }
-  //     });
-  //     res = await res.text();
-
-  //     console.log('res', res);
-  //   } catch (e) {
-  //     console.error(e.message);
-  //   }
-  // }
+  
 
   render() {
     return (
@@ -101,8 +75,8 @@ class LoginPage extends React.Component {
             <div className='psuedo-header'></div>
           
             <h1>
-              {/* <img className='logo' src="https://img.icons8.com/wired/64/000000/fiat-500.png"></img> */}
-              <img src={Logo}/>
+             
+              <img src={Logo} alt="Catch A Ride Logo"/>
             </h1>
           
             <h2>Need A Ride?</h2>

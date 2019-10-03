@@ -1,5 +1,5 @@
 import config from '../config';
-// import { GoogleLogin, GoogleLogout } from 'react-google-login';
+
 
 const TokenService = {
   saveAuthToken(token) {
@@ -12,7 +12,7 @@ const TokenService = {
     window.localStorage.removeItem(config.TOKEN_KEY);
   },
   removeItems(array) {
-    // eslint-disable-next-line no-unused-vars
+   
     for (let item of array) {
       window.localStorage.removeItem(item);
     }

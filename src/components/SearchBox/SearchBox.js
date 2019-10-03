@@ -13,8 +13,7 @@ export default class SearchBox extends Component {
   //Handles get for rides filtered my destination and starting
   handleSubmit(e) {
     e.preventDefault();
-    // console.log('Destination ', this.context.destination)
-    // console.log('Starting Location: ', this.context.starting.length);
+    
     const starting = this.context.starting;
     const destination = this.context.destination;
     RideApiService.getAllRides(starting, destination)

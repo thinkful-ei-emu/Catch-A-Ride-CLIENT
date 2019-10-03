@@ -19,7 +19,7 @@ class Header extends Component {
     return (
       <nav className='navbar'>
         <section className='header-item'>
-          <img className='navlogo' src={Logo} />
+          <img className='navlogo' src={Logo} alt="Catch A Ride Logo" />
         </section>
         <section className='header-links'>
           <Link className='navlink' to='/rides'>All Rides</Link>

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-// import JoinRideButton from '../JoinRideButton/JoinRideButton';
+
 import moment from 'moment';
 import './Ride.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapPin,faMapMarkerAlt,faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons';
+import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 
 class Ride extends Component {
   render() {

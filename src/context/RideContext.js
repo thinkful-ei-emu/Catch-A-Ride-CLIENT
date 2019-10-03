@@ -34,11 +34,7 @@ export class RideProvider extends Component {
     };
   }
 
-  // handleJoin = (ride_id) => {
-  //   PassengerApiService.passengerJoinRide(ride_id)
-  //   .catch(res => console.log(res));
-  //   ;
-  // }
+ 
 
   setRides = (rides) => {
     this.setState({ rides });

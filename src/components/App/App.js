@@ -24,12 +24,11 @@ class App extends Component {
 
   state = {
     time: Date.now(),
-    appearHome:true,
+    
   }
 
 
   render() {
-    const {appearHome,propery}=this.state;
     if (this.state.time > Number(TokenService.getExpiresAt())) {
       TokenService.removeItems([config.TOKEN_KEY, 'user', 'expires_at']);
     }

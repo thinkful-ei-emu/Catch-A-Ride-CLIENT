@@ -46,14 +46,7 @@ export class UserProvider extends Component {
     this.setState({ error: null });
   }
 
-  // setUser = user => {
-  //   this.setState({ user });
-  //   // console.log(user);
-  // }
-
-  // clearUser = () => {
-  //   this.setState({user: {}});
-  // }
+  
 
   setLoggedIn = user => {
     TokenService.saveUser(user);

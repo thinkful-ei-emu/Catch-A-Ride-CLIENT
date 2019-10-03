@@ -56,7 +56,7 @@ export default class UserRides extends React.Component {
   }
 
   render() {
-    // console.log('context error',this.context.error);
+ 
     const { driverError, passError } = this.state;
     return (
       <>

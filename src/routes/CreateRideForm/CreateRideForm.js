@@ -1,12 +1,12 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+
 import RidesService from '../../services/RidesService/rides-driver-service';
-// import RideContext from '../../context/RideContext';
+
 import './CreateRideForm.css';
 import {Redirect} from 'react-router-dom';
 
 export default class CreateRideForm1 extends React.Component {
-  // static contextType = RideContext;
+ 
 
   state = {
     created: null,
