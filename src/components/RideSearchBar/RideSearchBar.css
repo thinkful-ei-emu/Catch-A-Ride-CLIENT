@@ -1,16 +1,22 @@
 .searchbar {
-  background: #22554e;
-  border: 1px solid #22554e;
+  background:rgba(26,32,54,.47);
+  border: 1px solid white;
   border-radius: 5px;
   width: 80%;
   margin: 0 auto;
   padding-bottom: 21px;
   color: white;
 }
+.searchbar input{
+  border-radius: 5px;
+  min-height: 30px;
+  margin-bottom: 7px;
+  border:solid 1px #b8e3ea; 
+}
 
 @media only screen and (min-width: 700px) {
   .searchbar {
     /* min-width: 554px; */
-    width: 40%;
+    width: 30%;
   }
 }

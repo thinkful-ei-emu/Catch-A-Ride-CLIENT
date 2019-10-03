@@ -1,6 +1,8 @@
 import React from 'react';
 import RideContext from '../../context/RideContext';
 import './EditModal.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faWindowClose,faSave } from '@fortawesome/free-solid-svg-icons';
 
 export default class Modal extends React.Component{
 
@@ -26,8 +28,8 @@ export default class Modal extends React.Component{
             <label htmlFor='newTime'>Time</label>
             <input type='text' id='newTime' defaultValue={timeFormat}></input>
           </form>
-          <button type="submit" onClick={() => handleEditForm()}>Save</button>
-          <button type="button" onClick={() => closeEditForm()}>Close</button>     
+          <button type="submit" onClick={() => handleEditForm()}>Save <FontAwesomeIcon icon={faSave} /></button>
+          <button type="button" onClick={() => closeEditForm()}>Close <FontAwesomeIcon icon={faWindowClose} /></button>     
         </div>
       );
     }

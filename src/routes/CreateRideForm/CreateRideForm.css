@@ -3,10 +3,11 @@
   display: block;
   width: 90%;
   margin: 0 auto;
-  background: #22554e;
+  background: rgba(26,32,54,.47);
   color: white;
   padding: 15px 0;
   border-radius: 5px;
+  border:1px solid white;
 }
 
 .newRideForm input{

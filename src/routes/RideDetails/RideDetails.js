@@ -10,7 +10,7 @@ import './RideDetails.css';
 import EditModal from '../../components/EditModal/EditModal';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarkedAlt, faTrashAlt, faUserSlash } from '@fortawesome/free-solid-svg-icons';
+import { faMapMarkedAlt, faTrashAlt, faUserSlash, faEdit } from '@fortawesome/free-solid-svg-icons';
 
 
 export default class RideDetails extends Component {
@@ -98,6 +98,12 @@ export default class RideDetails extends Component {
         .then(res => {
           this.context.setRide(res);
           console.log(this.context.ride);
+          let startLat = this.context.ride.startCoorLat;
+          let startLng = this.context.ride.startCoorLong;
+          this.context.setStartingC(startLat, startLng);
+          let destLat = this.context.ride.destCoorLat;
+          let destLng = this.context.ride.destCoorLong;
+          this.context.setDestinationC(destLat, destLng);
           this.setState({isEditing: false});
         })
         .catch(res => this.setState({error: res.error}));
@@ -139,16 +145,14 @@ export default class RideDetails extends Component {
         remainingSeats = 'This ride is full';
       }
 
-      if (this.state.error) {
-        return <div>{error && <div className='errorBox'>{error}<button className='errorButton' aria-label='close' onClick={() => this.handleErrorClose()}>X</button></div>}</div>;
-      }
+      
       else if (!this.context.ride) {
         return <div>Loading</div>;
-      } else {
-        return (
-          <UserContext.Consumer>{(userContext) => {
-            const { user_id } = userContext.user;
-            return (
+      } 
+      return (
+        <UserContext.Consumer>{(userContext) => {
+          const { user_id } = userContext.user;
+          return (
             <>
               <h2>Ride Details</h2>
               <div className="google-map">
@@ -170,7 +174,7 @@ export default class RideDetails extends Component {
                   {this.context.ride.driver_id === user_id
                     ? <> 
                       <button type="button" onClick={() => this.handleDelete(id)}>Delete Ride <FontAwesomeIcon icon={faTrashAlt} /></button>
-                      <button type="button" onClick={() => this.createEditForm()}>Edit Details</button>
+                      <button type="button" onClick={() => this.createEditForm()}>Edit Details <FontAwesomeIcon icon={faEdit}/></button>
                     </>
                     : <>
                       <button type="button" onClick={() => this.handleJoin(id)}>Join <FontAwesomeIcon icon={faMapMarkedAlt} /></button>
@@ -181,10 +185,10 @@ export default class RideDetails extends Component {
                 </div>
               </div>
             </>
-            );
-          }}
-          </UserContext.Consumer>
-        );
-      }
+          );
+        }}
+        </UserContext.Consumer>
+      );
+      
     }
 }

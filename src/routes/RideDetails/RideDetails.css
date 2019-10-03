@@ -2,14 +2,31 @@
   margin-bottom: 2em;
   font-size: 1.1em;
   line-height: 1.5;
+  border:1px solid white;
+  width:90%;
+  background:rgb(28, 35, 64,.67);
+  margin:0 auto;
+  border-radius: 5px;
 }
 
 #ride-btn button{
   padding: 1em;
   margin: .5em;
+  border: 1px solid #b8e3ea;
+  border-radius:3px;
+  background: #b8e3ea;
+  color: black;
+  min-height: 31px;
+  transition: 1.3s;
+  margin-top: 5px;
 }
 
 #ride-btn button:hover{
+  cursor: pointer;
+  border: 3px solid white;
+  background: #F2DE6A;
+  color: black;
+  min-height: 35px;
   cursor: pointer;
 }
 
@@ -25,8 +42,9 @@ div {
 }
 
 .messageBox {
-  border: 1px solid black;
+  border: 1px solid white;
   border-radius: 5px;
+  margin-bottom:10px;
 }
 
 .messageButton {
@@ -34,27 +52,35 @@ div {
   border: 1px solid black;
   border-radius: 5px;
 }
+.messageButton:hover{
+  cursor: pointer;
+}
 
 .errorBox {
   color: #FC5C66;
   border: 1px solid #FC5C66;
-  /* border: 1px solid red; */
   border-radius: 5px;
-  /* color: red; */
+  margin-bottom: 10px;
+ 
 }
 
 .errorButton {
   color: #FC5C66;
   border: 1px solid #FC5C66;
-  /* color: red; */
   background-color: #F2F9FB;
-  /* border: 1px solid red; */
   border-radius: 5px;
+}
+
+.errorButton:hover{
+  cursor: pointer;
 }
 
 .messageButton, .errorButton {
   margin-left: 10px;
   vertical-align: middle;
+}
+#ride-btn{
+  margin-bottom: 10px;
 }
 
 @media only screen and (min-width: 700px) {
@@ -62,9 +88,20 @@ div {
     width: 30%;
     font-size: 20px;
   }
+  .ride-details{
+    width:68%;
+  }
 
   .errorBox {
     width: 40%;
     font-size: 20px;
   }
+}
+
+@media only screen and (min-width:1000px){
+
+  .ride-details{
+    width:40%;
+  }
+
 }

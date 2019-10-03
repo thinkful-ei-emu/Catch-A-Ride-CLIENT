@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 // import JoinRideButton from '../JoinRideButton/JoinRideButton';
 import moment from 'moment';
 import './Ride.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMapPin,faMapMarkerAlt,faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons';
 
 class Ride extends Component {
   render() {
@@ -36,8 +38,8 @@ class Ride extends Component {
           <h3 className='locations'>Destination</h3>
         </span>
         <span className='locations'>
-          <p className='location'>{this.props.ride.starting}</p>
-          <p className='destination'>{this.props.ride.destination}</p>
+          <p className='location'><FontAwesomeIcon icon={faMapMarkerAlt}/> {this.props.ride.starting}</p>
+          <p className='destination'><FontAwesomeIcon icon={faMapMarkerAlt}/> {this.props.ride.destination}</p>
         </span>
         <p className='driver'>Driver Name: {this.props.ride.driver_name}</p>
         <p>Capacity: {this.props.ride.capacity}</p>

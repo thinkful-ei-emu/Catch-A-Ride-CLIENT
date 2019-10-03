@@ -3,13 +3,28 @@ h1 {
 }
 
 .navbar {
-  background: #22554e;
-  width: 100%;
-  padding: 10px 0;
+  /* background: green; */
+  /* width: 100%; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 10px;
 }
 
+.navbar .navlink{
+  text-decoration: none;
+}
+
+.header-links {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar
+
 .navlink {
-  margin-left: 5px;
+  /* margin-left: 5px; */
+  margin: 0 20px;
   color: #b8e3ea;
 }
 
@@ -17,6 +32,11 @@ h1 {
   color: #f2de6a;
   transition: 1.3s;
 }
+
+.navlogo {
+  height: 75px;
+}
+
 
 @media only screen and (max-width: 400px) {
   .google-button {
