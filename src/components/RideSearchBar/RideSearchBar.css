@@ -11,6 +11,7 @@
   border-radius: 5px;
   min-height: 30px;
   margin-bottom: 7px;
+  border:solid 1px #b8e3ea; 
 }
 
 @media only screen and (min-width: 700px) {
