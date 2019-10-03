@@ -98,7 +98,14 @@ export default class RideDetails extends Component {
         .then(res => {
           this.context.setRide(res);
           console.log(this.context.ride);
+          let startLat = this.context.ride.startCoorLat;
+          let startLng = this.context.ride.startCoorLong;
+          this.context.setStartingC(startLat, startLng);
+          let destLat = this.context.ride.destCoorLat;
+          let destLng = this.context.ride.destCoorLong;
+          this.context.setDestinationC(destLat, destLng);
           this.setState({isEditing: false});
+          
         })
         .catch(res => this.setState({error: res.error}));
     }
