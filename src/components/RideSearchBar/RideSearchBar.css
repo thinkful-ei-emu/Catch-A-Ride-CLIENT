@@ -2,7 +2,7 @@
   background:rgba(26,32,54,.47);
   border: 1px solid white;
   border-radius: 5px;
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   padding-bottom: 21px;
   color: white;
@@ -16,7 +16,6 @@
 
 @media only screen and (min-width: 700px) {
   .searchbar {
-    /* min-width: 554px; */
-    width: 30%;
+    max-width: 554px;
   }
 }
