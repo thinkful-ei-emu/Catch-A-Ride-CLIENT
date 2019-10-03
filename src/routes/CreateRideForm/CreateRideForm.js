@@ -55,11 +55,11 @@ export default class CreateRideForm1 extends React.Component {
         <form className='newRideForm' onSubmit={this.SubmitForm}>
           <div>
             <label className='rideLabel createStart' htmlFor='starting'>Starting Point</label><br/>
-            <input placeholder="Enter Location You Leave From" id='starting' required></input>
+            <input type='text' placeholder="Enter Location You Leave From" id='starting' required></input>
           </div>
           <div>
             <label className='rideLabel createDest' htmlFor='destination'>Destination</label><br/>
-            <input placeholder="Enter Destination " id='destination' required></input>
+            <input type='text' placeholder="Enter Destination " id='destination' required></input>
           </div>
           <div>
             <label className='rideLabel createDate' htmlFor='today' required>Date</label>

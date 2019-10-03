@@ -1,0 +1,141 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the UI as expected 1`] = `
+Array [
+  <h2>
+    Create Ride
+  </h2>,
+  <form
+    className="newRideForm"
+    onSubmit={[Function]}
+  >
+    <div>
+      <label
+        className="rideLabel createStart"
+        htmlFor="starting"
+      >
+        Starting Point
+      </label>
+      <br />
+      <input
+        id="starting"
+        placeholder="Enter Location You Leave From"
+        required={true}
+      />
+    </div>
+    <div>
+      <label
+        className="rideLabel createDest"
+        htmlFor="destination"
+      >
+        Destination
+      </label>
+      <br />
+      <input
+        id="destination"
+        placeholder="Enter Destination "
+        required={true}
+      />
+    </div>
+    <div>
+      <label
+        className="rideLabel createDate"
+        htmlFor="today"
+        required={true}
+      >
+        Date
+      </label>
+      <input
+        defaultValue="2019-10-03"
+        id="today"
+        type="date"
+      />
+    </div>
+    <div>
+      <label
+        className="rideLabel createTime"
+        htmlFor="timeinput"
+        required={true}
+      >
+        Time
+      </label>
+      <br />
+      <input
+        defaultValue="12:00"
+        id="timeinput"
+        type="time"
+      />
+    </div>
+    <div>
+      <label
+        className="rideLabel createDesc"
+        htmlFor="description"
+      >
+         Description
+      </label>
+      <br />
+      <textarea
+        className="description"
+        id="description"
+        placeholder="Enter Details About vehicle and Individual needs for ride"
+        required={true}
+      />
+    </div>
+    <div>
+      <label
+        className="rideLabel createSeat"
+        htmlFor="capacity"
+      >
+        # of Seats
+      </label>
+      <br />
+      <select
+        className="rideSpace"
+        id="capacity"
+      >
+        <option
+          value="1"
+        >
+          1
+        </option>
+        <option
+          value="2"
+        >
+          2
+        </option>
+        <option
+          value="3"
+        >
+          3
+        </option>
+        <option
+          value="4"
+        >
+          4
+        </option>
+        <option
+          value="5"
+        >
+          5
+        </option>
+        <option
+          value="6"
+        >
+          6
+        </option>
+        <option
+          value="7"
+        >
+          7
+        </option>
+      </select>
+    </div>
+    <button
+      className="createRide"
+      type="submit"
+    >
+      Share A Ride!
+    </button>
+  </form>,
+]
+`;

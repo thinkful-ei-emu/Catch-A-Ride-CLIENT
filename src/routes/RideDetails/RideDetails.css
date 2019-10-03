@@ -23,7 +23,7 @@
 
 #ride-btn button:hover{
   cursor: pointer;
-  border: 3px solid white;
+  border: 3px solid #F2DE6A;
   background: #F2DE6A;
   color: black;
   min-height: 35px;
