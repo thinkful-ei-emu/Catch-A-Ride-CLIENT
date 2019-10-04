@@ -37,6 +37,7 @@
   color: #FC5C66;
   border: 1px solid #FC5C66;
   margin-bottom: 10px;
+  background: rgb(0, 0, 0, .63);
 }
 
 .errButton {
