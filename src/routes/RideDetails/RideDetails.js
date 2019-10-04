@@ -90,14 +90,14 @@ export default class RideDetails extends Component {
       let destination = document.getElementById('newDestination').value;
       let date = document.getElementById('newDate').value;
       let time = document.getElementById('newTime').value;
-
+      console.log(time);
      
 
       let updatedDetails = {starting, destination, description, date, time};
       DriverApiService.editRideDetails(ride_id, updatedDetails)
         .then(res => {
           this.context.setRide(res);
-          
+          console.log('ride',this.context.ride);
           let startLat = this.context.ride.startCoorLat;
           let startLng = this.context.ride.startCoorLong;
           this.context.setStartingC(startLat, startLng);
@@ -123,6 +123,7 @@ export default class RideDetails extends Component {
         let timeArr = time.split(':');
         let amPM = timeArr[2].split(' ');
         timeFormat = `${timeArr[0]}:${timeArr[1]} ${amPM[1]}`; 
+        console.log(timeFormat);
       }
 
       let remainingSeats = 0;
@@ -181,7 +182,6 @@ export default class RideDetails extends Component {
                       <button type="button" onClick={() => this.handleCancel(id)}>Cancel Ride <FontAwesomeIcon icon={faUserSlash} /></button>
                     </>}
                   {this.state.isEditing && <EditModal handleEditForm = {this.handleEditForm} closeEditForm = {this.closeEditForm} timeFormat={timeFormat} dateFormat={dateFormat} />}
-                  
                 </div>
               </div>
             </>

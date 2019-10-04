@@ -7,7 +7,9 @@
   padding-top: 5px;
   padding-bottom: 5px;
   text-align: left;
-  background: #778190;
+  /* background: #778190; */
+  /* background: #4d545f; */
+  background: rgb(77, 84, 95, .65);
   border: white 1px solid;
   border-radius: 5px 5px 0 0;
   color: white;
