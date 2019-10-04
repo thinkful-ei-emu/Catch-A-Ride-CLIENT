@@ -43,7 +43,11 @@ npm run deploy
 
 ### Screenshots
 
+![Imgur](https://i.imgur.com/THzv7GA.png)
+![Imgur](https://i.imgur.com/X9wgMs5.png)
 ![Imgur](https://i.imgur.com/akxep7O.png)
+![Imgur](https://i.imgur.com/4XSUdjR.png)
+![Imgur](https://i.imgur.com/7cNbE85.png)
 
 ## Built With
 * [React](https://reactjs.org)
