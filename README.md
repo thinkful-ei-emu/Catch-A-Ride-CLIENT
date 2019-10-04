@@ -3,6 +3,14 @@ CATCH-A-RIDE
 
 Ridesharing made easy. Consolidated carpools.
 
+### Live App
+
+https://catch-a-ride.now.sh
+
+### Server Repository
+
+https://github.com/thinkful-ei-emu/Catch-A-Ride-SERVER
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
@@ -32,6 +40,10 @@ npm t
 ```
 npm run deploy
 ```
+
+### Screenshots
+
+![Imgur](https://i.imgur.com/akxep7O.png)
 
 ## Built With
 * [React](https://reactjs.org)
