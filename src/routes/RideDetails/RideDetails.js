@@ -19,7 +19,8 @@ export default class RideDetails extends Component {
   state = {
     error: null,
     message: null,
-    isEditing: false
+    isEditing: false,
+    remainingSeats: 0,
   };
 
   componentDidMount() {
@@ -43,19 +44,29 @@ export default class RideDetails extends Component {
         let destLat = this.context.ride.destCoorLat;
         let destLng = this.context.ride.destCoorLong;
         this.context.setDestinationC(destLat, destLng);
+        let remainingSeats = this.setRemainingSeats();
+        this.setState({remainingSeats});
       })
       .catch(res => this.setState({ error: res.error }));
   }
 
   handleJoin = (ride_id) => {
     PassengerApiService.passengerJoinRide(ride_id)
-      .then(() => this.setState({ message: 'You have joined this ride' }))
+      .then(res => {
+        this.context.setRide(res);
+        let remainingSeats = this.setRemainingSeats();
+        this.setState({ message: 'You have joined this ride', remainingSeats});
+      })
       .catch(res => this.setState({ error: res.error }));
   }
 
   handleCancel = (ride_id) => {
     PassengerApiService.passengerCancelRide(ride_id)
-      .then(() => this.setState({ message: 'You have left this ride' }))
+      .then(res => {
+        this.context.setRide(res);        
+        let remainingSeats = this.setRemainingSeats();
+        this.setState({ message: 'You have left this ride', remainingSeats });
+      })
       .catch(res => this.setState({ error: res.error }));
   }
 
@@ -109,8 +120,35 @@ export default class RideDetails extends Component {
         .catch(res => this.setState({error: res.error}));
     }
 
+    setRemainingSeats = () => {
+      let remainingSeats = 0;
+      let count = 0;
+
+      let sRArray = Object.keys(this.context.ride);
+
+      for (let i = 6; i < this.context.ride.capacity+6; i++) {
+        count++;
+        if (this.context.ride.capacity < count) {
+          break;
+        }
+
+        if (this.context.ride[sRArray[i]] === null) {
+          remainingSeats++;
+        }
+      }
+
+      if (remainingSeats === 0) {
+        return remainingSeats = 'This ride is full';
+      }
+
+      else{
+        // this.setState({remainingSeats});
+        return remainingSeats;
+      }
+    }
+
     render() {
-      const { error, message } = this.state;
+      const { error, message, remainingSeats } = this.state;
       const { id, starting, destination, date_time, capacity, driver_name,} = this.context.ride;
       let dateStr = new Date(date_time).toLocaleString(undefined, { timeZone: 'UTC' });      let newStr = dateStr.split(', ');
       let dateFormat = newStr[0];
@@ -125,28 +163,28 @@ export default class RideDetails extends Component {
         
       }
 
-      let remainingSeats = 0;
-      let count = 0;
+      // let remainingSeats = 0;
+      // let count = 0;
 
-      let sRArray = Object.keys(this.context.ride);
+      // let sRArray = Object.keys(this.context.ride);
 
-      for (let i = 6; i < sRArray.length; i++) {
-        count++;
-        if (capacity < count) {
-          break;
-        }
+      // for (let i = 6; i < sRArray.length; i++) {
+      //   count++;
+      //   if (capacity < count) {
+      //     break;
+      //   }
 
-        if (this.context.ride[sRArray[i]] === null) {
-          remainingSeats++;
-        }
-      }
+      //   if (this.context.ride[sRArray[i]] === null) {
+      //     remainingSeats++;
+      //   }
+      // }
 
-      if (remainingSeats === 0) {
-        remainingSeats = 'This ride is full';
-      }
+      // if (remainingSeats === 0) {
+      //   remainingSeats = 'This ride is full';
+      // }
 
       
-      else if (!this.context.ride) {
+       if (!this.context.ride) {
         return <div>Loading</div>;
       } 
       return (
@@ -166,7 +204,7 @@ export default class RideDetails extends Component {
                 <p>Destination: {destination}</p>
                 <p>Meetup Date: {dateFormat}</p>
                 <p>Meetup Time: {timeFormat}</p>
-                <p>Capacity: {capacity}</p>
+                {/* <p>Capacity: {capacity}</p> */}
                 <p>Remaining Seats: {remainingSeats}</p>
                 <h4>Ride Description:</h4>
                 <p>{this.context.ride.description}</p>
