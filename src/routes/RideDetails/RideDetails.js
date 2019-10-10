@@ -90,14 +90,14 @@ export default class RideDetails extends Component {
       let destination = document.getElementById('newDestination').value;
       let date = document.getElementById('newDate').value;
       let time = document.getElementById('newTime').value;
-      console.log(time);
+     
      
 
       let updatedDetails = {starting, destination, description, date, time};
       DriverApiService.editRideDetails(ride_id, updatedDetails)
         .then(res => {
           this.context.setRide(res);
-          console.log('ride',this.context.ride);
+          
           let startLat = this.context.ride.startCoorLat;
           let startLng = this.context.ride.startCoorLong;
           this.context.setStartingC(startLat, startLng);
@@ -112,8 +112,7 @@ export default class RideDetails extends Component {
     render() {
       const { error, message } = this.state;
       const { id, starting, destination, date_time, capacity, driver_name,} = this.context.ride;
-      let dateStr = new Date(date_time).toLocaleString();
-      let newStr = dateStr.split(', ');
+      let dateStr = new Date(date_time).toLocaleString(undefined, { timeZone: 'UTC' });      let newStr = dateStr.split(', ');
       let dateFormat = newStr[0];
       let time = newStr[1];
       let timeFormat = '';
@@ -123,7 +122,7 @@ export default class RideDetails extends Component {
         let timeArr = time.split(':');
         let amPM = timeArr[2].split(' ');
         timeFormat = `${timeArr[0]}:${timeArr[1]} ${amPM[1]}`; 
-        console.log(timeFormat);
+        
       }
 
       let remainingSeats = 0;
