@@ -76,7 +76,7 @@ class LoginPage extends React.Component {
             <img src={Logo} alt="Catch A Ride Logo"/>
           </h1>
           
-          <h2>Need A Ride?</h2>
+          <h2 className="loginPageHeader">Need A Ride?</h2>
             
           <section className="intro">
               
@@ -90,9 +90,9 @@ class LoginPage extends React.Component {
            
           <h2 className='login'>Log In</h2>
 
-          <p className='logincreds'>To Login in without using personal credentials.<br/> 
-            username: bobsmith3175@gmail.com<br/>
-            password: plane24235!
+          <p className='logincreds'> 
+           Demo Username: bobsmith3175@gmail.com<br/>
+           Demo Password: plane24235!
           </p>
           
           <br></br>

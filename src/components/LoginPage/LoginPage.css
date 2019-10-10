@@ -24,7 +24,16 @@ h1 {
 
 .logincreds{
   font-size:20px;
-
+text-align: center;
+margin-left:auto;
+margin-right:auto;
+width:90%;
+}
+.loginPageHeader{
+  font-size: 26px;
+}
+.login{
+  font-size:26px;
 }
 
 @media only screen and (min-width:700px){
@@ -41,6 +50,10 @@ h1 {
 
   .psuedo-footer {
     height: 60px;
+  }
+  .logincreds{
+    text-align:left;
+    width:31%;
   }
 
 }
