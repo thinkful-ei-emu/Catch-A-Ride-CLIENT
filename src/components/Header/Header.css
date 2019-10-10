@@ -47,7 +47,7 @@
   overflow-x: hidden;
   transition: 0.5s;
   background: inherit;
-  z-index: 2;
+  z-index: 2 !important;
 }
 
 .side-nav button {

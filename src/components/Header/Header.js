@@ -25,6 +25,7 @@ class Header extends Component {
 
   renderNavBar() {
     return <>
+    <div className='frosted-glass'>
       <nav className='navbar'>
         <section className='header-item'>
           <img className='navlogo' src={Logo} alt="Catch A Ride Logo" />
@@ -62,6 +63,7 @@ class Header extends Component {
           <h1 className='navbar-header'>Catch-A-Ride</h1>
         </div>
       </div>
+      </div>
 
       <nav id='sideNav' className='side-nav frosted-glass'>
         <span className='nav-close' onClick={this.closeSideNav}>
@@ -97,9 +99,11 @@ class Header extends Component {
 
   render() {
     return (
-      <div className='frosted-glass'>
+      <>
+      {/* <div className='frosted-glass'> */}
         {this.context.loggedIn && this.renderNavBar()}
-      </div>
+        {/* </div> */}
+      </>
     );
 
   }
