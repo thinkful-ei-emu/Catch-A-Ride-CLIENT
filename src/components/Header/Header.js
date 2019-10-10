@@ -30,7 +30,7 @@ class Header extends Component {
           <img className='navlogo' src={Logo} alt="Catch A Ride Logo" />
         </section>
         <section className='header-links'>
-          <Link className='navlink' to='/rides'>All Rides</Link>
+          <Link className='navlink' to='/rides'>Find Rides</Link>
           <Link className='navlink' to='/user-rides'>My Rides</Link>
           <Link className='navlink' to='/create-ride'>Create Ride</Link>
         </section>

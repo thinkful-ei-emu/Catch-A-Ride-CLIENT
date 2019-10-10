@@ -4,7 +4,8 @@
 }
 
 h1 {
-  margin-top: 50px;
+  padding-top:50px;
+  margin:0;
 }
 
 .intro{
@@ -19,6 +20,11 @@ h1 {
 
 .psuedo-footer {
   height: 30px;
+}
+
+.logincreds{
+  font-size:20px;
+
 }
 
 @media only screen and (min-width:700px){

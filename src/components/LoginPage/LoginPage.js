@@ -81,7 +81,7 @@ class LoginPage extends React.Component {
           <section className="intro">
               
             <p>
-              Catch-A-Ride is a useful tool to connect with people and share rides
+              Catch-A-Ride is a useful tool to connect with people and share rides.
               The tool allows people to find others heading in to the same
               location and effectively carpool together.
             </p>
@@ -89,6 +89,11 @@ class LoginPage extends React.Component {
           </section>
            
           <h2 className='login'>Log In</h2>
+
+          <p className='logincreds'>To Login in without using personal credentials.<br/> 
+            username: bobsmith3175@gmail.com<br/>
+            password: plane24235!
+          </p>
           
           <br></br>
           {!this.context.loggedIn ? (
