@@ -10,12 +10,27 @@ import Logo from '../LoginPage/landing-logo.png';
 class Header extends Component {
   static contextType = UserContext;
 
-  openSideNav() {
-    document.getElementById('sideNav').style.width = '200px';
+  constructor(props) {
+    super(props);
+  
+    this.state = {
+      sideNavOpen: false
+    };
   }
 
-  closeSideNav() {
-    document.getElementById('sideNav').style.width = '0';
+  openSideNav = () => {
+    // console.log('open');
+    // document.getElementById('sideNav').style.width = '200px';
+    this.setState({
+      sideNavOpen: true
+    });
+  }
+
+  closeSideNav = () => {
+    // document.getElementById('sideNav').style.width = '0';
+    this.setState({
+      sideNavOpen: false
+    });
   }
 
   logout = () => {
@@ -54,7 +69,7 @@ class Header extends Component {
       <div className='top-nav'>
         <div className='navbar-content'>
           {this.context.loggedIn &&
-            <span className='hamburger' onClick={this.openSideNav}>
+            <span className='hamburger' onClick={() => this.openSideNav()}>
               <div className='hamburger-bar'></div>
               <div className='hamburger-bar'></div>
               <div className='hamburger-bar'></div>
@@ -63,8 +78,8 @@ class Header extends Component {
         </div>
       </div>
 
-      <nav id='sideNav' className='side-nav frosted-glass'>
-        <span className='nav-close' onClick={this.closeSideNav}>
+      <nav id='sideNav' className={'side-nav frosted-glass ' + (this.state.sideNavOpen && 'nav-open')}>
+        <span className='nav-close' onClick={() => this.closeSideNav()}>
           <button id='closeBtn' className='closeBtn' >&times;</button>
         </span>
         <Link to={'/rides'}>
