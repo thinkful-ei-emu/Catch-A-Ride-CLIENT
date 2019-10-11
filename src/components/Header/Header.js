@@ -19,15 +19,12 @@ class Header extends Component {
   }
 
   openSideNav = () => {
-    // console.log('open');
-    // document.getElementById('sideNav').style.width = '200px';
     this.setState({
       sideNavOpen: true
     });
   }
 
   closeSideNav = () => {
-    // document.getElementById('sideNav').style.width = '0';
     this.setState({
       sideNavOpen: false
     });
@@ -115,9 +112,7 @@ class Header extends Component {
   render() {
     return (
       <>
-        {/* <div className='frosted-glass'> */}
         {this.context.loggedIn && this.renderNavBar()}
-        {/* </div> */}
       </>
     );
 

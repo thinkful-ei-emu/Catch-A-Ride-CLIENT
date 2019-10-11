@@ -88,10 +88,9 @@ class LoginPage extends React.Component {
 
           <p className='logincreds'> 
            Demo Username: bobsmith3175@gmail.com<br/>
-           Demo Password: plane24235!
+           Demo Password: Plane24235!
           </p>
           
-          <br></br>
           {!this.context.loggedIn ? (
             <GoogleLogin
               clientId={config.CLIENT_ID}

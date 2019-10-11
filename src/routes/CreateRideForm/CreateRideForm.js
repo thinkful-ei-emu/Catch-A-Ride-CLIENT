@@ -1,20 +1,15 @@
 import React from 'react';
-
 import RidesService from '../../services/RidesService/rides-driver-service';
-
 import './CreateRideForm.css';
 import { Redirect } from 'react-router-dom';
 
 export default class CreateRideForm1 extends React.Component {
-
-
   state = {
     created: null,
     today: ''
   }
 
   grabValues = () => {
-
     let time = document.getElementById('timeinput').value;
     let date = document.getElementById('today').value;
     let starting = document.getElementById('starting').value;
@@ -29,8 +24,6 @@ export default class CreateRideForm1 extends React.Component {
       description,
       capacity
     });
-
-
   }
 
   SubmitForm = (e) => {
@@ -52,7 +45,6 @@ export default class CreateRideForm1 extends React.Component {
     return (
       <>
         <h2>Create Ride</h2>
-        {/* <div className='newRideForm frosted-glass'> */}
           <form className='newRideForm' onSubmit={this.SubmitForm}>
             <div>
               <label className='rideLabel createStart' htmlFor='starting'>Starting Point</label><br />
@@ -86,10 +78,8 @@ export default class CreateRideForm1 extends React.Component {
                 <option value="7">7</option>
               </select>
             </div>
-
             <button className='createRide' type='submit'>Share A Ride!</button>
           </form>
-        {/* </div> */}
       </>
     );
   }

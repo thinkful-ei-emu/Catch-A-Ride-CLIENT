@@ -24,7 +24,6 @@ main {
   background: inherit;
   z-index: 1;
   overflow: hidden;
-  /* background-color: red; */
 }
 
 .frosted-glass::before {
