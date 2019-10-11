@@ -13,10 +13,6 @@ class LoginPage extends React.Component {
   static contextType = UserContext
   state={appearHome:true,}
 
-  
-
-
-
   onSignIn = async googleUser => {
     const profile = googleUser.getBasicProfile();
 
@@ -32,8 +28,6 @@ class LoginPage extends React.Component {
       name: profile.getName(),
       email: profile.getEmail()
     });
-
-  
 
     try {
       // eslint-disable-next-line no-unused-vars
@@ -53,7 +47,9 @@ class LoginPage extends React.Component {
     }
   };
 
- 
+  onFailure = (error) => {
+    console.error(error);
+  }
 
   logout = () => {
     TokenService.clearAuthToken();
@@ -101,7 +97,7 @@ class LoginPage extends React.Component {
               clientId={config.CLIENT_ID}
               buttonText={this.context.loggedIn ? 'Signed In' : 'Sign In'}
               onSuccess={this.onSignIn}
-              onFailure={this.googleResponse}
+              onFailure={this.onFailure}
               cookiePolicy={'single_host_origin'}
             ></GoogleLogin>
           ) : (
