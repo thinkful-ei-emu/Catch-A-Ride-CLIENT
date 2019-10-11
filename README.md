@@ -1,7 +1,7 @@
 CATCH-A-RIDE
 ============
 
-Ridesharing made easy. Consolidated carpools.
+Ridesharing made easy. This app helps consolidate the manner in which users carpool, or "Catch-A-Ride". Users can create, delete, and edit rides, join or leave a ride, and also search for a ride by only starting location, by only destination, or by both starting location and destination.
 
 ### Live App
 
@@ -17,7 +17,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-* [Node.js](https://nodejs.org/en/)
+* Node.js
 
 ### Installing
 
@@ -50,11 +50,23 @@ npm run deploy
 ![Imgur](https://i.imgur.com/7cNbE85.png)
 
 ## Built With
-* [React](https://reactjs.org)
-* [Express](https://expressjs.com/)
-* [Node.js](https://nodejs.org/en/)
-* [PostgreSQL](https://www.postgresql.org)
-* [Javascript](https://www.javascript.com)
+Client:
+* React
+* Javascript
+* HTML
+* CSS (Flexbox & Media Querires)
+* Google APIs
+* Google Authentication
+* Zeit
+
+Server:
+* Node.js
+* PostgreSQL
+* Express
+* Google APIs
+* Google Authentication
+* Nodemailer
+* Heroku
 
 ## Authors
 * **Adrienne Smith**
