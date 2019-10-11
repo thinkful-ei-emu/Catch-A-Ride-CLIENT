@@ -17,7 +17,9 @@
   color: black;
   min-height: 31px;
   transition: 1.3s;
-  margin-top: 5px;
+  margin:5px;
+  min-width: 114px;
+  margin-left:20px;
 }
 
 .search-form button:hover{

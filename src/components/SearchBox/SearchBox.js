@@ -36,6 +36,7 @@ export default class SearchBox extends Component {
           <label htmlFor='dest-input' className='search-dest'>Destination: </label>
           <input id='dest-input' placeholder="Enter City Name" value={this.context.destination} onChange={e => this.context.setDestination(e.target.value)} /><br />
           <button className='search-submit' type="submit">Submit</button>
+          <button className='search-submit' type="submit">Display All Rides</button>
         </form>
       </>
     );
