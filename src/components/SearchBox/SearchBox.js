@@ -30,11 +30,11 @@ export default class SearchBox extends Component {
     return (
       <>
         {error && <div className='error'>{error}<button className='errButton' aria-label='close' onClick={() => this.handleErrorClose()}>X</button></div>}
-        <form className='search-form' onSubmit={(e) => this.handleSubmit(e)}>
+        <form className='search-form' aria-label='Search for ride' onSubmit={(e) => this.handleSubmit(e)}>
           <label htmlFor='start-input' className='search-start'>Starting: </label>
-          <input id='start-input' placeholder="Enter City Name" value={this.context.starting} onChange={e => this.context.setStarting(e.target.value)} /><br />
+          <input id='start-input' placeholder="Enter City Name" aria-label='Starting location search input' value={this.context.starting} onChange={e => this.context.setStarting(e.target.value)} /><br />
           <label htmlFor='dest-input' className='search-dest'>Destination: </label>
-          <input id='dest-input' placeholder="Enter City Name" value={this.context.destination} onChange={e => this.context.setDestination(e.target.value)} /><br />
+          <input id='dest-input' placeholder="Enter City Name" aria-label='Destination search input' value={this.context.destination} onChange={e => this.context.setDestination(e.target.value)} /><br />
           <button className='search-submit' type="submit">Submit</button>
           <button className='search-submit' type="submit">Display All Rides</button>
         </form>
