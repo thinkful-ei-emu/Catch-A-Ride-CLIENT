@@ -35,9 +35,9 @@ export default class SearchBox extends Component {
         {userContext => {
           const { setLoggedOut } = userContext;
           if (error === 'unauthorized request') {
-            // setLoggedOut();
+            setLoggedOut();
             // this.props.history.push('/');
-            return <Redirect to='/'/>;
+            // return <Redirect to='/'/>;
           }
           return(
       <>
@@ -48,7 +48,7 @@ export default class SearchBox extends Component {
           <label htmlFor='dest-input' className='search-dest'>Destination: </label>
           <input id='dest-input' placeholder="Enter City Name" aria-label='Destination search input' value={this.context.destination} onChange={e => this.context.setDestination(e.target.value)} /><br />
           <button className='search-submit' type="submit">Submit</button>
-          <button className='search-submit' type="submit">Display All Rides</button>
+          
         </form>
       </>);
         }}</UserContext.Consumer>

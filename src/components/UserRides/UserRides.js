@@ -6,6 +6,7 @@ import RideContext from '../../context/RideContext';
 import UserContext from '../../context/UserContext';
 import Ride from '../Ride/Ride';
 import './UserRides.css';
+import TokenService from '../../services/token-service';
 
 export default class UserRides extends React.Component {
   static contextType = RideContext;
@@ -69,8 +70,10 @@ export default class UserRides extends React.Component {
         {userContext => {
           const { setLoggedOut } = userContext;
           if (this.state.driverError === 'unauthorized request') {
-            setLoggedOut();
-            this.props.history.push('/');
+            // setLoggedOut();
+            TokenService.clearUser();
+           window.location.reload(true);
+            // this.props.history.push('/');
           }
           return <>
             <h2 className='myrides elegantshadow'>My Rides</h2>
