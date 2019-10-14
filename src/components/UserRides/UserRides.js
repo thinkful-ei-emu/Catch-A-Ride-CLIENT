@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import DriversApiService from '../../services/RidesService/rides-driver-service';
 import PassengersApiService from '../../services/RidesService/rides-passenger-service';
 import RideContext from '../../context/RideContext';
@@ -14,14 +14,14 @@ export default class UserRides extends React.Component {
     passError: null
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     DriversApiService.getDriverRides()
       .then(res => {
         this.context.setDriverRides(res);
       })
       .catch(res => {
         this.context.clearDriverRides();
-        this.setState({driverError: res.error});
+        this.setState({ driverError: res.error });
       });
     PassengersApiService.getAllRides()
       .then(res => {
@@ -29,8 +29,31 @@ export default class UserRides extends React.Component {
       })
       .catch(res => {
         this.context.clearPassengerRides();
-        this.setState({passError: res.error});
+        this.setState({ passError: res.error });
       });
+
+    // const driverRidesRequest = DriversApiService.getDriverRides();
+    // const passengerRidesRequest = PassengersApiService.getAllRides();
+
+    // const [driverRides, passengerRides] = await Promise.all([
+    //   driverRidesRequest.catch(res => {
+    //     this.context.clearDriverRides();
+    //     this.setState({
+    //       driverError: res.error
+    //     });
+    //   }),
+    //   passengerRidesRequest.catch(res => {
+    //     this.context.clearPassengerRides();
+    //     this.setState({
+    //       passError: res.error
+    //     });
+    //   })
+    // ]);
+
+    // console.log(driverRides, passengerRides);
+
+    // this.context.setDriverRides(driverRides);
+    // this.context.setPassengerRides(passengerRides);
   }
 
   driverRidesList() {
@@ -56,7 +79,7 @@ export default class UserRides extends React.Component {
   }
 
   render() {
- 
+
     const { driverError, passError } = this.state;
     return (
       <>
