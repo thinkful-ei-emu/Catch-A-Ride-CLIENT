@@ -102,8 +102,6 @@ export default class RideDetails extends Component {
     let date = document.getElementById('newDate').value;
     let time = document.getElementById('newTime').value;
 
-
-
     let updatedDetails = { starting, destination, description, date, time };
     DriverApiService.editRideDetails(ride_id, updatedDetails)
       .then(res => {

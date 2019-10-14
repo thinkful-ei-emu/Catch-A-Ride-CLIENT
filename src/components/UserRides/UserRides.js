@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import DriversApiService from '../../services/RidesService/rides-driver-service';
 import PassengersApiService from '../../services/RidesService/rides-passenger-service';
 import RideContext from '../../context/RideContext';
+import UserContext from '../../context/UserContext';
 import Ride from '../Ride/Ride';
 import './UserRides.css';
 
@@ -15,45 +16,26 @@ export default class UserRides extends React.Component {
   };
 
   async componentDidMount() {
-    DriversApiService.getDriverRides()
-      .then(res => {
-        this.context.setDriverRides(res);
-      })
-      .catch(res => {
+    const driverRidesRequest = DriversApiService.getDriverRides();
+    const passengerRidesRequest = PassengersApiService.getAllRides();
+
+    const [driverRides, passengerRides] = await Promise.all([
+      driverRidesRequest.catch(res => {
         this.context.clearDriverRides();
-        this.setState({ driverError: res.error });
-      });
-    PassengersApiService.getAllRides()
-      .then(res => {
-        this.context.setPassengerRides(res);
-      })
-      .catch(res => {
+        this.setState({
+          driverError: res.error
+        });
+      }),
+      passengerRidesRequest.catch(res => {
         this.context.clearPassengerRides();
-        this.setState({ passError: res.error });
-      });
+        this.setState({
+          passError: res.error
+        });
+      })
+    ]);
 
-    // const driverRidesRequest = DriversApiService.getDriverRides();
-    // const passengerRidesRequest = PassengersApiService.getAllRides();
-
-    // const [driverRides, passengerRides] = await Promise.all([
-    //   driverRidesRequest.catch(res => {
-    //     this.context.clearDriverRides();
-    //     this.setState({
-    //       driverError: res.error
-    //     });
-    //   }),
-    //   passengerRidesRequest.catch(res => {
-    //     this.context.clearPassengerRides();
-    //     this.setState({
-    //       passError: res.error
-    //     });
-    //   })
-    // ]);
-
-    // console.log(driverRides, passengerRides);
-
-    // this.context.setDriverRides(driverRides);
-    // this.context.setPassengerRides(passengerRides);
+    !this.state.driverError && this.context.setDriverRides(driverRides);
+    !this.state.passError && this.context.setPassengerRides(passengerRides);
   }
 
   driverRidesList() {
@@ -81,16 +63,27 @@ export default class UserRides extends React.Component {
   render() {
 
     const { driverError, passError } = this.state;
+
     return (
-      <>
-        <h2 className='myrides elegantshadow'>My Rides</h2>
-        <h3 className='divide'>Driver</h3>
-        {driverError && <p className='errorMessage'>{driverError}</p>}
-        {this.driverRidesList()}
-        <h3 className='divide'>Passenger</h3>
-        {passError && <p className='errorMessage'>{passError}</p>}
-        {this.passengerRidesList()}
-      </>
+      <UserContext.Consumer>
+        {userContext => {
+          const { setLoggedOut } = userContext;
+          if (this.state.driverError === 'unauthorized request') {
+            setLoggedOut();
+            this.props.history.push('/');
+          }
+          return <>
+            <h2 className='myrides elegantshadow'>My Rides</h2>
+            <h3 className='divide'>Driver</h3>
+            {driverError && <p className='errorMessage'>{driverError}</p>}
+            {this.driverRidesList()}
+            <h3 className='divide'>Passenger</h3>
+            {passError && <p className='errorMessage'>{passError}</p>}
+            {this.passengerRidesList()}
+          </>;
+
+        }}
+      </UserContext.Consumer>
     );
   }
 }
