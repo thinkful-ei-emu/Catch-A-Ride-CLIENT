@@ -164,7 +164,12 @@ export default class RideDetails extends Component {
     }
     return (
       <UserContext.Consumer>{(userContext) => {
-        const { user_id } = userContext.user;
+        const { user_id,setLoggedOut } = userContext.user;
+        
+        if (error === 'unauthorized request') {
+          setLoggedOut();
+          this.props.history.push('/');
+        }
         return (
           <>
             <h2>Ride Details</h2>

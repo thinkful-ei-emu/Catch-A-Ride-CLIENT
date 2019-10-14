@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import RideContext from '../../context/RideContext';
 import RideApiService from '../../services/RidesService/rides-driver-service';
 import './SearchBox.css';
+import UserContext from '../../context/UserContext';
+import {Redirect} from 'react-router-dom';
 
 export default class SearchBox extends Component {
   static contextType = RideContext;
@@ -26,8 +28,18 @@ export default class SearchBox extends Component {
   }
 
   render() {
+    
     const { error } = this.state;
     return (
+      <UserContext.Consumer>
+        {userContext => {
+          const { setLoggedOut } = userContext;
+          if (error === 'unauthorized request') {
+            // setLoggedOut();
+            // this.props.history.push('/');
+            return <Redirect to='/'/>;
+          }
+          return(
       <>
         {error && <div className='error'>{error}<button className='errButton' aria-label='close' onClick={() => this.handleErrorClose()}>X</button></div>}
         <form className='search-form' aria-label='Search for ride' onSubmit={(e) => this.handleSubmit(e)}>
@@ -38,7 +50,8 @@ export default class SearchBox extends Component {
           <button className='search-submit' type="submit">Submit</button>
           <button className='search-submit' type="submit">Display All Rides</button>
         </form>
-      </>
+      </>);
+        }}</UserContext.Consumer>
     );
   }
 }
