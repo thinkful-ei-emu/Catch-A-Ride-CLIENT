@@ -6,7 +6,8 @@ import { Redirect } from 'react-router-dom';
 export default class CreateRideForm1 extends React.Component {
   state = {
     created: null,
-    today: ''
+    today: '',
+    error: null
   }
 
   grabValues = () => {
@@ -30,23 +31,27 @@ export default class CreateRideForm1 extends React.Component {
     e.preventDefault();
     let body = this.grabValues();
     RidesService.postNewRide(body)
-      .then(res => this.setState({ created: true, ride_id: res.id }));
-
+      .then(res => this.setState({ created: true, ride_id: res.id }))
+      .catch(res => this.setState({ error: res.error }));
   }
   componentDidMount() {
     this.setState({ today: new Date().toISOString().substr(0, 10) });
   }
 
+  handleErrorClose = () => {
+    this.setState({ error: null });
+  }
+
   render() {
-    const { ride_id } = this.state;
+    const { ride_id, error } = this.state;
     if (this.state.created === true) {
       return <Redirect to={`/rides/${ride_id}`} />;
     }
     return (
       <>
         <h2>Create Ride</h2>
-      
           <form className='newRideForm' aria-label='Create a ride' onSubmit={this.SubmitForm}>
+            {error && <div className='errorBox'>{error}<button className='errorButton' aria-label='close' onClick={() => this.handleErrorClose()}>X</button></div>}
             <div>
               <label className='rideLabel createStart' htmlFor='starting'>Starting Point</label><br />
               <input type='text' placeholder="Enter Location You Leave From" id='starting' aria-label='Starting location input' aria-required='true' required></input>
