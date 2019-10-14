@@ -147,7 +147,7 @@ export default class RideDetails extends Component {
 
   render() {
     const { error, message, remainingSeats } = this.state;
-    const { id, starting, destination, date_time, capacity, driver_name, } = this.context.ride;
+    const { id, starting, destination, date_time, driver_name, } = this.context.ride;
     let dateStr = new Date(date_time).toLocaleString(undefined, { timeZone: 'UTC' }); let newStr = dateStr.split(', ');
     let dateFormat = newStr[0];
     let time = newStr[1];
