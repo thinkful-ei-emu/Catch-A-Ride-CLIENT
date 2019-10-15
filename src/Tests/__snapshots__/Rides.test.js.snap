@@ -12,6 +12,7 @@ Array [
       Search For Rides
     </h3>
     <form
+      aria-label="Search for ride"
       className="search-form"
       onSubmit={[Function]}
     >
@@ -22,6 +23,7 @@ Array [
         Starting: 
       </label>
       <input
+        aria-label="Starting location search input"
         id="start-input"
         onChange={[Function]}
         placeholder="Enter City Name"
@@ -35,6 +37,7 @@ Array [
         Destination: 
       </label>
       <input
+        aria-label="Destination search input"
         id="dest-input"
         onChange={[Function]}
         placeholder="Enter City Name"

@@ -14,7 +14,10 @@ class Rides extends Component {
     const destination = this.context.destination;
     RideApiService.getAllRides(starting, destination)
       .then(data => this.context.setRides(data))
-      .catch(res => this.setState({error: res.error}));
+      .catch(res => this.setState({error: res.error},
+        () => {
+          if (this.state.error === 'unauthorized request') this.props.userContext.setLoggedOut();
+        }));
   }
 
   renderRidesList() {

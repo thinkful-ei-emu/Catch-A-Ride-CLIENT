@@ -6,14 +6,17 @@ import * as serviceWorker from './serviceWorker';
 import { RideProvider } from './context/RideContext';
 import { BrowserRouter } from 'react-router-dom';
 import { UserProvider } from './context/UserContext';
+import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 
 ReactDOM.render(
   <BrowserRouter>
-    <UserProvider>
-      <RideProvider>
-        <App />
-      </RideProvider>
-    </UserProvider>
+    <ErrorBoundary>
+      <UserProvider>
+        <RideProvider>
+          <App />
+        </RideProvider>
+      </UserProvider>
+    </ErrorBoundary>
   </BrowserRouter>,
   document.getElementById('root')
 );

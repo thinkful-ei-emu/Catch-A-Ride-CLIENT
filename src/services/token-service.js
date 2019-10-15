@@ -12,7 +12,6 @@ const TokenService = {
     window.localStorage.removeItem(config.TOKEN_KEY);
   },
   removeItems(array) {
-   
     for (let item of array) {
       window.localStorage.removeItem(item);
     }

@@ -27,7 +27,6 @@ class App extends Component {
     
   }
 
-
   render() {
     if (this.state.time > Number(TokenService.getExpiresAt())) {
       TokenService.removeItems([config.TOKEN_KEY, 'user', 'expires_at']);

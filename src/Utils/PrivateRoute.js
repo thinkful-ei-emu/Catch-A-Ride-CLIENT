@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import UserContext from '../context/UserContext';
-import TokenService from '../services/token-service';
 
 export default function PrivateRoute({ component, ...props }) {
   const Component = component;
@@ -12,7 +11,7 @@ export default function PrivateRoute({ component, ...props }) {
         <UserContext.Consumer>
           {userContext => 
             userContext.loggedIn
-              ? <Component {...componentProps} />
+              ? <Component {...componentProps} userContext={userContext} />
               : (<Redirect
                 to={{
                   pathname: '/',

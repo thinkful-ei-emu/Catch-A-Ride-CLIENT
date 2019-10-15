@@ -8,6 +8,7 @@ exports[`renders the UI as expected 1`] = `
     Search For Rides
   </h3>
   <form
+    aria-label="Search for ride"
     className="search-form"
     onSubmit={[Function]}
   >
@@ -18,6 +19,7 @@ exports[`renders the UI as expected 1`] = `
       Starting: 
     </label>
     <input
+      aria-label="Starting location search input"
       id="start-input"
       onChange={[Function]}
       placeholder="Enter City Name"
@@ -31,6 +33,7 @@ exports[`renders the UI as expected 1`] = `
       Destination: 
     </label>
     <input
+      aria-label="Destination search input"
       id="dest-input"
       onChange={[Function]}
       placeholder="Enter City Name"

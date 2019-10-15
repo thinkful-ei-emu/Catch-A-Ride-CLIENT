@@ -32,7 +32,10 @@ export default class CreateRideForm1 extends React.Component {
     let body = this.grabValues();
     RidesService.postNewRide(body)
       .then(res => this.setState({ created: true, ride_id: res.id }))
-      .catch(res => this.setState({ error: res.error }));
+      .catch(res => this.setState({ error: res.error }, 
+        () => {
+          if (this.state.error === 'unauthorized request') this.props.userContext.setLoggedOut();
+        }));
   }
   componentDidMount() {
     this.setState({ today: new Date().toISOString().substr(0, 10) });
@@ -44,12 +47,12 @@ export default class CreateRideForm1 extends React.Component {
 
   render() {
     const { ride_id, error } = this.state;
-    if (this.state.created === true) {
-      return <Redirect to={`/rides/${ride_id}`} />;
-    }
-    return (
-      <>
-        <h2>Create Ride</h2>
+
+    return this.state.created
+      ? <Redirect to={`/rides/${ride_id}`} />
+      : (
+        <>
+          <h2>Create Ride</h2>
           <form className='newRideForm' aria-label='Create a ride' onSubmit={this.SubmitForm}>
             {error && <div className='errorBox'>{error}<button className='errorButton' aria-label='close' onClick={() => this.handleErrorClose()}>X</button></div>}
             <div>
@@ -86,7 +89,7 @@ export default class CreateRideForm1 extends React.Component {
             </div>
             <button className='createRide' type='submit'>Share A Ride!</button>
           </form>
-      </>
-    );
-  }
+        </>
+      );
+  };
 }

@@ -3,10 +3,8 @@ import { Link } from 'react-router-dom';
 import DriversApiService from '../../services/RidesService/rides-driver-service';
 import PassengersApiService from '../../services/RidesService/rides-passenger-service';
 import RideContext from '../../context/RideContext';
-import UserContext from '../../context/UserContext';
 import Ride from '../Ride/Ride';
 import './UserRides.css';
-import TokenService from '../../services/token-service';
 
 export default class UserRides extends React.Component {
   static contextType = RideContext;
@@ -34,6 +32,8 @@ export default class UserRides extends React.Component {
         });
       })
     ]);
+
+    if (this.state.driverError === 'unauthorized request') this.props.userContext.setLoggedOut();
 
     !this.state.driverError && this.context.setDriverRides(driverRides);
     !this.state.passError && this.context.setPassengerRides(passengerRides);
@@ -65,28 +65,15 @@ export default class UserRides extends React.Component {
 
     const { driverError, passError } = this.state;
 
-    return (
-      <UserContext.Consumer>
-        {userContext => {
-          const { setLoggedOut } = userContext;
-          if (this.state.driverError === 'unauthorized request') {
-            // setLoggedOut();
-            TokenService.clearUser();
-           window.location.reload(true);
-            // this.props.history.push('/');
-          }
-          return <>
-            <h2 className='myrides elegantshadow'>My Rides</h2>
-            <h3 className='divide'>Driver</h3>
-            {driverError && <p className='errorMessage'>{driverError}</p>}
-            {this.driverRidesList()}
-            <h3 className='divide'>Passenger</h3>
-            {passError && <p className='errorMessage'>{passError}</p>}
-            {this.passengerRidesList()}
-          </>;
+    return <>
+      <h2 className='myrides elegantshadow'>My Rides</h2>
+      <h3 className='divide'>Driver</h3>
+      {driverError && <p className='errorMessage'>{driverError}</p>}
+      {this.driverRidesList()}
+      <h3 className='divide'>Passenger</h3>
+      {passError && <p className='errorMessage'>{passError}</p>}
+      {this.passengerRidesList()}
+    </>;
 
-        }}
-      </UserContext.Consumer>
-    );
   }
 }

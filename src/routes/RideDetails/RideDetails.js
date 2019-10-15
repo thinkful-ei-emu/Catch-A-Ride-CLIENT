@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import config from '../../config';
 import RideContext from '../../context/RideContext';
-import UserContext from '../../context/UserContext';
 import Gmaps from '../../components/Maps/Gmaps';
 import TokenService from '../../services/token-service';
 import PassengerApiService from '../../services/RidesService/rides-passenger-service';
@@ -15,14 +14,21 @@ import { faMapMarkedAlt, faTrashAlt, faUserSlash, faEdit } from '@fortawesome/fr
 
 export default class RideDetails extends Component {
   static contextType = RideContext;
+  static defaultProps = {
+    userContext: {
+      user: { user_id: '' }
+    }
+  }
 
-  state = {
-    error: null,
-    message: null,
-    isEditing: false,
-    remainingSeats: 0,
-  };
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+      message: null,
+      isEditing: false,
+      remainingSeats: 0,
+    };
+  }
   componentDidMount() {
     fetch(`${config.API_ENDPOINT}/rides/${this.props.match.params.ride_id}`, {
       method: 'GET',
@@ -47,7 +53,10 @@ export default class RideDetails extends Component {
         let remainingSeats = this.setRemainingSeats();
         this.setState({ remainingSeats });
       })
-      .catch(res => this.setState({ error: res.error }));
+      .catch(res => this.setState({ error: res.error },
+        () => {
+          if (this.state.error === 'unauthorized request') this.props.userContext.setLoggedOut();
+        }));
   }
 
   handleJoin = (ride_id) => {
@@ -57,7 +66,10 @@ export default class RideDetails extends Component {
         let remainingSeats = this.setRemainingSeats();
         this.setState({ message: 'You have joined this ride', remainingSeats });
       })
-      .catch(res => this.setState({ error: res.error }));
+      .catch(res => this.setState({ error: res.error },
+        () => {
+          if (this.state.error === 'unauthorized request') this.props.userContext.setLoggedOut();
+        }));
   }
 
   handleCancel = (ride_id) => {
@@ -67,14 +79,24 @@ export default class RideDetails extends Component {
         let remainingSeats = this.setRemainingSeats();
         this.setState({ message: 'You have left this ride', remainingSeats });
       })
-      .catch(res => this.setState({ error: res.error }));
+      .catch(res => this.setState({ error: res.error },
+        () => {
+          if (this.state.error === 'unauthorized request') this.props.userContext.setLoggedOut();
+        }));
   }
 
   handleDelete = (ride_id) => {
     this.context.deleteRide(ride_id);
 
     return DriverApiService.deleteRide(ride_id)
-      .catch(res => (res.error) ? this.setState({ error: res.error }) : this.props.history.push('/rides')
+      .catch(res => (res.error)
+        ? this.setState({
+          error: res.error
+        },
+        () => {
+          if (this.state.error === 'unauthorized request') this.props.userContext.setLoggedOut();
+        })
+        : this.props.history.push('/rides')
       );
   }
 
@@ -115,7 +137,10 @@ export default class RideDetails extends Component {
         this.context.setDestinationC(destLat, destLng);
         this.setState({ isEditing: false });
       })
-      .catch(res => this.setState({ error: res.error }));
+      .catch(res => this.setState({ error: res.error },
+        () => {
+          if (this.state.error === 'unauthorized request') this.props.userContext.setLoggedOut();
+        }));
   }
 
   setRemainingSeats = () => {
@@ -159,52 +184,39 @@ export default class RideDetails extends Component {
 
     }
 
-    if (!this.context.ride) {
-      return <div>Loading</div>;
-    }
-    return (
-      <UserContext.Consumer>{(userContext) => {
-        const { user_id,setLoggedOut } = userContext.user;
-        
-        if (error === 'unauthorized request') {
-          setLoggedOut();
-          this.props.history.push('/');
-        }
-        return (
-          <>
-            <h2>Ride Details</h2>
-            <div className="google-map">
-              <Gmaps />
-            </div>
-            {message && <div className='messageBox'>{message}<button className='messageButton' aria-label='close' onClick={() => this.handleMessageClose()}>X</button></div>}
-            {error && <div className='errorBox'>{error}<button className='errorButton' aria-label='close' onClick={() => this.handleErrorClose()}>X</button></div>}
-            <div className='ride-details'>
-              <p>Driver: {driver_name}</p>
-              <p>Meetup Address: {starting}</p>
-              <p>Destination: {destination}</p>
-              <p>Meetup Date: {dateFormat}</p>
-              <p>Meetup Time: {timeFormat}</p>
-              <p>Remaining Seats: {remainingSeats}</p>
-              <h4>Ride Description:</h4>
-              <p>{this.context.ride.description}</p>
-              <div id="ride-btn">
-                {this.context.ride.driver_id === user_id
-                  ? <>
-                    <button type="button" onClick={() => this.handleDelete(id)}>Delete Ride <FontAwesomeIcon icon={faTrashAlt} /></button>
-                    <button type="button" onClick={() => this.createEditForm()}>Edit Details <FontAwesomeIcon icon={faEdit} /></button>
-                  </>
-                  : <>
-                    <button type="button" onClick={() => this.handleJoin(id)}>Join <FontAwesomeIcon icon={faMapMarkedAlt} /></button>
-                    <button type="button" onClick={() => this.handleCancel(id)}>Cancel Ride <FontAwesomeIcon icon={faUserSlash} /></button>
-                  </>}
-                {this.state.isEditing && <EditModal handleEditForm={this.handleEditForm} closeEditForm={this.closeEditForm} timeFormat={timeFormat} dateFormat={dateFormat} />}
-              </div>
-            </div>
-          </>
-        );
-      }}
-      </UserContext.Consumer>
-    );
+    const { user_id } = this.props.userContext.user;
 
+    return this.context.ride
+      ? <>
+        <h2>Ride Details</h2>
+        <div className="google-map">
+          <Gmaps />
+        </div>
+        {message && <div className='messageBox'>{message}<button className='messageButton' aria-label='close' onClick={() => this.handleMessageClose()}>X</button></div>}
+        {error && <div className='errorBox'>{error}<button className='errorButton' aria-label='close' onClick={() => this.handleErrorClose()}>X</button></div>}
+        <div className='ride-details'>
+          <p>Driver: {driver_name}</p>
+          <p>Meetup Address: {starting}</p>
+          <p>Destination: {destination}</p>
+          <p>Meetup Date: {dateFormat}</p>
+          <p>Meetup Time: {timeFormat}</p>
+          <p>Remaining Seats: {remainingSeats}</p>
+          <h4>Ride Description:</h4>
+          <p>{this.context.ride.description}</p>
+          <div id="ride-btn">
+            {this.context.ride.driver_id === user_id
+              ? <>
+                <button type="button" onClick={() => this.handleDelete(id)}>Delete Ride <FontAwesomeIcon icon={faTrashAlt} /></button>
+                <button type="button" onClick={() => this.createEditForm()}>Edit Details <FontAwesomeIcon icon={faEdit} /></button>
+              </>
+              : <>
+                <button type="button" onClick={() => this.handleJoin(id)}>Join <FontAwesomeIcon icon={faMapMarkedAlt} /></button>
+                <button type="button" onClick={() => this.handleCancel(id)}>Cancel Ride <FontAwesomeIcon icon={faUserSlash} /></button>
+              </>}
+            {this.state.isEditing && <EditModal handleEditForm={this.handleEditForm} closeEditForm={this.closeEditForm} timeFormat={timeFormat} dateFormat={dateFormat} />}
+          </div>
+        </div>
+      </>
+      : <div>Loading</div>;
   }
 }
