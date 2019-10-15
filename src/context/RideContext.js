@@ -34,7 +34,7 @@ export class RideProvider extends Component {
     };
   }
 
- 
+
 
   setRides = (rides) => {
     this.setState({ rides });
@@ -58,6 +58,7 @@ export class RideProvider extends Component {
   }
 
   setError = error => {
+    // eslint-disable-next-line no-console
     console.error(error);
     this.setState({ error });
   }
@@ -79,11 +80,11 @@ export class RideProvider extends Component {
   }
 
   setStartingC = (lat, lng) => {
-    this.setState({ startingC: { lat: lat, lng: lng } })
+    this.setState({ startingC: { lat: lat, lng: lng } });
   }
 
   setDestinationC = (lat, lng) => {
-    this.setState({ destinationC: { lat, lng } })
+    this.setState({ destinationC: { lat, lng } });
   }
 
   clearDriverRides = () => {

@@ -5,13 +5,13 @@ import { Redirect } from 'react-router-dom';
 import UserContext from '../../context/UserContext';
 import config from '../../config';
 import './LoginPage.css';
-import Logo from'./landing-logo.png';
+import Logo from './landing-logo.png';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 
 class LoginPage extends React.Component {
   static contextType = UserContext
-  state={appearHome:true,}
+  state = { appearHome: true, }
 
   onSignIn = async googleUser => {
     const profile = googleUser.getBasicProfile();
@@ -19,7 +19,7 @@ class LoginPage extends React.Component {
     const id_token = googleUser.getAuthResponse().id_token;
     const expires_at = googleUser.getAuthResponse().expires_at;
     TokenService.saveExpiresAt(expires_at);
-   
+
     TokenService.saveAuthToken(id_token);
 
     TokenService.getAuthToken();
@@ -41,13 +41,15 @@ class LoginPage extends React.Component {
         })
       });
       user = await user.json();
-      
+
     } catch (e) {
+      // eslint-disable-next-line no-console
       console.error(e.message);
     }
   };
 
   onFailure = (error) => {
+    // eslint-disable-next-line no-console
     console.error(error);
   }
 
@@ -55,42 +57,42 @@ class LoginPage extends React.Component {
     TokenService.clearAuthToken();
   };
 
-  
+
 
   render() {
     return (
       <div className="landing">
         <ReactCSSTransitionGroup
-             
+
           transitionName="fade"
           transitionAppear={true}
           transitionAppearTimeout={3000}
           transitionEnter={false}
           transitionLeave={false}>
           <h1>
-             
-            <img src={Logo} alt="Catch A Ride Logo"/>
+
+            <img src={Logo} alt="Catch A Ride Logo" />
           </h1>
-          
+
           <h2 className="loginPageHeader">Need A Ride?</h2>
-            
+
           <section className="intro">
-              
+
             <p>
               Catch-A-Ride is a useful tool to connect with people and share rides.
               The tool allows people to find others heading in to the same
               location and effectively carpool together.
             </p>
-            
+
           </section>
-           
+
           <h2 className='login'>Log In</h2>
 
-          <p className='logincreds'> 
-           Demo Username: bobsmith3175@gmail.com<br/>
-           Demo Password: Plane24235!
+          <p className='logincreds'>
+            Demo Username: bobsmith3175@gmail.com<br />
+            Demo Password: Plane24235!
           </p>
-          
+
           {!this.context.loggedIn ? (
             <GoogleLogin
               clientId={config.CLIENT_ID}
