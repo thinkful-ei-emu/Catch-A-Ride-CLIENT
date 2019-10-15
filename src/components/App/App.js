@@ -14,9 +14,7 @@ import config from '../../config';
 import UserContext from '../../context/UserContext';
 import Footer from '../Footer/Footer';
 
-
 import './App.css';
-
 
 class App extends Component {
 
@@ -24,7 +22,6 @@ class App extends Component {
 
   state = {
     time: Date.now(),
-    
   }
 
   render() {

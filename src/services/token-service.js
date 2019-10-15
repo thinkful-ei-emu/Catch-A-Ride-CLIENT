@@ -12,6 +12,7 @@ const TokenService = {
     window.localStorage.removeItem(config.TOKEN_KEY);
   },
   removeItems(array) {
+    // eslint-disable-next-line no-unused-vars
     for (let item of array) {
       window.localStorage.removeItem(item);
     }
