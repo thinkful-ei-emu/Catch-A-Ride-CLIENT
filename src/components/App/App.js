@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import LoginPage from '../LoginPage/LoginPage';
 import Rides from '../../routes/Rides/Rides';
@@ -13,6 +13,7 @@ import TokenService from '../../services/token-service';
 import config from '../../config';
 import UserContext from '../../context/UserContext';
 import Footer from '../Footer/Footer';
+import NotFoundRoute from '../../routes/NotFoundRoute/NotFound';
 
 import './App.css';
 
@@ -39,6 +40,8 @@ class App extends Component {
             <PrivateRoute path="/create-ride" component={CreateRideForm} />
             <PrivateRoute path='/user-rides' component={UserRides} />
             <PrivateRoute path='/rides/:ride_id' component={RideDetails} />
+            {/* Notes: Not found route works well once logged in, on landing page, needs css adjusting */}
+            <Route component={NotFoundRoute} />
           </Switch>
         </main>
         <Footer />
