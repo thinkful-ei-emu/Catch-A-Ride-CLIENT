@@ -44,13 +44,13 @@ class LoginPage extends React.Component {
 
     } catch (e) {
       // eslint-disable-next-line no-console
-      console.error(e.message);
+      
     }
   };
 
   onFailure = (error) => {
     // eslint-disable-next-line no-console
-    console.error(error);
+    
   }
 
   logout = () => {

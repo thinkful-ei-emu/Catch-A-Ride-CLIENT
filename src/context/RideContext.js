@@ -59,7 +59,7 @@ export class RideProvider extends Component {
 
   setError = error => {
     // eslint-disable-next-line no-console
-    console.error(error);
+    
     this.setState({ error });
   }
 

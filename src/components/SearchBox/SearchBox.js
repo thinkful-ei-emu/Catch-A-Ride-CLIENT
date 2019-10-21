@@ -14,10 +14,18 @@ export default class SearchBox extends Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    const starting = this.context.starting;
-    const destination = this.context.destination;
+    if(this.state.error){
+      this.handleErrorClose();
+
+    };
+    let starting = this.context.starting;
+    let destination = this.context.destination;
     RideApiService.getAllRides(starting, destination)
       .then(data => this.context.setRides(data))
+      .then(()=>{
+        this.context.setStarting(''); 
+        this.context.setDestination('');})
+     
       .catch(res => this.setState({
         error: res.error
       },
