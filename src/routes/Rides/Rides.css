@@ -10,11 +10,17 @@
   border-radius: 10px 10px 5px 5px;
   width: 90%;
   background: rgba(26,32,54,.65);
+  transition: .75s;
 }
 
 .single-ride a:link, .single-ride a:visited, .single-ride a:hover, .single-ride a:active {
   color: white;
   text-decoration: none;
+}
+
+.single-ride:hover{
+
+  background:rgba(26,32,54,.99);
 }
 
 @media only screen and (min-width: 500px) {
